@@ -6,12 +6,15 @@ import { ClientComponent } from './client.component';
 import { NavbarComponent } from './_navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 
+import { CarouselModule } from 'ngx-bootstrap/carousel';
+
 
 @NgModule({
   declarations: [ClientComponent, NavbarComponent, HomeComponent],
   imports: [
     CommonModule,
-    ClientRoutingModule
+    ClientRoutingModule,
+    CarouselModule
   ]
 })
 export class ClientModule { }

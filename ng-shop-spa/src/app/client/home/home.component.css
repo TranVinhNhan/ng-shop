@@ -1,3 +1,49 @@
-* {
-    margin-top: 50px;
+.container {
+    margin-top: 52px;
+    max-width: 1280px;
+    padding: 0;
+}
+
+.filter-price-item a {
+    text-decoration: none;
+    padding: 7px 10px;
+    background-color: #e7edf1;
+    color: black;
+}
+
+.filter-price-item a:hover {
+    background-color: #333;
+    color: white;
+}
+
+.suggestions {
+    display: block;
+    margin-top: 10px;
+}
+
+.price-list-inline, .suggestions-list-inline {
+    list-style-type: none;
+}
+
+.filter-price-item, .suggestions-list-item {
+    float: left;
+}
+
+.suggestions-list-item > a {
+    display: block;
+    padding: 0px 22px;
+    text-decoration: none;
+}
+
+.filter-price, .filter-price-title, .filter-price-list-inline, .filter-price-item {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.filter-price-list-inline {
+    vertical-align: middle;
+}
+
+.filter-price-item {
+    padding: 0px 5px;
 }
