@@ -50,3 +50,8 @@ D:\Coding\Project\ng-shop\ng-shop-api\bin\Debug\netcoreapp3.1\runtimes\win\lib\n
 D:\Coding\Project\ng-shop\ng-shop-api\obj\Debug\netcoreapp3.1\ng-shop-api.RazorTargetAssemblyInfo.cache
 D:\Coding\Project\ng-shop\ng-shop-api\obj\Debug\netcoreapp3.1\ng-shop-api.csproj.CopyComplete
 D:\Coding\Project\ng-shop\ng-shop-api\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
+D:\Coding\Project\ng-shop\ng-shop-api\bin\Debug\netcoreapp3.1\Data\Product.json
+D:\Coding\Project\ng-shop\ng-shop-api\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+D:\Coding\Project\ng-shop\ng-shop-api\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+D:\Coding\Project\ng-shop\ng-shop-api\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+D:\Coding\Project\ng-shop\ng-shop-api\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll

@@ -1,0 +1,121 @@
+[
+  {
+    "ProductName": "Lenovo ThinkPad X395 R7 3700U RAM 8GB SSD 256GB FHD IPS",
+    "Description": "Chiếc X395 vẫn mang thiết kế chắc chắn và đơn giản đặc trưng của dòng ThinkPad, với phần vỏ ngoài được làm từ nhôm cao cấp và phủ một lớp sơn lỳ chống trơn trượt khi sử dụng. Chiếc laptop này chỉ nặng 1.2kg và dày 17mm, khiến việc mang theo ThinkPad X395 khá dễ dàng.",
+    "Processor": "AMD Ryzen 7 Pro 3700U 2.3Ghz, 4Mb Cache, Upto 4.0Ghz",
+    "Memory": "8GB DDR4 2400Mhz",
+    "Storage": "256GB SSD NVMe",
+    "Display": "13.3 inch FHD (1920 x 1080), IPS Anti-Glare",
+    "Graphics": "AMD Vega 10",
+    "ChargingAndExpansion": "2 x USB 3.1 (Gen 1) 2 x USB-C (1 Thunderbolt™ 3) Khe thẻ MicroSD Khe thẻ Smartcard Khe cắm Micro-SIM Jack cắm tai nghe/ micro HDMI 1.4 RJ45",
+    "Size": "323 x 217 x 14.95 mm",
+    "Weight": "1.11kg",
+    "OperatingSystem": "Windows 10",
+    "Price": 23990000,
+    "Brand": {
+      "BrandName": "Thinkpad"
+    }
+  },
+  {
+    "ProductName": "HP Zbook 15 G1 i7-4800MQ RAM 8GB SSD 240GB K1100M FHD",
+    "Description": "HP ZBook 15 G1 có màn hình 15.6 inch, thân máy được làm bằng nhôm sáng bóng, và phần khung được làm bằng magie, với ngôn ngữ thiết kế đã được bo tròn các góc cạnh giúp máy mềm mại hơn rất nhiều nhưng cũng không kém phần mạnh mẽ, 2 bản lề được làm rất chắc chắn thường thấy ở dòng mobile Workstation giúp máy mở được 180 độ ngang với mặt phím.",
+    "Processor": "Intel Core i7-4800MQ 2.7GHz, 6 MB Intel® Smart Cache Cache, Upto 3.7GHz",
+    "Memory": "8GB DDR3 1600MHz",
+    "Storage": "240GB SSD",
+    "Display": "15.6 inch FHD (1920 x 1080), Anti-glare",
+    "Graphics": "NVIDIA Quadro K1100M 2GB",
+    "ChargingAndExpansion": "1 Express Card 54mm, 1 USB 2.0, 3 USB 3.0 / 3.1 Gen1, 1 Thunderbolt, 1 VGA, 1 DisplayPort, 1 Kensington Lock, 1 Docking Station Port",
+    "Size": "30.5 x 381.5 x 257 mm",
+    "Weight": "2.88kg",
+    "OperatingSystem": "Microsoft Windows 7 Professional 64 Bit",
+    "Price": 11590000,
+    "Brand": {
+      "BrandName": "HP"
+    }
+  },
+  {
+    "ProductName": "Dell Inspiron 7590 i5-9300H RAM 8GB SSD 256GB FHD GTX1050",
+    "Description": "Inspiron là dòng máy tính chủ yếu dành cho công việc. Chiếc Inspiron 7590 sẽ dễ dàng hoàn thành các tác vụ văn phòng từ nhẹ nhàng như soan thảo văn bản, làm slide thuyết trình tới những tác vụ năng nề hơn như xử lý những file exel hàng nghìn dòng. Người dùng có thể sử dụng thoải mái các phần mềm đồ hoạ ở mức 2D và thậm chí 3D ở mức không quá chuyên sâu. Xét về mặt gaming, GTX 1050 hay GTX 1650 đều không phải là những GPU quá mạnh. Các tựa game eSport phổ biến như LOL, DOTA2 hay CS:GO sẽ không làm khó được máy, nhưng người dùng sẽ phải cân nhắc nếu muốn try hard những tựa game AAA nặng ký hơn như COD Modern Warfaces, Far Cry New Dawn hay PUBG PC khi mà các bài test đều đem lại mức fps không mấy ấn tượng ở độ phân giải FHD. ",
+    "Processor": "Intel® Core™ i5-9300H 2.4Ghz, 8 MB Intel® Smart Cache Cache, Upto 4.1Ghz",
+    "Memory": "8GB DDR4 2666MHz",
+    "Storage": "256GB SSD M2 NVMe PCIe",
+    "Display": "15.6 inch FHD (1920 x 1080), Anti-Glare",
+    "Graphics": "NVIDIA GTX 1050 3GB",
+    "ChargingAndExpansion": "3 cổng USB 3.1 Gen 1(Type A), 1 Cổng Thunderbolt 3(Type C), 1 HDMI 2.0, Khe thẻ microSD",
+    "Size": "357.6 x 238.8 x 17.95-19.9mm",
+    "Weight": "1.81Kg",
+    "OperatingSystem": "Windows 10",
+    "Price": 21490000,
+    "Brand": {
+      "BrandName": "Dell"
+    }
+  },
+  {
+    "ProductName": "Razer Blade 15 i7-8750H RAM 16GB SSD 512GB FHD IPS 144Hz RTX 2070",
+    "Description": "Vẫn giữ nguyên thiết kế Unibody với vỏ máy được làm bằng nhôm nguyên khối sơn đen cao cấp cùng với logo Razer màu xanh lá bắt mắt truyền thống, nay màn hình của Razer Blade đã được phóng to lên với kích thước 15.6 inch với viền màn hình được làm mỏng đi theo phong cách Infinite Edge (viền mỏng vô cực).",
+    "Processor": "Intel Core i7-8750H 2.20 GHz, 9 MB SmartCache Cache, Upto 4.10 GHz",
+    "Memory": "16GB DDR4 2666 MHz",
+    "Storage": "512GB SSD m2 NVMe PCIe",
+    "Display": "15.6 inch FHD (1920 x 1080), IPS Anti-Glare",
+    "Graphics": "Nvidia GeForce RTX 2070 Max-Q 8GB GDDR5",
+    "ChargingAndExpansion": "3 Cổng USB 3.1 1 Cổng Thunderbolt 3 1 Cổng Mini Display Port 1 Cổng HDMI",
+    "Size": "355 x 235 x 17.8mm",
+    "Weight": "2.1kg",
+    "OperatingSystem": "Windows 10",
+    "Price": 54990000,
+    "Brand": {
+      "BrandName": "Razor"
+    }
+  },
+  {
+    "ProductName": "LG GRAM Intel® Core™ i7-1065G7 RAM 8GB SSD 512GB 17-inch FHD IPS Windows 10 Home",
+    "Description": "LG Gram 2020 - chiếc laptop doanh nhân mỏng nhẹ, phù hợp cho những người ưa thích sự sang trọng và thường xuyên phải di chuyển. LG Gram 2020 gây ấn tượng với một thiết kế lịch lãm, tính cơ động cao và màn hình lớn, sắc nét, hứa hẹn mang đến cho người dùng những trải nghiệm hình ảnh vô cùng chân thực. Tuy nhiên, một điểm trừ của LG Gram 2020 là khả năng xử lý các tác vụ đa phương tiện (edit ảnh, render video) lại không quá xuất sắc, và nó cũng khá “đuối” khi chiến một số tựa game nặng.",
+    "Processor": "Intel® Core™ i7-1065G7 1.3GHz, 8 MB Intel® Smart Cache Cache, Upto 3.9GHz",
+    "Memory": "8GB DDR4 2400MHz",
+    "Storage": "512GB M.2 2280 NVMe SSD",
+    "Display": "17-inch WQXGA (2560 x 1600), IPS",
+    "Graphics": "Intel® Iris® Plus Graphics N/A",
+    "ChargingAndExpansion": "3 cổng USB 3.0 1 cổng HDMI tiêu chuẩn 1 jack cắm tai nghe",
+    "Size": "380.6 x 262.6 x 17.4 mm",
+    "Weight": "1,35kg",
+    "OperatingSystem": "Windows 10 Home",
+    "Price": 42490000,
+    "Brand": {
+      "BrandName": "LG"
+    }
+  },
+  {
+    "ProductName": "Lenovo Legion Y545 i7-9750H SSD 512GB RAM 16GB FHD 144Hz RTX 2060",
+    "Description": "Legion Y545 mang tới sức mạnh từ GPU NVIDIA® GeForce RTX™ với cấu trúc NVIDIA® Turing GPU đã mang đến một cuộc cách mạng cho game thủ với tính năng Ray-Tracing cực độc đáo khi có thể làm cho hình ảnh trở nên sống động, chân thực hơn, hiệu ứng đổ bóng cũng như khả năng tính toán của AI được tăng cường rất nhiều, giúp cho trải nghiệm chơi game của bạn được nâng lên một tầm cao mới.",
+    "Processor": "Intel Core i7-9750H 2.60 GHz, 12MB SmartCache Cache, Upto 4.50 GHz",
+    "Memory": "16GB DDR4 2666 MHz",
+    "Storage": "512GB SSD M2 NVMe PCIe",
+    "Display": "15.6-inch FHD (1920 x 1080) 144Hz, Anti-Glare LED Backlit",
+    "Graphics": "NVIDIA GeForce RTX 2060 6GB",
+    "ChargingAndExpansion": "3 x USB 3.1 Gen 1; 1 x USB 3.1 Type-C Gen 1, 1 x HDMI 2.0, 1 x Ethernet (RJ-45), 1 x mDisplayPort 1.4, 1 x jack cắm tai nghe",
+    "Size": "361.1 x 266.7 x 24.7-26.6 mm",
+    "Weight": "2.35 kg",
+    "OperatingSystem": "Windows 10",
+    "Price": 35990000,
+    "Brand": {
+      "BrandName": "Lenovo"
+    }
+  },
+  {
+    "ProductName": "Asus ZenBook Pro UX580GD i7 8750H RAM 16GB SSD512GB 15.6 GTX1050 4GB 4K LED-backlit",
+    "Description": "Asus ZenBook Pro UX580GD mang tới sức mạnh vô cùng tốt với CPU đến từ Intel cũng như GPU đến từ nVIDIA, giờ đây trải nghiệm làm việc đồ họa không bao giờ là khó đối với chiếc laptop này, Asus ZenBook Pro UX580GD chính là lựa chọn hoàn hảo nhất cho nhiều nhu cầu khác nhau.",
+    "Processor": "Intel Core i7-8750H 2.20 GHz, 9 MB SmartCache Cache, Upto 4.10 GHz",
+    "Memory": "16GB DDR4 2400MHz",
+    "Storage": "512GB SSD",
+    "Display": "15.6\" UHD (3840 x 2160), LED-backlit",
+    "Graphics": "NVIDIA® GeForce® GTX 1050 4GB",
+    "ChargingAndExpansion": "2 x Type-C™ USB 3.1 Gen 2 (Thunderbolt™ 3) 2 x Type-A USB 3.1 Gen 2 1 x HDMI 1 x Combo audio jack 1 x MicroSD card slot",
+    "Size": "1.89 cm x 36.5 cm x 24.1 cm",
+    "Weight": "1.88 kg",
+    "OperatingSystem": "Windows 10",
+    "Price": 35990000,
+    "Brand": {
+      "BrandName": "ASUS"
+    }
+  }
+]

@@ -1,4 +1,9 @@
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using ng_shop_api.Data;
 using ng_shop_api.Models;
 
 namespace ng_shop_api.Controllers
@@ -7,17 +12,18 @@ namespace ng_shop_api.Controllers
     [Route("api/[controller]")]
     public class ProductController : ControllerBase
     {
-        public ProductController()
+        public LaptopDbContext _context { get; }
+        public ProductController(LaptopDbContext context)
         {
+            _context = context;
 
         }
 
         [HttpGet]
-        public Product GetProduct() => new Product()
+        public async Task<IActionResult> GetProductsAsync()
         {
-            ProductName = "Dell Precision 7540 i9-9980H RAM 32GB SSD 512GB FHD IPS T2000 (MỚI)",
-            Description = "Test Description",
-            Price = 47990000
-        };
+            var products = await _context.Products.Include(p => p.Brand).ToListAsync();
+            return Ok(products);
+        }
     }
 }

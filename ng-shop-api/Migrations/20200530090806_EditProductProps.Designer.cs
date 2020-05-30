@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ng_shop_api.Data;
 
 namespace ng_shop_api.Migrations
 {
     [DbContext(typeof(LaptopDbContext))]
-    partial class LaptopDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200530090806_EditProductProps")]
+    partial class EditProductProps
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

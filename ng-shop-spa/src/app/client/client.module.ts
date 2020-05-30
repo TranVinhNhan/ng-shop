@@ -7,10 +7,11 @@ import { NavbarComponent } from './_navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 
 import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { FooterComponent } from './_footer/footer.component';
 
 
 @NgModule({
-  declarations: [ClientComponent, NavbarComponent, HomeComponent],
+  declarations: [ClientComponent, NavbarComponent, HomeComponent, FooterComponent],
   imports: [
     CommonModule,
     ClientRoutingModule,
