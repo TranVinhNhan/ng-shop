@@ -4,18 +4,21 @@ import { CommonModule } from '@angular/common';
 import { ClientRoutingModule } from './client-routing.module';
 import { ClientComponent } from './client.component';
 import { NavbarComponent } from './_navbar/navbar.component';
+import { FooterComponent } from './_footer/footer.component';
 import { HomeComponent } from './home/home.component';
 
 import { CarouselModule } from 'ngx-bootstrap/carousel';
-import { FooterComponent } from './_footer/footer.component';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { DetailComponent } from './detail/detail.component';
 
 
 @NgModule({
-  declarations: [ClientComponent, NavbarComponent, HomeComponent, FooterComponent],
+  declarations: [ClientComponent, NavbarComponent, HomeComponent, DetailComponent, FooterComponent],
   imports: [
     CommonModule,
     ClientRoutingModule,
-    CarouselModule
+    CarouselModule,
+    PaginationModule.forRoot()
   ]
 })
 export class ClientModule { }

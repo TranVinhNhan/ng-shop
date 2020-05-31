@@ -12,7 +12,6 @@
     </carousel>
 
     <div class="suggestions">
-
         <p>Một số gợi ý dưới đây có thể giúp bạn tìm sản phẩm nhanh hơn...</p>
         <ul class="suggestions-list-inline">
             <li class="suggestions-list-item"><a href="#"><img src="assets/images/logo-acer.png" alt=""></a></li>
@@ -42,116 +41,22 @@
     <div class="product has-top-border">
         <h6 class="product-type">Laptop</h6>
         <div class="block-content row row-cols-lg-5 row-cols-md-3 row-cols-sm-2 row-cols-xs-2 row-cols-2">
-            <div class="product-item my-2">
+            <div class="product-item my-2" *ngFor="let item of onePageArray">
                 <div class="mx-2 shadow">
                     <a class="product-thumbnail" href="#"><img src="assets/images/product-0.jpg" alt="product"></a>
                     <div class="product-info">
-                        <h4 class="product-title"><a href="#">Razer Blade 15</a></h4>
-                        <h5 class="price">39.990.000đ</h5>
-                        <p>DescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescription
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="product-item my-2">
-                <div class="mx-2 shadow">
-                    <a class="product-thumbnail" href="#"><img src="assets/images/product-0.jpg" alt="product"></a>
-                    <div class="product-info">
-                        <h4 class="product-title"><a href="#">Razer Blade 15</a></h4>
-                        <h5 class="price">39.990.000đ</h5>
-                        <p>DescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescription
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="product-item my-2">
-                <div class="mx-2 shadow">
-                    <a class="product-thumbnail" href="#"><img src="assets/images/product-0.jpg" alt="product"></a>
-                    <div class="product-info">
-                        <h4 class="product-title"><a href="#">Razer Blade 15</a></h4>
-                        <h5 class="price">39.990.000đ</h5>
-                        <p>DescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescription
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="product-item my-2">
-                <div class="mx-2 shadow">
-                    <a class="product-thumbnail" href="#"><img src="assets/images/product-0.jpg" alt="product"></a>
-                    <div class="product-info">
-                        <h4 class="product-title"><a href="#">Razer Blade 15</a></h4>
-                        <h5 class="price">39.990.000đ</h5>
-                        <p>DescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescription
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="product-item my-2">
-                <div class="mx-2 shadow">
-                    <a class="product-thumbnail" href="#"><img src="assets/images/product-0.jpg" alt="product"></a>
-                    <div class="product-info">
-                        <h4 class="product-title"><a href="#">Razer Blade 15</a></h4>
-                        <h5 class="price">39.990.000đ</h5>
-                        <p>DescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescription
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="product-item my-2">
-                <div class="mx-2 shadow">
-                    <a class="product-thumbnail" href="#"><img src="assets/images/product-0.jpg" alt="product"></a>
-                    <div class="product-info">
-                        <h4 class="product-title"><a href="#">Razer Blade 15</a></h4>
-                        <h5 class="price">39.990.000đ</h5>
-                        <p>DescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescription
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="product-item my-2">
-                <div class="mx-2 shadow">
-                    <a class="product-thumbnail" href="#"><img src="assets/images/product-0.jpg" alt="product"></a>
-                    <div class="product-info">
-                        <h4 class="product-title"><a href="#">Razer Blade 15</a></h4>
-                        <h5 class="price">39.990.000đ</h5>
-                        <p>DescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescription
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="product-item my-2">
-                <div class="mx-2 shadow">
-                    <a class="product-thumbnail" href="#"><img src="assets/images/product-0.jpg" alt="product"></a>
-                    <div class="product-info">
-                        <h4 class="product-title"><a href="#">Razer Blade 15</a></h4>
-                        <h5 class="price">39.990.000đ</h5>
-                        <p>DescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescription
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="product-item my-2">
-                <div class="mx-2 shadow">
-                    <a class="product-thumbnail" href="#"><img src="assets/images/product-0.jpg" alt="product"></a>
-                    <div class="product-info">
-                        <h4 class="product-title"><a href="#">Razer Blade 15</a></h4>
-                        <h5 class="price">39.990.000đ</h5>
-                        <p>DescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescription
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="product-item my-2">
-                <div class="mx-2 shadow">
-                    <a class="product-thumbnail" href="#"><img src="assets/images/product-0.jpg" alt="product"></a>
-                    <div class="product-info">
-                        <h4 class="product-title"><a href="#">Razer Blade 15</a></h4>
-                        <h5 class="price">39.990.000đ</h5>
-                        <p>DescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescription
+                        <h4 class="product-title"><a href="#">{{ item.name }}</a></h4>
+                        <h5 class="price">{{ item.price }}đ</h5>
+                        <p>{{ item.description }}
                         </p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <pagination [totalItems]="fullArray.length"
+                (pageChanged)="pageChanged($event)"
+                [boundaryLinks]=true>
+    </pagination>
 </div>

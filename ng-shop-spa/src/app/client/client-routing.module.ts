@@ -3,13 +3,15 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { ClientComponent } from './client.component';
 import { HomeComponent } from './home/home.component';
+import { DetailComponent } from './detail/detail.component';
 
 const routes: Routes = [
   {
     path: '',
     component: ClientComponent,
     children: [
-      { path: '', component: HomeComponent }
+      { path: '', component: HomeComponent },
+      { path: 'detail/:name', component: DetailComponent}
     ]
   }
 ];

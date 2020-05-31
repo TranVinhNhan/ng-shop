@@ -1,0 +1,126 @@
+.container {
+    margin: 0;
+    padding: 0;
+    max-width: 1280px;
+}
+
+ol.breadcrumb {
+    background-color: white;
+    padding-inline-start: 0px;
+}
+
+.product-detail-top h1 {
+    font-size: 25px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 0;
+}
+
+.has-top-border {
+    border-top: 1px solid #dddddd;
+    padding: 20px 0 10px 0;
+}
+
+.test {
+    height: 500px;
+    background-color: yellow;
+    border: 1px solid black;
+}
+
+.product-detail-middle {
+    margin-top: 20px;
+    font-family: Arial;
+    margin-bottom: 20px;
+}
+
+.price {
+    color: red;
+}
+
+.qua-tang {
+    background: url(/assets/images/bg-quatang.png) no-repeat scroll bottom right 0 #e8f8ee;
+    padding: 13px 90px 13px 10px;
+    color: #30a43b;
+    border-radius: 3px;
+}
+
+.btn-muangay {
+    background: #fa7814;
+    margin-right: 5px;
+}
+
+.btn-muangay:hover {
+    background: #b95000;
+}
+
+.btn-tragop {
+    background: #288ad6;
+    margin-left: 5px;
+}
+
+.btn-tragop:hover {
+    background: #0066b4;;
+}
+
+.btn-group {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.btn-desc {
+    font-weight: normal;
+    font-size: 12px;
+    text-transform: initial;
+}
+
+.btn-group .btn {
+    color: #fff;
+    text-transform: uppercase;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 3px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.warranty, .contact-detail {
+    border: 1px solid #e1e1e1;
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-bottom: 10px;
+}
+
+.contact-detail {
+    padding: 10px;
+}
+
+.product-status {
+    margin-bottom: 10px;
+    color: #30a43b;
+    font-weight: bold;
+}
+
+.contact-detail > a {
+    color: #4267b2;
+}
+
+.contact-detail > .btn {
+    display: block;
+    border: 1px solid #4267b2;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 3px;
+    padding: 7px 10px 5px;
+    background: #ecf0f7;
+    margin: 8px 0 5px 0;
+}
+
+.btn i {
+    font-size: 25px;
+    margin-right: 15px;
+    vertical-align: middle;
+}
