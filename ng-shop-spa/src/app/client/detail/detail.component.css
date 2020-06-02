@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     max-width: 1280px;
+    margin-bottom: 100px;
 }
 
 ol.breadcrumb {
@@ -123,4 +124,38 @@ ol.breadcrumb {
     font-size: 25px;
     margin-right: 15px;
     vertical-align: middle;
+}
+
+.fit-content {
+    height: fit-content;
+}
+
+.specs {
+    max-width: 70%;
+    margin-top: -150px;
+}
+
+.specs-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    padding-left: 10px;
+    color: #27bece;
+    border-left: 6px solid #27bece;
+    margin-bottom: 20px;
+    font-family: "Roboto", Arial;
+}
+
+.parameter li {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e1e1e1;
+}
+
+li > .lable-ts, li > div {
+    display: inline-block;
+}
+
+li > .lable-ts {
+    min-width: 145px;
 }

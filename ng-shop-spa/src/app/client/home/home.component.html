@@ -43,7 +43,7 @@
         <div class="block-content row row-cols-lg-5 row-cols-md-3 row-cols-sm-2 row-cols-xs-2 row-cols-2">
             <div class="product-item my-2" *ngFor="let item of onePageArray">
                 <div class="mx-2 shadow">
-                    <a class="product-thumbnail" href="#"><img src="assets/images/product-0.jpg" alt="product"></a>
+                    <a class="product-thumbnail" routerLink='/detail/example'><img src="assets/images/product-0.jpg" alt="product"></a>
                     <div class="product-info">
                         <h4 class="product-title"><a href="#">{{ item.name }}</a></h4>
                         <h5 class="price">{{ item.price }}đ</h5>

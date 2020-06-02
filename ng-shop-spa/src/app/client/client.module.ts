@@ -10,10 +10,17 @@ import { HomeComponent } from './home/home.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { DetailComponent } from './detail/detail.component';
+import { OrderComponent } from './order/order.component';
 
 
 @NgModule({
-  declarations: [ClientComponent, NavbarComponent, HomeComponent, DetailComponent, FooterComponent],
+  declarations: [
+    ClientComponent,
+    NavbarComponent,
+    HomeComponent,
+    DetailComponent,
+    FooterComponent,
+    OrderComponent],
   imports: [
     CommonModule,
     ClientRoutingModule,

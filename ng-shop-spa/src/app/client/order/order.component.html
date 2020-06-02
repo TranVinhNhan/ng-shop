@@ -1,0 +1,177 @@
+<div class="container">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Giỏ hàng và thanh toán</li>
+        </ol>
+    </nav>
+    <div class="order-title">
+        <h1>Giỏ hàng và thanh toán</h1>
+    </div>
+    <div class="order-detail">
+        <div class="order-detail-top">
+            <a class="back-page" routerLink='/'><i class="fa fa-angle-left" aria-hidden="true"></i><span>Trở về mua
+                    thêm</span></a>
+        </div>
+        <div class="row">
+            <div class="col-lg-7">
+                <form id="order-form" action="" method="POST">
+                    <div class="info-customer">
+                        <fieldset class="form-group">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="gioitinh" type="radio" value="Anh" id="nam">
+                                <label class="form-check-label" for="nam">Anh</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" name="gioitinh" type="radio" value="Chị" id="nu">
+                                <label class="form-check-label" for="nu">Chị</label>
+                            </div>
+                        </fieldset>
+                        <div class="form-row mt-2">
+                            <div class="form-group col-md-6">
+                                <input type="text" class="form-control" value="" name="fullname" id="fullname"
+                                    placeholder="Họ và tên">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <input type="tel" class="form-control" value="" name="phone" id="sdt"
+                                    placeholder="Số điện thoại">
+                            </div>
+                            <div class="form-group col-md-12">
+                                <input type="email" class="form-control" value="" name="email" id="email"
+                                    placeholder="Email">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <input type="text" class="form-control" name="note" value="" id="yeucaukhac"
+                                    placeholder="Yêu cầu khác (Không bắt buộc)">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="info-ship">
+                        <div></div>
+                        <div><strong>Để được phục vụ nhanh hơn,</strong> hãy chọn thêm:</div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" name="phuongthucgiaohang" type="radio"
+                                value="diachigiaohang" id="diachigiaohang" (change)="onItemChanged()" checked=true>
+                            <label class="form-check-label" for="diachigiaohang">Địa chỉ giao hàng</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" name="phuongthucgiaohang" type="radio" value="taicuahang"
+                                id="taicuahang" (change)="onItemChanged()">
+                            <label class="form-check-label" for="taicuahang">Nhận tại cửa hàng</label>
+                        </div>
+                        <div *ngIf="orderType" class="diachigiaohang" style="display: block;">
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <input type="text" class="form-control" value="" name="tinh_tp" id="tinh_tp"
+                                        placeholder="Tỉnh/Thành phố">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <input type="text" class="form-control" value="" name="quan_huyen" id="quan_huyen"
+                                        placeholder="Quận/Huyện">
+                                </div>
+                            </div>
+                            <div class="form-row mb-100">
+                                <div class="form-group col-md-12">
+                                    <input class="form-control" value="" placeholder="Số nhà, tên đường, phường/xã"
+                                        id="address" type="text" name="address">
+                                </div>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="option[]"
+                                    value="Yêu cầu nhân viên hỗ trợ kỹ thuật đi giao hàng">
+                                <label class="form-check-label">Yêu cầu nhân viên hỗ trợ kỹ thuật đi giao hàng</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="option[]"
+                                    value="Cà thẻ khi nhận hàng">
+                                <label class="form-check-label">Cà thẻ khi nhận hàng</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="option[]"
+                                    value="Xuất hóa đơn công ty">
+                                <label class="form-check-label">Xuất hóa đơn công ty</label>
+                            </div>
+                        </div>
+                        <div *ngIf="!orderType" class="diachicuahang">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="address"
+                                    value="Số 105 ngõ 562 đường Láng, P. Láng Hạ, Q. Đống Đa, Hà Nội">
+                                <label class="form-check-label">Số 105 ngõ 562 đường Láng, P. Láng Hạ, Q. Đống Đa, Hà
+                                    Nội</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="address"
+                                    value="69 Phố Vọng, Phường Đồng Tâm, Quận Hai Bà Trưng, TP.Hà Nội">
+                                <label class="form-check-label">69 Phố Vọng, Phường Đồng Tâm, Quận Hai Bà Trưng, TP.Hà
+                                    Nội</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="address"
+                                    value="Số 62 Duy Tân, Phường 15, Q. Phú Nhuận, TP HCM">
+                                <label class="form-check-label">Số 62 Duy Tân, Phường 15, Q. Phú Nhuận, TP HCM</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="option[]"
+                                    value="Xuất hóa đơn công ty">
+                                <label class="form-check-label">Xuất hóa đơn công ty</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="group-action d-flex align-items-center justify-content-between">
+                        <button class="btn btn-default btn-muangay mr-2 w-50" type="submit" value="1" name="order_send">Thanh toán
+                            khi nhận
+                            hàng</button>
+                        <button class="btn btn-primary btn-tragop ml-2 w-50" type="submit" value="2" name="order_send">Chuyển khoản
+                            online</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-5 cart-gray">
+                <div class="cart-title">Giỏ hàng của bạn</div>
+                <ul class="list-order list-unstyled">
+                    <li class="order-item">
+                        <div class="d-flex">
+                            <div class="col-image">
+                                <img class="img-fluid"
+                                    src="https://www.thinkpro.vn/uploads/images/2020/05/13/thumb_300x300_15893890079633.jpg"
+                                    alt="HP Zbook 15 G1 i7-4800MQ RAM 8GB HDD 500GB K1100M FHD">
+                                <div class="delete_product"><i class="fa fa-trash mr-1" aria-hidden="true"></i>Xóa</div>
+                            </div>
+
+                            <div class="col-info">
+                                <div class="product-name"><a
+                                        href="/hp-zbook-15-g1/hp-zbook-15-g1-i7-4800mq-ram-8gb-hdd-500gb-k1100m-fhd-pd44163.html"
+                                        target="_blank">HP Zbook 15 G1 i7-4800MQ RAM 8GB HDD 500GB K1100M FHD</a></div>
+                            </div>
+                            <div class="col-price">
+                                <div class="price">10.990.000 đ</div>
+                                <div class="choosequantity">
+                                    <button class="btn-num-product-down" [disabled]="quantity<1"
+                                        (click)="onIncreaseQuantity()">
+                                        <i class="fs-12 fa fa-minus" aria-hidden="true"></i>
+                                    </button>
+                                    <input disabled class="text-center num-product" type="number" name="num-product1"
+                                        value={{quantity}}>
+                                    <button class="btn-num-product-up" (click)="onDecreaseQuantity()">
+                                        <i class="fs-12 fa fa-plus" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                </ul>
+                <hr>
+                <div class="total-price">
+                    <label>Tổng tiền:</label>
+                    <div class="total-price-value">10.990.000 đ</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

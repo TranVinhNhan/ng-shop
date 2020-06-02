@@ -86,8 +86,7 @@ a {
 }
 
 .product-thumbnail > img {
-    width: 226px;
-    height: 226px;
+    width: 200px;
     display: block;
     margin: auto;
     transition: 1s ease;
