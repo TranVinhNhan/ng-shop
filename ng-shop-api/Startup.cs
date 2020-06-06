@@ -29,7 +29,9 @@ namespace ng_shop_api
         {
             services.AddControllers()
                     .AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
             services.AddDbContext<LaptopDbContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            // Seed data service in ./data/Seed.cs
             services.AddTransient<Seed>();
         }
 
