@@ -16,9 +16,9 @@ namespace ng_shop_api.Repositories.Implements
             _context = context;
 
         }
-        public async Task<User> Login(string username, string password)
+        public async Task<User> Login(string email, string password)
         {
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == username);
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
             if (user == null)
                 return null;
             
@@ -42,9 +42,9 @@ namespace ng_shop_api.Repositories.Implements
             return user;
         }
 
-        public async Task<bool> UserExist(string username)
+        public async Task<bool> UserExist(string email)
         {
-            return await _context.Users.AnyAsync(x => x.Username == username) ? true : false;
+            return await _context.Users.AnyAsync(x => x.Email == email) ? true : false;
         }
 
         // Nguồn: https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/consumer-apis/password-hashing?view=aspnetcore-3.1

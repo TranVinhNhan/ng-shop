@@ -11,6 +11,8 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { DetailComponent } from './detail/detail.component';
 import { OrderComponent } from './order/order.component';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { OrderComponent } from './order/order.component';
     HomeComponent,
     DetailComponent,
     FooterComponent,
-    OrderComponent],
+    OrderComponent,
+    RegisterComponent,
+    LoginComponent],
   imports: [
     CommonModule,
     ClientRoutingModule,

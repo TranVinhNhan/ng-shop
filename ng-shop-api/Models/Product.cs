@@ -6,7 +6,9 @@ namespace ng_shop_api.Models
     {
         public int Id { get; set; }
         public string ProductName { get; set; }
+        public string ProductShortName { get; set; }
         public string Description { get; set; }
+        public string ShortDescription { get; set; }
         public string Processor { get; set; }
         public string Memory { get; set; }
         public string Storage { get; set; }

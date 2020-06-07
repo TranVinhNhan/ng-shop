@@ -19,7 +19,7 @@ namespace ng_shop_api.Controllers
 
         }
 
-        [HttpGet]
+        [HttpGet("all")]
         public async Task<IActionResult> GetProductsAsync()
         {
             var products = await _context.Products.Include(p => p.Brand).ToListAsync();

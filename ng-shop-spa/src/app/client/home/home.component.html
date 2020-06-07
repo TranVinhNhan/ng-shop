@@ -42,12 +42,12 @@
         <h6 class="product-type">Laptop</h6>
         <div class="block-content row row-cols-lg-5 row-cols-md-3 row-cols-sm-2 row-cols-xs-2 row-cols-2">
             <div class="product-item my-2" *ngFor="let item of onePageArray">
-                <div class="mx-2 shadow">
-                    <a class="product-thumbnail" routerLink='/detail/example'><img src="assets/images/product-0.jpg" alt="product"></a>
+                <div routerLink='/detail/example' class="mx-2 shadow">
+                    <a class="product-thumbnail"><img src="assets/images/product-0.jpg" alt="product"></a>
                     <div class="product-info">
-                        <h4 class="product-title"><a href="#">{{ item.name }}</a></h4>
-                        <h5 class="price">{{ item.price }}đ</h5>
-                        <p>{{ item.description }}
+                        <h6 class="product-title"><a href="#">{{ item.productShortName }}</a></h6>
+                        <h5 class="price">{{ item.price | number: '2.'}} đ</h5>
+                        <p class="force-text">{{ item.shortDescription }}
                         </p>
                     </div>
                 </div>
@@ -55,7 +55,7 @@
         </div>
     </div>
 
-    <pagination [totalItems]="fullArray.length"
+    <pagination [totalItems]="productsArray.length"
                 (pageChanged)="pageChanged($event)"
                 [boundaryLinks]=true>
     </pagination>

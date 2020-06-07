@@ -4,6 +4,24 @@
     max-width: 1280px;
 }
 
+.row {
+    display: table;
+}
+
+[class*="col-"] {
+    float: none;
+    display: table-cell;
+    vertical-align: top;
+}
+
+.force-text {
+    overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-line-clamp: 3; /* number of lines to show */
+   -webkit-box-orient: vertical;
+}
+
 .suggestions, .filter-price, .product {
     display: block;
     margin-top: 30px;
@@ -83,6 +101,7 @@ a {
 
 .shadow {
     border: 1px solid #f4f4f4;
+    cursor: pointer;
 }
 
 .product-thumbnail > img {

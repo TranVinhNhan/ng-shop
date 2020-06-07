@@ -1,5 +1,7 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { PageChangedEvent } from 'ngx-bootstrap/pagination/public_api';
+import { ProductService } from 'src/app/_services/product.service';
+import { Product } from 'src/app/_models/product';
 
 @Component({
   selector: 'app-home',
@@ -8,28 +10,29 @@ import { PageChangedEvent } from 'ngx-bootstrap/pagination/public_api';
 })
 export class HomeComponent implements OnInit {
 
-  fullArray: { name: string, price: number, description: string }[] = [];
-  onePageArray: { name: string, price: number, description: string }[] = [];
+  productsArray: Product[] = [];
+  onePageArray: Product[] = [];
 
-  constructor() { }
+  constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
-    for (let i = 0; i < 30; i++) {
-      this.fullArray.push(
-        {
-          name: 'Razer Blade 15 ver1.' + i,
-          price: 39990000,
-          description: 'DescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescriptionDescription'
-        }
-      );
-    }
-
-    this.onePageArray = this.fullArray.slice(0, 10);
+    this.loadAllProducts();
   }
 
   pageChanged(event: PageChangedEvent): void {
     const startItem = (event.page - 1) * event.itemsPerPage;
     const endItem = event.page * event.itemsPerPage;
-    this.onePageArray = this.fullArray.slice(startItem, endItem);
+    this.onePageArray = this.productsArray.slice(startItem, endItem);
+  }
+
+  private loadAllProducts() {
+    this.productService
+      .getAllProducts()
+      .subscribe((products: Product[]) => {
+        this.productsArray = products;
+        this.onePageArray = this.productsArray.slice(0, 10);
+      }, error => {
+        console.log(error);
+      });
   }
 }

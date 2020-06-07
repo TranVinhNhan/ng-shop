@@ -6,7 +6,7 @@ namespace ng_shop_api.Repositories.Interfaces
     public interface IAuthRepository
     {
          Task<User> Register(User user, string password);
-         Task<User> Login(string username, string password);
-         Task<bool> UserExist(string username);
+         Task<User> Login(string email, string password);
+         Task<bool> UserExist(string email);
     }
 }

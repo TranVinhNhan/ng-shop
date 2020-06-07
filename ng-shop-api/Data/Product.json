@@ -1,7 +1,9 @@
 [
   {
     "ProductName": "Lenovo ThinkPad X395 R7 3700U RAM 8GB SSD 256GB FHD IPS",
+    "ProductShortName": "Lenovo ThinkPad X395 R7",
     "Description": "Chiếc X395 vẫn mang thiết kế chắc chắn và đơn giản đặc trưng của dòng ThinkPad, với phần vỏ ngoài được làm từ nhôm cao cấp và phủ một lớp sơn lỳ chống trơn trượt khi sử dụng. Chiếc laptop này chỉ nặng 1.2kg và dày 17mm, khiến việc mang theo ThinkPad X395 khá dễ dàng.",
+    "ShortDescription": "Laptop doanh nhân cao cấp, thiết kế bền bỉ, bảo mật an toàn, hiệu năng ổn định.",
     "Processor": "AMD Ryzen 7 Pro 3700U 2.3Ghz, 4Mb Cache, Upto 4.0Ghz",
     "Memory": "8GB DDR4 2400Mhz",
     "Storage": "256GB SSD NVMe",
@@ -18,7 +20,9 @@
   },
   {
     "ProductName": "HP Zbook 15 G1 i7-4800MQ RAM 8GB SSD 240GB K1100M FHD",
+    "ProductShortName": "HP Zbook 15 G1",
     "Description": "HP ZBook 15 G1 có màn hình 15.6 inch, thân máy được làm bằng nhôm sáng bóng, và phần khung được làm bằng magie, với ngôn ngữ thiết kế đã được bo tròn các góc cạnh giúp máy mềm mại hơn rất nhiều nhưng cũng không kém phần mạnh mẽ, 2 bản lề được làm rất chắc chắn thường thấy ở dòng mobile Workstation giúp máy mở được 180 độ ngang với mặt phím.",
+    "ShortDescription": "Laptop mobile workstation với thiết kế chắc chắn, hiệu năng ổn định, thời lượng pin tốt.",
     "Processor": "Intel Core i7-4800MQ 2.7GHz, 6 MB Intel® Smart Cache Cache, Upto 3.7GHz",
     "Memory": "8GB DDR3 1600MHz",
     "Storage": "240GB SSD",
@@ -35,7 +39,9 @@
   },
   {
     "ProductName": "Dell Inspiron 7590 i5-9300H RAM 8GB SSD 256GB FHD GTX1050",
+    "ProductShortName": "Dell Inspiron 7590",
     "Description": "Inspiron là dòng máy tính chủ yếu dành cho công việc. Chiếc Inspiron 7590 sẽ dễ dàng hoàn thành các tác vụ văn phòng từ nhẹ nhàng như soan thảo văn bản, làm slide thuyết trình tới những tác vụ năng nề hơn như xử lý những file exel hàng nghìn dòng. Người dùng có thể sử dụng thoải mái các phần mềm đồ hoạ ở mức 2D và thậm chí 3D ở mức không quá chuyên sâu. Xét về mặt gaming, GTX 1050 hay GTX 1650 đều không phải là những GPU quá mạnh. Các tựa game eSport phổ biến như LOL, DOTA2 hay CS:GO sẽ không làm khó được máy, nhưng người dùng sẽ phải cân nhắc nếu muốn try hard những tựa game AAA nặng ký hơn như COD Modern Warfaces, Far Cry New Dawn hay PUBG PC khi mà các bài test đều đem lại mức fps không mấy ấn tượng ở độ phân giải FHD. ",
+    "ShortDescription": "Thiết kế mỏng nhẹ, lịch lãm, hiệu năng ổn định với CPU Intel thế hệ 9.",
     "Processor": "Intel® Core™ i5-9300H 2.4Ghz, 8 MB Intel® Smart Cache Cache, Upto 4.1Ghz",
     "Memory": "8GB DDR4 2666MHz",
     "Storage": "256GB SSD M2 NVMe PCIe",
@@ -52,7 +58,9 @@
   },
   {
     "ProductName": "Razer Blade 15 i7-8750H RAM 16GB SSD 512GB FHD IPS 144Hz RTX 2070",
+    "ProductShortName": "Razer Blade 15",
     "Description": "Vẫn giữ nguyên thiết kế Unibody với vỏ máy được làm bằng nhôm nguyên khối sơn đen cao cấp cùng với logo Razer màu xanh lá bắt mắt truyền thống, nay màn hình của Razer Blade đã được phóng to lên với kích thước 15.6 inch với viền màn hình được làm mỏng đi theo phong cách Infinite Edge (viền mỏng vô cực).",
+    "ShortDescription": "Gaming cao cấp, thiết kế mỏng nhẹ, hiệu suất mạnh mẽ.",
     "Processor": "Intel Core i7-8750H 2.20 GHz, 9 MB SmartCache Cache, Upto 4.10 GHz",
     "Memory": "16GB DDR4 2666 MHz",
     "Storage": "512GB SSD m2 NVMe PCIe",
@@ -69,7 +77,9 @@
   },
   {
     "ProductName": "LG GRAM Intel® Core™ i7-1065G7 RAM 8GB SSD 512GB 17-inch FHD IPS Windows 10 Home",
+    "ProductShortName": "LG Gram 2020",
     "Description": "LG Gram 2020 - chiếc laptop doanh nhân mỏng nhẹ, phù hợp cho những người ưa thích sự sang trọng và thường xuyên phải di chuyển. LG Gram 2020 gây ấn tượng với một thiết kế lịch lãm, tính cơ động cao và màn hình lớn, sắc nét, hứa hẹn mang đến cho người dùng những trải nghiệm hình ảnh vô cùng chân thực. Tuy nhiên, một điểm trừ của LG Gram 2020 là khả năng xử lý các tác vụ đa phương tiện (edit ảnh, render video) lại không quá xuất sắc, và nó cũng khá “đuối” khi chiến một số tựa game nặng.",
+    "ShortDescription": "Siêu nhẹ, tính cơ động cao, thiết kế sang trọng, hiệu năng ổn định.",
     "Processor": "Intel® Core™ i7-1065G7 1.3GHz, 8 MB Intel® Smart Cache Cache, Upto 3.9GHz",
     "Memory": "8GB DDR4 2400MHz",
     "Storage": "512GB M.2 2280 NVMe SSD",
@@ -86,7 +96,9 @@
   },
   {
     "ProductName": "Lenovo Legion Y545 i7-9750H SSD 512GB RAM 16GB FHD 144Hz RTX 2060",
+    "ProductShortName": "Lenovo Legion Y545",
     "Description": "Legion Y545 mang tới sức mạnh từ GPU NVIDIA® GeForce RTX™ với cấu trúc NVIDIA® Turing GPU đã mang đến một cuộc cách mạng cho game thủ với tính năng Ray-Tracing cực độc đáo khi có thể làm cho hình ảnh trở nên sống động, chân thực hơn, hiệu ứng đổ bóng cũng như khả năng tính toán của AI được tăng cường rất nhiều, giúp cho trải nghiệm chơi game của bạn được nâng lên một tầm cao mới.",
+    "ShortDescription": "Gaming Laptop tầm trung, thiết kế thời trang, hiện năng ổn định, bàn phím tốt.",
     "Processor": "Intel Core i7-9750H 2.60 GHz, 12MB SmartCache Cache, Upto 4.50 GHz",
     "Memory": "16GB DDR4 2666 MHz",
     "Storage": "512GB SSD M2 NVMe PCIe",
@@ -103,7 +115,9 @@
   },
   {
     "ProductName": "Asus ZenBook Pro UX580GD i7 8750H RAM 16GB SSD512GB 15.6 GTX1050 4GB 4K LED-backlit",
+    "ProductShortName": "Asus ZenBook Pro UX580GD",
     "Description": "Asus ZenBook Pro UX580GD mang tới sức mạnh vô cùng tốt với CPU đến từ Intel cũng như GPU đến từ nVIDIA, giờ đây trải nghiệm làm việc đồ họa không bao giờ là khó đối với chiếc laptop này, Asus ZenBook Pro UX580GD chính là lựa chọn hoàn hảo nhất cho nhiều nhu cầu khác nhau.",
+    "ShortDescription": "Asus ZenBook Pro UX580GD chính là lựa chọn hoàn hảo nhất cho nhiều nhu cầu khác nhau.",
     "Processor": "Intel Core i7-8750H 2.20 GHz, 9 MB SmartCache Cache, Upto 4.10 GHz",
     "Memory": "16GB DDR4 2400MHz",
     "Storage": "512GB SSD",
