@@ -1,30 +1,38 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  loggedIn = false;
+  baseUrl = environment.apiUrl;
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  login() {
-    this.loggedIn = true;
+  login(model: any) {
+    return this.http.post(this.baseUrl + 'auth/login', model).pipe(
+      map((response: any) => {
+        const user = response;
+        if (user) {
+          localStorage.setItem('token', user.token);
+        }
+      })
+    );
   }
 
   logout() {
-    this.loggedIn = false;
+    localStorage.removeItem('token');
   }
 
-  isAuthenticated() {
-    // tslint:disable-next-line: no-shadowed-variable
-    const promise = new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(this.loggedIn);
-      }, 800);
-    });
-
-    return promise;
+  isAuthenticated(): boolean {
+    const token = localStorage.getItem('token');
+    if (token) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

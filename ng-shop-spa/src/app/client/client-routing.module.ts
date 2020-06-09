@@ -8,6 +8,7 @@ import { OrderComponent } from './order/order.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { CanDeactivateGuard } from '../_guards/can-deactivate.guard';
+import { ProductDetailResolver } from '../_resolvers/product-detail.resolver';
 
 const routes: Routes = [
   {
@@ -15,7 +16,7 @@ const routes: Routes = [
     component: ClientComponent,
     children: [
       { path: '', component: HomeComponent },
-      { path: 'detail/:name', component: DetailComponent},
+      { path: 'detail/:id', component: DetailComponent, resolve: {product: ProductDetailResolver}},
       { path: 'order', component: OrderComponent},
       { path: 'register', component: RegisterComponent, canDeactivate: [CanDeactivateGuard]},
       { path: 'login', component: LoginComponent}

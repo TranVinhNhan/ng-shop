@@ -19,6 +19,9 @@ using AutoMapper;
 using ng_shop_api.Helpers;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using System.Net.Mime;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.AspNetCore.Http;
 
 namespace ng_shop_api
 {
@@ -34,7 +37,30 @@ namespace ng_shop_api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers()
+            // Handling Exception https://docs.microsoft.com/en-us/aspnet/core/web-api/handle-errors?view=aspnetcore-3.1
+            services.AddControllers(options =>
+                     options.Filters.Add(new HttpResponseExceptionFilter()))
+                     .ConfigureApiBehaviorOptions(options =>
+                    {
+                        options.InvalidModelStateResponseFactory = context =>
+                        {
+                            var result = new BadRequestObjectResult(context.ModelState);
+
+                            // TODO: add `using System.Net.Mime;` to resolve MediaTypeNames
+                            result.ContentTypes.Add(MediaTypeNames.Application.Json);
+                            result.ContentTypes.Add(MediaTypeNames.Application.Xml);
+
+                            return result;
+                        };
+
+                        options.SuppressConsumesConstraintForFormFileParameters = true;
+                        options.SuppressInferBindingSourcesForParameters = true;
+                        options.SuppressModelStateInvalidFilter = true;
+                        options.SuppressMapClientErrors = true;
+                        options.ClientErrorMapping[StatusCodes.Status404NotFound].Link =
+                            "https://httpstatuses.com/404";
+                    })
+                    // Handling Newtonsoft Json decoding
                     .AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
             services.AddDbContext<LaptopDbContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
@@ -45,8 +71,10 @@ namespace ng_shop_api
             // Seed data service in ./data/Seed.cs
             services.AddTransient<Seed>();
 
+
             // Auth service
             services.AddScoped<IAuthRepository, AuthRepository>();
+            services.AddScoped<ILaptopRepository, LaptopRepository>();
 
             // Enable CORS https://docs.microsoft.com/en-us/aspnet/core/security/cors?view=aspnetcore-3.1
             services.AddCors(options =>
@@ -62,7 +90,8 @@ namespace ng_shop_api
 
             // JWT Authentication
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer(options => {
+                .AddJwtBearer(options =>
+                {
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
                         ValidateIssuerSigningKey = true,
@@ -79,7 +108,11 @@ namespace ng_shop_api
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                app.UseExceptionHandler("/error-local-development");
+            }
+            else
+            {
+                app.UseExceptionHandler("/error");
             }
 
 

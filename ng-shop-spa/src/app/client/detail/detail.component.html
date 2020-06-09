@@ -2,13 +2,13 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Razer Blade 15</li>
+            <li class="breadcrumb-item active" aria-current="page">{{product.productShortName}}</li>
         </ol>
     </nav>
 
     <div class="product-detail">
         <div class="product-detail-top">
-            <h1>Razer Blade 15 i7-8750H RAM 16GB SSD 512GB FHD GTX1060</h1>
+            <h1>{{product.productName}}</h1>
         </div>
         <div class="product-detail-middle row has-top-border">
             <div class="fit-content col-lg-5">
@@ -34,7 +34,7 @@
                 </carousel>
             </div>
             <div class="fit-content col-lg-4">
-                <h4 class="price"><b>39.000.000 đ</b></h4>
+                <h4 class="price"><b>{{product.price | number}} đ</b></h4>
                 <div class="qua-tang">
                     <ul>
                         <li>Balo laptop chính hãng (chi tiết)</li>
@@ -89,43 +89,40 @@
             <ul class="parameter list-unstyled">
                 <li class="ts_5">
                     <span class="lable-ts">CPU:</span>
-                    <div>Intel Core i7-8750H 2.20 GHz, 9 MB SmartCache Cache, Upto 4.10 GHz</div>
+                    <div>{{product.processor}}</div>
                 </li>
                 <li class="ts_6">
                     <span class="lable-ts">RAM:</span>
-                    <div>16GB DDR4 2666MHz</div>
+                    <div>{{product.memory}}</div>
                 </li>
 
                 <li class="ts_7">
                     <span class="lable-ts">Ổ cứng:</span>
-                    <div>512GB SSD</div>
+                    <div>{{product.storage}}</div>
                 </li>
                 <li class="ts_1">
                     <span class="lable-ts">Màn hình:</span>
-                    <div>15.6 inch FHD (1920 x 1080), IPS Anti-Glare</div>
+                    <div>{{product.display}}</div>
                 </li>
                 <li class="ts_2">
                     <span class="lable-ts">Card màn hình:</span>
-                    <div>Nvidia GTX 1060 6GB</div>
+                    <div>{{product.graphics}}</div>
                 </li>
                 <li class="ts_2">
                     <span class="lable-ts">Cổng giao tiếp:</span>
-                    <div>3 Cổng USB 3.1
-                        1 Cổng Thunderbolt 3
-                        1 Cổng Mini Display Port
-                        1 Cổng HDMI</div>
+                    <div>{{product.chargingAndExpansion}}</div>
                 </li>
                 <li class="ts_2">
                     <span class="lable-ts">Kích thước:</span>
-                    <div>355mm x 235mm x 19.9mm</div>
+                    <div>{{product.size}}</div>
                 </li>
                 <li class="ts_2">
                     <span class="lable-ts">Trọng lượng:</span>
-                    <div>2.03 kg</div>
+                    <div>{{product.weight}}</div>
                 </li>
                 <li class="ts_2">
                     <span class="lable-ts">Hệ điều hành:</span>
-                    <div>Windows 10</div>
+                    <div>{{product.operatingSystem}}</div>
                 </li>
             </ul>
         </div>

@@ -32,7 +32,7 @@ namespace ng_shop_api.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register(UserForRegisterDto userForRegisterDto)
+        public async Task<IActionResult> Register([FromBody]UserForRegisterDto userForRegisterDto)
         {
             if (await _authRepo.UserExist(userForRegisterDto.Email))
                 return BadRequest("Email tài khoản đã được sử dụng, vui lòng dùng email khác để đăng kí");
@@ -43,7 +43,7 @@ namespace ng_shop_api.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login(UserForLoginDto userForLoginDto)
+        public async Task<IActionResult> Login([FromBody]UserForLoginDto userForLoginDto)
         {
             var user = await _authRepo.Login(userForLoginDto.Email, userForLoginDto.Password);
             if (user == null)

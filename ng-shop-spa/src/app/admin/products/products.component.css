@@ -1,0 +1,13 @@
+.force-text {
+    overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-line-clamp: 3; /* number of lines to show */
+   -webkit-box-orient: vertical;
+
+   max-width: 300px;
+}
+
+th {
+    white-space: nowrap;
+}

@@ -7,7 +7,11 @@ namespace ng_shop_api.Repositories.Interfaces
     public interface ILaptopRepository: IGenericRepository
     {
          // User
-         Task<IEnumerable<User>> GetUsers();
-         Task<User> GetUser(int id);
+         Task<IEnumerable<User>> GetAllUsers();
+         Task<User> GetUserById(int id);
+         
+         // Product
+         Task<IEnumerable<Product>> GetAllProducts();
+         Task<Product> GetProductById(int id);
     }
 }

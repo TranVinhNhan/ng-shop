@@ -15,17 +15,29 @@ namespace ng_shop_api.Repositories.Implements
             _context = context;
         }
 
-        // Users
-        public async Task<User> GetUser(int id)
+        // User
+        public async Task<User> GetUserById(int id)
         {
             var user = await _context.Users.Include(u => u.Orders).FirstOrDefaultAsync(u => u.Id == id);
             return user;
         }
 
-        public async Task<IEnumerable<User>> GetUsers()
+        public async Task<IEnumerable<User>> GetAllUsers()
         {
             var users = await _context.Users.ToListAsync();
             return users;
+        }
+
+        // Product
+        public async Task<IEnumerable<Product>> GetAllProducts()
+        {
+            var products = await _context.Products.Include(p => p.Brand).ToListAsync();
+            return products;
+        }
+        public async Task<Product> GetProductById(int id)
+        {
+            var product = await _context.Products.Include(p => p.Brand).FirstOrDefaultAsync(p => p.Id == id);
+            return product;
         }
     }
 }

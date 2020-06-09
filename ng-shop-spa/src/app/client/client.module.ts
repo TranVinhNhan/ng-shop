@@ -13,6 +13,8 @@ import { DetailComponent } from './detail/detail.component';
 import { OrderComponent } from './order/order.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import { ProductDetailResolver } from '../_resolvers/product-detail.resolver';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -29,7 +31,10 @@ import { LoginComponent } from './login/login.component';
     CommonModule,
     ClientRoutingModule,
     CarouselModule,
+    FormsModule,
+    ReactiveFormsModule,
     PaginationModule.forRoot()
-  ]
+  ],
+  providers: [ProductDetailResolver]
 })
 export class ClientModule { }
