@@ -12,15 +12,14 @@ export class AuthGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    // return this.authService.isAuthenticated().then((authenticated: boolean) => {
-    //   if (authenticated) {
-    //     return true;
-    //   } else {
-    //     this.router.navigate(['/login']);
-    //   }
-    // });
-    // Code above is used to handle async task
-
-    return this.authService.isAuthenticated();
+    if (this.authService.isAuthenticated() && this.authService.decodedToken.role === 'Admin') {
+      return true;
+    } else {
+      if (this.authService.isAuthenticated() && this.authService.decodedToken.role !== 'Admin') {
+        this.router.navigate(['/page-not-found']);
+      } else {
+        this.router.navigate(['/login']);
+      }
+    }
   }
 }

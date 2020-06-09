@@ -34,7 +34,11 @@ export class LoginComponent implements OnInit {
       }, error => {
         console.log(error);
       }, () => {
-        this.router.navigate(['/admin']);
+        if (this.authService.decodedToken.role === 'Admin') {
+          this.router.navigate(['/admin']);
+        } else {
+          this.router.navigate(['/']);
+        }
       });
     }
   }
