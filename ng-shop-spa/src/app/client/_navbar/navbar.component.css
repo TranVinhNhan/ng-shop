@@ -5,3 +5,13 @@
 .bg-dark {
     background-color: #333 !important;
 }
+
+.cart-count {
+    margin-left: 5px;
+    background: red;
+    border-radius: 30px;
+    font-size: 12px;
+    padding: 0 4px;
+    color: white;
+    margin-top: -10px;
+}

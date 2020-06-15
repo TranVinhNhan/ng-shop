@@ -1,19 +1,15 @@
 <div class="container-fluid">
     <div class="row">
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+            <!-- Button -->
             <div
                 class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">Products</h1>
-                <button type="button" class="btn btn-primary" (click)="isCollapsed = !isCollapsed"
-                [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">Toggle collapse
-            </button>
-            <hr>
-            <div id="collapseBasic" [collapse]="isCollapsed">
-                <div class="well well-lg card card-block card-header">Some content</div>
-            </div>
+                <h1 class="h2">Danh sách sản phẩm</h1>
                 <div class="btn-toolbar mb-2 mb-md-0">
                     <div class="btn-group mr-2">
-                        <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+                        <button (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed"
+                            aria-controls="collapseBasic" type="button" class="btn btn-sm btn-outline-secondary">Thêm
+                            sản phẩm</button>
                         <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
                     </div>
                     <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
@@ -29,18 +25,195 @@
                     </button>
                 </div>
             </div>
-            <div class="table-responsive">
+
+            <!-- Thêm sản phẩm -->
+            <div id="collapseBasic" [collapse]="isCollapsed" [isAnimated]="true">
+                <div class="well well-lg card card-block card-header">
+                    <div class="col-md-8 order-md-1">
+                        <h4 class="mb-3">Thêm sản phẩm</h4>
+                        <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="productName">Tên sản phẩm</label>
+                                    <input formControlName="productName" type="text" class="form-control"
+                                        id="productName" placeholder="" value="" required="">
+                                    <div *ngIf="productForm.get('productName').touched && !productForm.get('productName').valid"
+                                        class="invalid-feedback">
+                                        Tên sản phẩm không được để trống!
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="productShortName">Tên rút gọn của sản phẩm</label>
+                                    <input formControlName="productShortName" type="text" class="form-control"
+                                        id="productShortName" placeholder="" value="" required="">
+                                    <div *ngIf="productForm.get('productShortName').touched && !productForm.get('productShortName').valid"
+                                        class="invalid-feedback">
+                                        Tên rút gọn của sản phẩm không được để trống!
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="description">Mô tả</label>
+                                <div class="input-group">
+                                    <textarea formControlName="description" rows="4" type="text" class="form-control"
+                                        id="description" placeholder="" required=""></textarea>
+                                    <div *ngIf="productForm.get('description').touched && !productForm.get('description').valid"
+                                        class="invalid-feedback" style="width: 100%;">
+                                        Mô tả không được để trống!
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="shortDescription">Mô tả ngắn</label>
+                                <input formControlName="shortDescription" type="text" class="form-control"
+                                    id="shortDescription" placeholder="">
+                                <div *ngIf="productForm.get('shortDescription').touched && !productForm.get('shortDescription').valid"
+                                    class="invalid-feedback">
+                                    Mô tả ngắn không được để trống!
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <h4 class="mb-3">Cấu hình</h4>
+                                <div class="row">
+                                    <div class="col-md-4 mb-3">
+                                        <label for="processor">CPU</label>
+                                        <textarea formControlName="processor" rows="2" type="text" class="form-control"
+                                            id="processor" placeholder="" value="" required=""></textarea>
+                                        <div *ngIf="productForm.get('processor').touched && !productForm.get('processor').valid"
+                                            class="invalid-feedback">
+                                            CPU không được để trống!
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <label for="memory">RAM</label>
+                                        <textarea formControlName="memory" rows="2" type="text" class="form-control"
+                                            id="memory" placeholder="" value="" required=""></textarea>
+                                        <div *ngIf="productForm.get('memory').touched && !productForm.get('memory').valid"
+                                            class="invalid-feedback">
+                                            RAM không được để trống!
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 mb-3">
+                                        <label for="storage">Ổ cứng</label>
+                                        <textarea formControlName="storage" rows="2" type="text" class="form-control"
+                                            id="storage" placeholder="" value="" required=""></textarea>
+                                        <div *ngIf="productForm.get('storage').touched && !productForm.get('storage').valid"
+                                            class="invalid-feedback">
+                                            Ổ cứng không được để trống!
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <label for="display">Màn hình</label>
+                                        <textarea formControlName="display" rows="2" type="text" class="form-control"
+                                            id="display" placeholder="" value="" required=""></textarea>
+                                        <div *ngIf="productForm.get('display').touched && !productForm.get('display').valid"
+                                            class="invalid-feedback">
+                                            Màn hình không được để trống!
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-4 mb-3">
+                                        <label for="graphics">Card đồ họa</label>
+                                        <textarea formControlName="graphics" rows="2" type="text" class="form-control"
+                                            id="graphics" placeholder="" value="" required=""></textarea>
+                                        <div *ngIf="productForm.get('graphics').touched && !productForm.get('graphics').valid"
+                                            class="invalid-feedback">
+                                            Card đồ họa không được để trống!
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8 mb-3">
+                                        <label for="chargingAndExpansion">Cổng giao tiếp</label>
+                                        <textarea formControlName="chargingAndExpansion" rows="3" type="text"
+                                            class="form-control" id="chargingAndExpansion" placeholder="" value=""
+                                            required=""></textarea>
+                                        <div *ngIf="productForm.get('chargingAndExpansion').touched && !productForm.get('chargingAndExpansion').valid"
+                                            class="invalid-feedback">
+                                            Cổng giao tiếp không được để trống!
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-3 mb-3">
+                                        <label for="size">Kích thước</label>
+                                        <input formControlName="size" type="text" class="form-control" id="size"
+                                            placeholder="" value="" required="">
+                                        <div *ngIf="productForm.get('size').touched && !productForm.get('size').valid"
+                                            class="invalid-feedback">
+                                            Kích thước không được để trống!
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <label for="weight">Trọng lượng</label>
+                                        <input formControlName="weight" type="text" class="form-control" id="weight"
+                                            placeholder="" value="" required="">
+                                        <div *ngIf="productForm.get('weight').touched && !productForm.get('weight').valid"
+                                            class="invalid-feedback">
+                                            Trọng lượng không được để trống!
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="operatingSystem">Hệ điều hành</label>
+                                        <input formControlName="operatingSystem" type="text" class="form-control"
+                                            id="operatingSystem" placeholder="" value="" required="">
+                                        <div *ngIf="productForm.get('operatingSystem').touched && !productForm.get('operatingSystem').valid"
+                                            class="invalid-feedback">
+                                            Hệ điều hành không được để trống!
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="price">Giá bán</label>
+                                    <input formControlName="price" type="number" class="form-control" id="price"
+                                        placeholder="">
+                                    <div *ngIf="productForm.get('price').touched && !productForm.get('price').valid"
+                                        class="invalid-feedback">
+                                        Giá bán không hợp lệ!
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="brandName">Thương hiệu</label>
+                                    <select formControlName="brandId" class="custom-select d-block w-100" id="brandId"
+                                        required="">
+                                        <option *ngFor="let brand of brands" [value]=+brand.id>{{ brand.brandName }}
+                                        </option>
+                                    </select>
+                                    <div *ngIf="productForm.get('brandId').touched && !productForm.get('brandId').valid"
+                                        class="invalid-feedback">
+                                        Vui lòng chọn 1 thương hiệu.
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="mb-4">
+                            <button [disabled]="!productForm.valid" class="btn btn-success btn-lg btn-block"
+                                type="submit">Xác nhận thêm sản phẩm</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Table sản phẩm -->
+            <div class="table-responsive table-scroll-fixed-head">
                 <table class="table table-sm table-hover">
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Tên sản phẩm</th>
-                            <th>Tên rút gọn</th>
-                            <th>Mô tả</th>
-                            <th>Mô tả ngắn</th>
-                            <th>Cấu hình</th>
-                            <th>Giá tiền</th>
-                            <th>Thương hiệu</th>
+                            <th class="text-center">Tên sản phẩm</th>
+                            <th class="text-center">Tên rút gọn</th>
+                            <th class="text-center">Mô tả</th>
+                            <th class="text-center">Mô tả ngắn</th>
+                            <th class="text-center">Cấu hình</th>
+                            <th class="text-center">Giá tiền</th>
+                            <th class="text-center">Thương hiệu</th>
+                            <th class="text-center"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -60,10 +233,22 @@
                                     <li><b>Cổng giao tiếp:</b> {{ product.chargingAndExpansion }}</li>
                                     <li><b>Kích thước:</b> {{ product.size }}</li>
                                     <li><b>Trọng lượng:</b> {{ product.weight }}</li>
+                                    <li><b>Hệ điều hành:</b> {{ product.operatingSystem }}</li>
                                 </ul>
                             </td>
-                            <td>{{ product.price | number}}</td>
-                            <td>{{ product.brand.brandName }}</td>
+                            <td style="width: 130px" class="text-center">{{ product.price | number}} vnđ</td>
+                            <td class="text-center">{{ product.brand.brandName }}</td>
+                            <!-- <td style="width: 300px;">Hình ảnh</td> -->
+                            <td>
+                                <button (click)="openModalWithProductModalComponent(product)"
+                                    class="btn btn-sm btn-outline-secondary">
+                                    <i class="fa fa-wrench fa-lg"></i> Update
+                                </button>
+
+                                <button (click)="onDelete(product.id)" class="btn btn-sm btn-outline-secondary">
+                                    <i class="fa fa-trash-o fa-lg"></i> Delete
+                                </button>
+                            </td>
                         </tr>
                     </tbody>
                 </table>

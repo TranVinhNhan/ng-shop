@@ -31,8 +31,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     CommonModule,
     ClientRoutingModule,
     CarouselModule,
-    FormsModule,
     ReactiveFormsModule,
+    FormsModule,
     PaginationModule.forRoot()
   ],
   providers: [ProductDetailResolver]

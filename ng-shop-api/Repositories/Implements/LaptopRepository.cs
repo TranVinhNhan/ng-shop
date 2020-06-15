@@ -39,5 +39,18 @@ namespace ng_shop_api.Repositories.Implements
             var product = await _context.Products.Include(p => p.Brand).FirstOrDefaultAsync(p => p.Id == id);
             return product;
         }
+
+        // Brand
+        public async Task<IEnumerable<Brand>> GetAllBrands()
+        {
+            var brands = await _context.Brands.Include(b => b.Products).ToListAsync();
+            return brands;
+        }
+
+        public async Task<Brand> GetBrandById(int id)
+        {
+            var brand = await _context.Brands.Include(b => b.Products).FirstOrDefaultAsync(b => b.Id == id);
+            return brand;
+        }
     }
 }

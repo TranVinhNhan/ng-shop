@@ -1,0 +1,173 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">{{title}}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <form id="productModalForm" [formGroup]="productModalForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="productName">Tên sản phẩm</label>
+                <input formControlName="productName" type="text" class="form-control" id="productName" placeholder=""
+                    value="" required="">
+                <div *ngIf="productModalForm.get('productName').touched && !productModalForm.get('productName').valid"
+                    class="invalid-feedback">
+                    Tên sản phẩm không được để trống!
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="productShortName">Tên rút gọn của sản phẩm</label>
+                <input formControlName="productShortName" type="text" class="form-control" id="productShortName"
+                    placeholder="" value="" required="">
+                <div *ngIf="productModalForm.get('productShortName').touched && !productModalForm.get('productShortName').valid"
+                    class="invalid-feedback">
+                    Tên rút gọn của sản phẩm không được để trống!
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="description">Mô tả</label>
+            <div class="input-group">
+                <textarea formControlName="description" rows="4" type="text" class="form-control" id="description"
+                    placeholder="" required=""></textarea>
+                <div *ngIf="productModalForm.get('description').touched && !productModalForm.get('description').valid"
+                    class="invalid-feedback" style="width: 100%;">
+                    Mô tả không được để trống!
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="shortDescription">Mô tả ngắn</label>
+            <input formControlName="shortDescription" type="text" class="form-control" id="shortDescription"
+                placeholder="">
+            <div *ngIf="productModalForm.get('shortDescription').touched && !productModalForm.get('shortDescription').valid"
+                class="invalid-feedback">
+                Mô tả ngắn không được để trống!
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <h4 class="mb-3">Cấu hình</h4>
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <label for="processor">CPU</label>
+                    <textarea formControlName="processor" rows="2" type="text" class="form-control" id="processor"
+                        placeholder="" value="" required=""></textarea>
+                    <div *ngIf="productModalForm.get('processor').touched && !productModalForm.get('processor').valid"
+                        class="invalid-feedback">
+                        CPU không được để trống!
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="memory">RAM</label>
+                    <textarea formControlName="memory" rows="2" type="text" class="form-control" id="memory"
+                        placeholder="" value="" required=""></textarea>
+                    <div *ngIf="productModalForm.get('memory').touched && !productModalForm.get('memory').valid"
+                        class="invalid-feedback">
+                        RAM không được để trống!
+                    </div>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <label for="storage">Ổ cứng</label>
+                    <textarea formControlName="storage" rows="2" type="text" class="form-control" id="storage"
+                        placeholder="" value="" required=""></textarea>
+                    <div *ngIf="productModalForm.get('storage').touched && !productModalForm.get('storage').valid"
+                        class="invalid-feedback">
+                        Ổ cứng không được để trống!
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="display">Màn hình</label>
+                    <textarea formControlName="display" rows="2" type="text" class="form-control" id="display"
+                        placeholder="" value="" required=""></textarea>
+                    <div *ngIf="productModalForm.get('display').touched && !productModalForm.get('display').valid"
+                        class="invalid-feedback">
+                        Màn hình không được để trống!
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <label for="graphics">Card đồ họa</label>
+                    <textarea formControlName="graphics" rows="2" type="text" class="form-control" id="graphics"
+                        placeholder="" value="" required=""></textarea>
+                    <div *ngIf="productModalForm.get('graphics').touched && !productModalForm.get('graphics').valid"
+                        class="invalid-feedback">
+                        Card đồ họa không được để trống!
+                    </div>
+                </div>
+                <div class="col-md-8 mb-3">
+                    <label for="chargingAndExpansion">Cổng giao tiếp</label>
+                    <textarea formControlName="chargingAndExpansion" rows="3" type="text" class="form-control"
+                        id="chargingAndExpansion" placeholder="" value="" required=""></textarea>
+                    <div *ngIf="productModalForm.get('chargingAndExpansion').touched && !productModalForm.get('chargingAndExpansion').valid"
+                        class="invalid-feedback">
+                        Cổng giao tiếp không được để trống!
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3 mb-3">
+                    <label for="size">Kích thước</label>
+                    <input formControlName="size" type="text" class="form-control" id="size" placeholder="" value=""
+                        required="">
+                    <div *ngIf="productModalForm.get('size').touched && !productModalForm.get('size').valid"
+                        class="invalid-feedback">
+                        Kích thước không được để trống!
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="weight">Trọng lượng</label>
+                    <input formControlName="weight" type="text" class="form-control" id="weight" placeholder="" value=""
+                        required="">
+                    <div *ngIf="productModalForm.get('weight').touched && !productModalForm.get('weight').valid"
+                        class="invalid-feedback">
+                        Trọng lượng không được để trống!
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="operatingSystem">Hệ điều hành</label>
+                    <input formControlName="operatingSystem" type="text" class="form-control" id="operatingSystem"
+                        placeholder="" value="" required="">
+                    <div *ngIf="productModalForm.get('operatingSystem').touched && !productModalForm.get('operatingSystem').valid"
+                        class="invalid-feedback">
+                        Hệ điều hành không được để trống!
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="price">Giá bán</label>
+                <input formControlName="price" type="number" class="form-control" id="price" placeholder="">
+                <div *ngIf="productModalForm.get('price').touched && !productModalForm.get('price').valid"
+                    class="invalid-feedback">
+                    Giá bán không hợp lệ!
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="brandName">Thương hiệu</label>
+                <select formControlName="brandId" class="custom-select d-block w-100" id="brandId" required="">
+                    <option *ngFor="let brand of brands" [value]=+brand.id>{{ brand.brandName }}
+                    </option>
+                </select>
+                <div *ngIf="productModalForm.get('brandId').touched && !productModalForm.get('brandId').valid"
+                    class="invalid-feedback">
+                    Vui lòng chọn 1 thương hiệu.
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button form="productModalForm" [disabled]="!productModalForm.valid" class="btn btn-success"
+        type="submit">Xác nhận
+        cập nhật sản phẩm</button>
+    <button type="button" class="btn btn-outline-primary" (click)="bsModalRef.hide()">Đóng</button>
+</div>

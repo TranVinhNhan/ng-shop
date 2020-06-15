@@ -1,13 +1,39 @@
 .force-text {
     overflow: hidden;
-   text-overflow: ellipsis;
-   display: -webkit-box;
-   -webkit-line-clamp: 3; /* number of lines to show */
-   -webkit-box-orient: vertical;
-
-   max-width: 300px;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* number of lines to show */
+    -webkit-box-orient: vertical;
+    max-width: 200px;
 }
 
 th {
     white-space: nowrap;
+}
+
+.table-scroll-fixed-head {
+    overflow-y: auto; 
+    height: 800px;
+}
+
+.table-scroll-fixed-head thead th {
+    position: sticky;
+    top: 0;
+    background: white;
+}
+
+.invalid-feedback {
+    display: unset;
+    width: 100%;
+    margin-top: .25rem;
+    font-size: 80%;
+    color: #dc3545;
+}
+
+input.ng-touched.ng-invalid, select.ng-touched.ng-invalid, textarea.ng-touched.ng-invalid {
+    border: 1px solid red;
+}
+
+input.ng-touched.ng-valid, select.ng-touched.ng-valid, textarea.ng-touched.ng-valid {
+    border: 1px solid green;
 }
