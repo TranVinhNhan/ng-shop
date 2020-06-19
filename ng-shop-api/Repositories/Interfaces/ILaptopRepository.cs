@@ -17,5 +17,8 @@ namespace ng_shop_api.Repositories.Interfaces
          // Brand
          Task<IEnumerable<Brand>> GetAllBrands();
          Task<Brand> GetBrandById(int id);
+
+         // Image
+         Task<Image> GetImageById(int id);
     }
 }

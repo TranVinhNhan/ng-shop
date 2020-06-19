@@ -7,6 +7,8 @@ import { Brand } from 'src/app/_models/brand';
 import { BrandService } from 'src/app/_services/brand.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ProductModalComponent } from './product-modal/product-modal.component';
+import { FileUploader } from 'ng2-file-upload';
+import { fakeAsync } from '@angular/core/testing';
 
 @Component({
   selector: 'app-products',
@@ -21,16 +23,50 @@ export class ProductsComponent implements OnInit {
   productForm: FormGroup;
   bsModalRef: BsModalRef;
 
+  uploader: FileUploader;
+  hasBaseDropZoneOver: boolean;
+  hasAnotherDropZoneOver: boolean;
+  response: string;
+
   constructor(
     private productService: ProductService,
     private brandService: BrandService,
     private modalService: BsModalService
-    ) { }
+  ) {
+    this.uploader = new FileUploader({
+      url: '',
+      disableMultipart: true, // 'DisableMultipart' must be 'true' for formatDataFunction to be called.
+      formatDataFunctionIsAsync: true,
+      formatDataFunction: async (item) => {
+        return new Promise((resolve, reject) => {
+          resolve({
+            name: item._file.name,
+            length: item._file.size,
+            contentType: item._file.type,
+            date: new Date()
+          });
+        });
+      }
+    });
+
+    this.hasBaseDropZoneOver = false;
+    this.hasAnotherDropZoneOver = false;
+    this.response = '';
+    this.uploader.response.subscribe(res => this.response = res);
+  }
 
   ngOnInit(): void {
     this.loadProducts();
     this.loadBrands();
     this.initProductForm();
+  }
+
+  public fileOverBase(e: any): void {
+    this.hasBaseDropZoneOver = e;
+  }
+
+  public fileOverAnother(e: any): void {
+    this.hasAnotherDropZoneOver = e;
   }
 
   initProductForm() {
@@ -53,6 +89,14 @@ export class ProductsComponent implements OnInit {
     });
   }
 
+  isImageNull(product: Product): boolean {
+    if (product.images.length > 0) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
   loadProducts() {
     this.productService.getAllProducts().subscribe((products: Product[]) => {
       this.products = products;
@@ -70,7 +114,7 @@ export class ProductsComponent implements OnInit {
   }
 
   onSubmit() {
-    if (confirm('Are you sure you want to add this product?')) {
+    if (confirm('Bạn chắc chắn muốn thêm sản phẩm này chứ?')) {
       if (this.productForm.valid) {
         this.productService.createProduct(this.productForm.value).subscribe((response: any) => {
           console.log(response);
@@ -87,7 +131,7 @@ export class ProductsComponent implements OnInit {
   }
 
   onDelete(id: number) {
-    if (confirm('why delete bro?')) {
+    if (confirm('Bạn chắc chắn muốn xóa sản phẩm này chứ?')) {
       this.productService.deleteProduct(id).subscribe((response: any) => {
         console.log(response);
         this.loadProducts();
@@ -106,7 +150,7 @@ export class ProductsComponent implements OnInit {
       brands: this.brands,
       title: 'Cập nhật sản phẩm'
     };
-    this.bsModalRef = this.modalService.show(ProductModalComponent, {initialState});
+    this.bsModalRef = this.modalService.show(ProductModalComponent, { initialState });
     this.bsModalRef.setClass('modal-lg');
     this.bsModalRef.content.closeBtnName = 'Close';
   }

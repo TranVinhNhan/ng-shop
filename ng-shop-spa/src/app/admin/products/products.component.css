@@ -37,3 +37,7 @@ input.ng-touched.ng-invalid, select.ng-touched.ng-invalid, textarea.ng-touched.n
 input.ng-touched.ng-valid, select.ng-touched.ng-valid, textarea.ng-touched.ng-valid {
     border: 1px solid green;
 }
+
+.my-drop-zone { border: dotted 3px lightgray; }
+.nv-file-over { border: dotted 3px red; } /* Default class applied to drop zones on over */
+.another-file-over-class { border: dotted 3px green; }

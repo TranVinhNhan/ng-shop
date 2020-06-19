@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { PageChangedEvent } from 'ngx-bootstrap/pagination/public_api';
 import { ProductService } from 'src/app/_services/product.service';
 import { Product } from 'src/app/_models/product';
+import { Image } from 'src/app/_models/image';
 
 @Component({
   selector: 'app-home',

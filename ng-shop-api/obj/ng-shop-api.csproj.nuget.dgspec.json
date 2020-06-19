@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\Coding\\Project\\ng-shop\\ng-shop-api\\ng-shop-api.csproj": {}
+    "D:\\Coding\\Project\\ng-shop\\ng-shop-api\\ng-shop-api.csproj": {}
   },
   "projects": {
-    "d:\\Coding\\Project\\ng-shop\\ng-shop-api\\ng-shop-api.csproj": {
+    "D:\\Coding\\Project\\ng-shop\\ng-shop-api\\ng-shop-api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\Coding\\Project\\ng-shop\\ng-shop-api\\ng-shop-api.csproj",
+        "projectUniqueName": "D:\\Coding\\Project\\ng-shop\\ng-shop-api\\ng-shop-api.csproj",
         "projectName": "ng-shop-api",
-        "projectPath": "d:\\Coding\\Project\\ng-shop\\ng-shop-api\\ng-shop-api.csproj",
+        "projectPath": "D:\\Coding\\Project\\ng-shop\\ng-shop-api\\ng-shop-api.csproj",
         "packagesPath": "C:\\Users\\VinhNhan\\.nuget\\packages\\",
-        "outputPath": "d:\\Coding\\Project\\ng-shop\\ng-shop-api\\obj\\",
+        "outputPath": "D:\\Coding\\Project\\ng-shop\\ng-shop-api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -44,6 +44,10 @@
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
               "version": "[7.0.0, )"
+            },
+            "CloudinaryDotNet": {
+              "target": "Package",
+              "version": "[1.11.0, )"
             },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",

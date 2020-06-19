@@ -68,6 +68,9 @@ namespace ng_shop_api
             // Automapper 7.0.0
             services.AddAutoMapper(typeof(AutoMapping));
 
+            // Cloudinary
+            services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
+
             // Seed data service in ./data/Seed.cs
             services.AddTransient<Seed>();
 

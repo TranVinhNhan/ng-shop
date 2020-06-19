@@ -23,15 +23,32 @@
                     <input class="form-control" type="text" placeholder="Tìm kiếm gì đó..." aria-label="Search">
                     <button class="btn btn-outline-light m-2 my-sm-0" type="submit">Search</button>
                 </form>
-                <li *ngIf="!isAuthenticated()" class="nav-item">
-                    <a class="nav-link" routerLink='/register'>Sign up</a>
+                <li *ngIf="!isAuthenticated()" class="nav-item dropdown" dropdown>
+                    <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown" dropdownToggle>
+                        <i class="fa fa-user-o"></i>
+                    </a>
+                    <div class="dropdown-menu" *dropdownMenu>
+                        <a class="dropdown-item" routerLink='/register'>Đăng kí tài khoản</a>
+                        <a class="dropdown-item" routerLink='/login'>Đăng nhập</a>
+                    </div>
                 </li>
-                <li *ngIf="!isAuthenticated()" class="nav-item">
-                    <a class="nav-link" routerLink='/login'>Sign in</a>
+                <li class="nav-item dropdown" *ngIf="isAuthenticated() && isAdmin()" dropdown>
+                    <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown" dropdownToggle>
+                        Xin chào {{ getUsername() }}
+                    </a>
+                    <div class="dropdown-menu" *dropdownMenu>
+                        <a class="dropdown-item" routerLink='/admin'>Trang quản lý</a>
+                        <a class="dropdown-item" (click)="logout()">Đăng xuất</a>
+                    </div>
                 </li>
-
-                <li *ngIf="isAuthenticated()" class="nav-item">
-                    <a class="nav-link" href="#">Xin chào {{ this.getUsername() }}!</a>
+                <li class="nav-item dropdown" *ngIf="isAuthenticated() && !isAdmin()" dropdown>
+                    <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown" dropdownToggle>
+                        Xin chào {{ getUsername() }}
+                    </a>
+                    <div class="dropdown-menu" *dropdownMenu>
+                        <a class="dropdown-item" routerLink='/'>Tài khoản</a>
+                        <a class="dropdown-item" (click)="logout()">Đăng xuất</a>
+                    </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#" role="button">

@@ -29,7 +29,7 @@
             <!-- Thêm sản phẩm -->
             <div id="collapseBasic" [collapse]="isCollapsed" [isAnimated]="true">
                 <div class="well well-lg card card-block card-header">
-                    <div class="col-md-8 order-md-1">
+                    <div class="col-md-8 offset-md-2 order-md-1">
                         <h4 class="mb-3">Thêm sản phẩm</h4>
                         <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
                             <div class="row">
@@ -211,6 +211,7 @@
                             <th class="text-center">Mô tả</th>
                             <th class="text-center">Mô tả ngắn</th>
                             <th class="text-center">Cấu hình</th>
+                            <th class="text-center">Hình ảnh</th>
                             <th class="text-center">Giá tiền</th>
                             <th class="text-center">Thương hiệu</th>
                             <th class="text-center"></th>
@@ -236,16 +237,25 @@
                                     <li><b>Hệ điều hành:</b> {{ product.operatingSystem }}</li>
                                 </ul>
                             </td>
+                            <td *ngIf="isImageNull(product)">Chưa có hình ảnh</td>
+                            <td *ngIf="!isImageNull(product)">
+                                <img *ngFor="let image of product.images" [src]="image.url" alt="image"
+                                    class="img-thumbnail">
+                            </td>
                             <td style="width: 130px" class="text-center">{{ product.price | number}} vnđ</td>
                             <td class="text-center">{{ product.brand.brandName }}</td>
                             <!-- <td style="width: 300px;">Hình ảnh</td> -->
                             <td>
+                                <button class="btn btn-sm btn-outline-secondary mb-1">
+                                    <i class="fa fa-file-image-o fa-lg"></i> Add Images
+                                </button>
+
                                 <button (click)="openModalWithProductModalComponent(product)"
-                                    class="btn btn-sm btn-outline-secondary">
+                                    class="btn btn-sm btn-outline-secondary mb-1">
                                     <i class="fa fa-wrench fa-lg"></i> Update
                                 </button>
 
-                                <button (click)="onDelete(product.id)" class="btn btn-sm btn-outline-secondary">
+                                <button (click)="onDelete(product.id)" class="btn btn-sm btn-outline-secondary mb-1">
                                     <i class="fa fa-trash-o fa-lg"></i> Delete
                                 </button>
                             </td>

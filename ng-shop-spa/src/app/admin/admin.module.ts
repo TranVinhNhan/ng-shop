@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { FileUploadModule } from 'ng2-file-upload';
 
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
@@ -27,7 +28,8 @@ import { ProductModalComponent } from './products/product-modal/product-modal.co
     ReactiveFormsModule,
     FormsModule,
     CollapseModule.forRoot(),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    FileUploadModule
   ]
 })
 export class AdminModule { }

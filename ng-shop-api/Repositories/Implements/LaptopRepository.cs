@@ -31,12 +31,12 @@ namespace ng_shop_api.Repositories.Implements
         // Product
         public async Task<IEnumerable<Product>> GetAllProducts()
         {
-            var products = await _context.Products.Include(p => p.Brand).ToListAsync();
+            var products = await _context.Products.Include(p => p.Brand).Include(p => p.Images).ToListAsync();
             return products;
         }
         public async Task<Product> GetProductById(int id)
         {
-            var product = await _context.Products.Include(p => p.Brand).FirstOrDefaultAsync(p => p.Id == id);
+            var product = await _context.Products.Include(p => p.Brand).Include(p => p.Images).FirstOrDefaultAsync(p => p.Id == id);
             return product;
         }
 
@@ -51,6 +51,13 @@ namespace ng_shop_api.Repositories.Implements
         {
             var brand = await _context.Brands.Include(b => b.Products).FirstOrDefaultAsync(b => b.Id == id);
             return brand;
+        }
+
+        // Image 
+        public async Task<Image> GetImageById(int id)
+        {
+            var image = await _context.Images.FirstOrDefaultAsync(i => i.Id == id);
+            return image;
         }
     }
 }
