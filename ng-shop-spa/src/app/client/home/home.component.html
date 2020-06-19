@@ -43,7 +43,8 @@
         <div class="block-content row row-cols-lg-5 row-cols-md-3 row-cols-sm-2 row-cols-xs-2 row-cols-2">
             <div class="product-item my-2" *ngFor="let item of onePageArray">
                 <div [routerLink]="['/detail', item.id]" class="mx-2 shadow">
-                    <a class="product-thumbnail"><img [src]="item.images[0]?.url" alt="product"></a>
+                    <a class="product-thumbnail"><img [src]="item.images[0]?.url" alt="product">
+                    </a>
                     <div class="product-info">
                         <h6 class="product-title"><a href="#">{{ item.productShortName }}</a></h6>
                         <h5 class="price">{{ item.price | number}} đ</h5>
@@ -55,8 +56,6 @@
         </div>
     </div>
 
-    <pagination [totalItems]="productsArray.length"
-                (pageChanged)="pageChanged($event)"
-                [boundaryLinks]=true>
+    <pagination [totalItems]="productsArray.length" (pageChanged)="pageChanged($event)" [boundaryLinks]=true>
     </pagination>
 </div>

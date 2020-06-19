@@ -20,6 +20,8 @@
    display: -webkit-box;
    -webkit-line-clamp: 3; /* number of lines to show */
    -webkit-box-orient: vertical;
+   line-height: 3ex;
+   height: 9ex; /* 2.5ex for each visible line */
 }
 
 .suggestions, .filter-price, .product {
@@ -95,7 +97,6 @@ a {
 }
 
 .product-item {
-    height: 413px;
     display: inline-block;
 }
 
