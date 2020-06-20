@@ -43,7 +43,11 @@ namespace ng_shop_api.Controllers
             }
 
             var user = _mapper.Map<User>(userForRegisterDto);
+
+            user.IsMale = userForRegisterDto.Gender == "Nam" ? true : false;
+
             var createdUser = await _authRepo.Register(user, userForRegisterDto.Password);
+
             return StatusCode(201); // have to change to CreatedAtRoute();
         }
 

@@ -17,7 +17,7 @@
   input[type=text], input[type=password], input[type=number] {
     width: 100%;
     padding: 15px;
-    margin: 5px 0 22px 0;
+    margin: 5px 0 0px 0;
     display: inline-block;
     border: none;
     background: #f1f1f1;
@@ -60,3 +60,30 @@
   .signin {
     text-align: center;
   }
+
+  .required {
+    color: red;
+  }
+
+  .form-row {
+    margin-bottom: 10px;
+  }
+
+  .invalid-feedback {
+    display: block;
+    width: 100%;
+    margin-top: .25rem;
+    font-size: 80%;
+    color: #dc3545;
+  }
+
+  input {
+    border-radius: 10px;
+  }
+  input.ng-touched.ng-invalid, select.ng-touched.ng-invalid, textarea.ng-touched.ng-invalid {
+    border: 1px solid red;
+ }
+
+ /* input.ng-touched.ng-valid, select.ng-touched.ng-valid, textarea.ng-touched.ng-valid {
+    border: 1px solid green;
+ } */
