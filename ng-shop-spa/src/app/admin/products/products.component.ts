@@ -9,6 +9,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ProductModalComponent } from './product-modal/product-modal.component';
 import { FileUploader } from 'ng2-file-upload';
 import { fakeAsync } from '@angular/core/testing';
+import { ImageModalComponent } from './image-modal/image-modal.component';
 
 @Component({
   selector: 'app-products',
@@ -23,50 +24,16 @@ export class ProductsComponent implements OnInit {
   productForm: FormGroup;
   bsModalRef: BsModalRef;
 
-  uploader: FileUploader;
-  hasBaseDropZoneOver: boolean;
-  hasAnotherDropZoneOver: boolean;
-  response: string;
-
   constructor(
     private productService: ProductService,
     private brandService: BrandService,
     private modalService: BsModalService
-  ) {
-    this.uploader = new FileUploader({
-      url: '',
-      disableMultipart: true, // 'DisableMultipart' must be 'true' for formatDataFunction to be called.
-      formatDataFunctionIsAsync: true,
-      formatDataFunction: async (item) => {
-        return new Promise((resolve, reject) => {
-          resolve({
-            name: item._file.name,
-            length: item._file.size,
-            contentType: item._file.type,
-            date: new Date()
-          });
-        });
-      }
-    });
-
-    this.hasBaseDropZoneOver = false;
-    this.hasAnotherDropZoneOver = false;
-    this.response = '';
-    this.uploader.response.subscribe(res => this.response = res);
-  }
+  ) { }
 
   ngOnInit(): void {
     this.loadProducts();
     this.loadBrands();
     this.initProductForm();
-  }
-
-  public fileOverBase(e: any): void {
-    this.hasBaseDropZoneOver = e;
-  }
-
-  public fileOverAnother(e: any): void {
-    this.hasAnotherDropZoneOver = e;
   }
 
   initProductForm() {
@@ -152,6 +119,13 @@ export class ProductsComponent implements OnInit {
     };
     this.bsModalRef = this.modalService.show(ProductModalComponent, { initialState });
     this.bsModalRef.setClass('modal-lg');
-    this.bsModalRef.content.closeBtnName = 'Close';
+  }
+
+  openModalWithImageModalComponent() {
+    const initialState = {
+      title: 'Thêm hình ảnh'
+    };
+    this.bsModalRef = this.modalService.show(ImageModalComponent, { initialState });
+    this.bsModalRef.setClass('modal-lg');
   }
 }

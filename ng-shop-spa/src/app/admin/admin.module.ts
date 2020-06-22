@@ -13,6 +13,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { SidebarComponent } from './_sidebar/sidebar.component';
 import { ProductsComponent } from './products/products.component';
 import { ProductModalComponent } from './products/product-modal/product-modal.component';
+import { CustomersComponent } from './customers/customers.component';
+import { ImageModalComponent } from './products/image-modal/image-modal.component';
+import { CustomerModalComponent } from './customers/customer-modal/customer-modal.component';
 
 
 @NgModule({
@@ -21,7 +24,11 @@ import { ProductModalComponent } from './products/product-modal/product-modal.co
     NavbarComponent,
     DashboardComponent,
     SidebarComponent,
-    ProductsComponent, ProductModalComponent
+    ProductsComponent,
+    ProductModalComponent,
+    CustomersComponent,
+    ImageModalComponent,
+    CustomerModalComponent
   ],
   imports: [
     CommonModule,

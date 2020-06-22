@@ -1,0 +1,45 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">{{title}}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <form id="userModalForm" [formGroup]="userModalForm" (ngSubmit)="onSubmit(user.id)">
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input formControlName="email" type="email" class="form-control" id="exampleFormControlInput1"
+                placeholder="">
+        </div>
+        <div class="form-group">
+            <label for="fullName">Họ và tên</label>
+            <input formControlName="fullName" type="text" class="form-control" id="fullName" placeholder="">
+        </div>
+        <div class="form-group">
+            <label for="phoneNumber">Số điện thoại</label>
+            <input formControlName="phoneNumber" type="email" class="form-control" id="phoneNumber" placeholder="">
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="role">Vai trò</label>
+                    <select formControlName="role" class="form-control" id="role">
+                        <option value="Admin">Admin</option>
+                        <option value="User">User</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="gender">Giới tính</label>
+                    <select formControlName="isMale" class="form-control" id="isMale">
+                        <option value="true">Nam</option>
+                        <option value="false">Nữ</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button [disabled]="!userModalForm.valid" form="userModalForm" type="submit" class="btn btn-success">Xác nhận cập nhật người dùng</button>
+    <button type="button" class="btn btn-primary" (click)="bsModalRef.hide()">Đóng</button>
+</div>

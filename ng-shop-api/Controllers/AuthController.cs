@@ -19,16 +19,14 @@ namespace ng_shop_api.Controllers
     [Route("api/[controller]")]
     public class AuthController : ControllerBase
     {
-        private readonly LaptopDbContext _context;
         private readonly IAuthRepository _authRepo;
         private readonly IMapper _mapper;
         private readonly IConfiguration _config;
-        public AuthController(LaptopDbContext context, IAuthRepository authRepo, IMapper mapper, IConfiguration config)
+        public AuthController(IAuthRepository authRepo, IMapper mapper, IConfiguration config)
         {
             _config = config;
             _mapper = mapper;
             _authRepo = authRepo;
-            _context = context;
         }
 
         [HttpPost("register")]

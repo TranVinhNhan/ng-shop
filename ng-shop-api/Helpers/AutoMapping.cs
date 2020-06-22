@@ -9,6 +9,8 @@ namespace ng_shop_api.Helpers
         public AutoMapping()
         {
             CreateMap<UserForRegisterDto, User>();
+            CreateMap<User, UserForReturnDto>();
+            CreateMap<UserForUpdateDto, User>();
             CreateMap<ProductForCreateDto, Product>();
             CreateMap<ProductForUpdateDto, Product>();
             CreateMap<ImageForCreateDto, Image>();
