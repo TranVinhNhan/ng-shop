@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/_models/product';
+import { Image } from 'src/app/_models/image';
 
 @Component({
   selector: 'app-detail',
@@ -16,4 +17,7 @@ export class DetailComponent implements OnInit {
     this.route.data.subscribe(data => this.product = data.product);
   }
 
+  loadAlbum(images: Image[]): Image[] {
+    return images.filter(i => !i.isThumbnail);
+  }
 }

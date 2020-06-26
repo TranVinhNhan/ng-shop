@@ -159,3 +159,8 @@ li > .lable-ts, li > div {
 li > .lable-ts {
     min-width: 145px;
 }
+
+.album-item {
+    display: block; 
+    width: 100%;
+}

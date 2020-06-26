@@ -59,8 +59,8 @@ namespace ng_shop_api.Controllers
                 {
                     var uploadParams = new ImageUploadParams()
                     {
-                        File = new FileDescription(file.Name, stream),
-                        Transformation = new Transformation().Width(200).Height(200).Crop("fill")
+                        File = new FileDescription(file.Name, stream)
+                        // Transformation = new Transformation().Width(200).Height(200).Crop("fill")
                     };
 
                     uploadResult = _cloudinary.Upload(uploadParams);
@@ -72,10 +72,7 @@ namespace ng_shop_api.Controllers
 
             var image = _mapper.Map<Image>(imageForCreateDto);
 
-            if (!product.Images.Any(p => p.IsMainImage))
-            {
-                image.IsMainImage = true;
-            }
+            image.IsThumbnail = product.Images.Any(i => i.IsThumbnail) ? false : true;
 
             product.Images.Add(image);
 
@@ -94,7 +91,7 @@ namespace ng_shop_api.Controllers
             var product = await _repo.GetProductById(productId);
 
             if (!product.Images.Any(p => p.Id == id))
-                return BadRequest("Photo does not exist");
+                return BadRequest("Image does not exist");
 
             var image = await _repo.GetImageById(id);
 
@@ -111,7 +108,7 @@ namespace ng_shop_api.Controllers
             {
                 return Ok();
             }
-            return BadRequest("Failed to delete photo");
+            return BadRequest("Failed to delete image");
         }
     }
 }

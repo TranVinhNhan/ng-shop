@@ -38,6 +38,14 @@ input.ng-touched.ng-valid, select.ng-touched.ng-valid, textarea.ng-touched.ng-va
     border: 1px solid green;
 }
 
-.my-drop-zone { border: dotted 3px lightgray; }
-.nv-file-over { border: dotted 3px red; } /* Default class applied to drop zones on over */
-.another-file-over-class { border: dotted 3px green; }
+.img-thumbnail {
+    cursor: pointer;
+}
+
+th.text-center {
+    z-index: 1;
+}
+
+.album {
+    width: 200px;
+}

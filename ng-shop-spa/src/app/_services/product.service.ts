@@ -44,4 +44,12 @@ export class ProductService {
             })
         );
     }
+
+    deleteImage(prodId: number, imgId: number) {
+        return this.http.delete(this.baseUrl + 'product/' + prodId + '/images/' + imgId).pipe(
+            map((response: any) => {
+                return response;
+            })
+        );
+    }
 }

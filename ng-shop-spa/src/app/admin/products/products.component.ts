@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from 'src/app/_models/product';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-
-import { ProductService } from 'src/app/_services/product.service';
-import { Brand } from 'src/app/_models/brand';
-import { BrandService } from 'src/app/_services/brand.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+
+import { Product } from 'src/app/_models/product';
+import { Brand } from 'src/app/_models/brand';
+import { Image } from 'src/app/_models/image';
+import { ProductService } from 'src/app/_services/product.service';
+import { BrandService } from 'src/app/_services/brand.service';
 import { ProductModalComponent } from './product-modal/product-modal.component';
-import { FileUploader } from 'ng2-file-upload';
-import { fakeAsync } from '@angular/core/testing';
 import { ImageModalComponent } from './image-modal/image-modal.component';
+import { ImageDeleteModalComponent } from './image-delete-modal/image-delete-modal.component';
 
 @Component({
   selector: 'app-products',
@@ -121,11 +121,22 @@ export class ProductsComponent implements OnInit {
     this.bsModalRef.setClass('modal-lg');
   }
 
-  openModalWithImageModalComponent() {
+  openModalWithImageModalComponent(product: Product) {
     const initialState = {
-      title: 'Thêm hình ảnh'
+      title: 'Thêm hình ảnh',
+      product
     };
     this.bsModalRef = this.modalService.show(ImageModalComponent, { initialState });
+    this.bsModalRef.setClass('modal-xl');
+  }
+
+  openModalWithImageDeleteModalComponent(product: Product, img: Image) {
+    const initialState = {
+      product,
+      img,
+      title: 'Hình ảnh sản phẩm'
+    };
+    this.bsModalRef = this.modalService.show(ImageDeleteModalComponent, { initialState });
     this.bsModalRef.setClass('modal-lg');
   }
 }

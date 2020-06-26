@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
     this.onePageArray = this.productsArray.slice(startItem, endItem);
   }
 
-  private loadAllProducts() {
+  loadAllProducts() {
     this.productService
       .getAllProducts()
       .subscribe((products: Product[]) => {
@@ -35,5 +35,13 @@ export class HomeComponent implements OnInit {
       }, error => {
         console.log(error);
       });
+  }
+
+  haveThumbnail(images: Image[]): boolean {
+    return (images.filter(img => img.isThumbnail === true).length > 0) ? true : false;
+  }
+
+  loadThumbnail(images: Image[]) {
+    return (images.filter(img => img.isThumbnail === true)[0].url);
   }
 }

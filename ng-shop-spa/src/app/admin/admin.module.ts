@@ -16,6 +16,8 @@ import { ProductModalComponent } from './products/product-modal/product-modal.co
 import { CustomersComponent } from './customers/customers.component';
 import { ImageModalComponent } from './products/image-modal/image-modal.component';
 import { CustomerModalComponent } from './customers/customer-modal/customer-modal.component';
+import { OrdersComponent } from './orders/orders.component';
+import { ImageDeleteModalComponent } from './products/image-delete-modal/image-delete-modal.component';
 
 
 @NgModule({
@@ -28,7 +30,9 @@ import { CustomerModalComponent } from './customers/customer-modal/customer-moda
     ProductModalComponent,
     CustomersComponent,
     ImageModalComponent,
-    CustomerModalComponent
+    CustomerModalComponent,
+    OrdersComponent,
+    ImageDeleteModalComponent
   ],
   imports: [
     CommonModule,

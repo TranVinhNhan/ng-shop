@@ -1,7 +1,7 @@
 <div class="container">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+            <li class="breadcrumb-item"><a routerLink='/'>Trang chủ</a></li>
             <li class="breadcrumb-item active" aria-current="page">{{product.productShortName}}</li>
         </ol>
     </nav>
@@ -13,23 +13,8 @@
         <div class="product-detail-middle row has-top-border">
             <div class="fit-content col-lg-5">
                 <carousel [noPause]="false">
-                    <slide>
-                        <img src="assets/images/razer-blade-15-1.jpg" alt="First slide"
-                            style="display: block; width: 100%;">
-                        <div class="carousel-caption d-none d-md-block">
-                        </div>
-                    </slide>
-                    <slide>
-                        <img src="assets/images/razer-blade-15-2.jpg" alt="Second slide"
-                            style="display: block; width: 100%;">
-                        <div class="carousel-caption d-none d-md-block">
-                        </div>
-                    </slide>
-                    <slide>
-                        <img src="assets/images/razer-blade-15-3.jpg" alt="Third slide"
-                            style="display: block; width: 100%;">
-                        <div class="carousel-caption d-none d-md-block">
-                        </div>
+                    <slide *ngFor="let image of loadAlbum(product.images)">
+                        <img class="album-item" [src]="image.url" alt="img slide">
                     </slide>
                 </carousel>
             </div>

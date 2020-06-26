@@ -238,15 +238,17 @@
                                 </ul>
                             </td>
                             <td *ngIf="isImageNull(product)">Chưa có hình ảnh</td>
-                            <td *ngIf="!isImageNull(product)">
-                                <img *ngFor="let image of product.images" [src]="image.url" alt="image"
-                                    class="img-thumbnail">
+                            <td class="album" *ngIf="!isImageNull(product)">
+                                <div class="row row-cols-2 m-1">
+                                    <img *ngFor="let image of product.images" (click)="openModalWithImageDeleteModalComponent(product, image)"
+                                        [src]="image.url" alt="image" class="img-thumbnail col">
+                                </div>
                             </td>
                             <td style="width: 130px" class="text-center">{{ product.price | number}} vnđ</td>
                             <td class="text-center">{{ product.brand.brandName }}</td>
-                            <!-- <td style="width: 300px;">Hình ảnh</td> -->
                             <td>
-                                <button (click)="openModalWithImageModalComponent()" class="btn btn-sm btn-outline-secondary mb-1">
+                                <button (click)="openModalWithImageModalComponent(product)"
+                                    class="btn btn-sm btn-outline-secondary mb-1">
                                     <i class="fa fa-file-image-o fa-lg"></i> Add Images
                                 </button>
 

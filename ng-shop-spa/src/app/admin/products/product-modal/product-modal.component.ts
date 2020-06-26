@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Product } from 'src/app/_models/product';
 import { BsModalRef } from 'ngx-bootstrap/modal';
+
+import { Product } from 'src/app/_models/product';
 import { Brand } from 'src/app/_models/brand';
 import { ProductService } from 'src/app/_services/product.service';
 
