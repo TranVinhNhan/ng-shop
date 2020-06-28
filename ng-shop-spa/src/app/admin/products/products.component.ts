@@ -81,19 +81,15 @@ export class ProductsComponent implements OnInit {
   }
 
   onSubmit() {
-    if (confirm('Bạn chắc chắn muốn thêm sản phẩm này chứ?')) {
-      if (this.productForm.valid) {
-        this.productService.createProduct(this.productForm.value).subscribe((response: any) => {
-          console.log(response);
-          this.loadProducts();
-          this.productForm.reset();
-          this.isCollapsed = true;
-        }, error => {
-          console.log(error);
-        });
-      }
-    } else {
-      console.log('cancelled');
+    if (this.productForm.valid) {
+      this.productService.createProduct(this.productForm.value).subscribe((response: any) => {
+        console.log(response);
+        this.loadProducts();
+        this.productForm.reset();
+        this.isCollapsed = true;
+      }, error => {
+        console.log(error);
+      });
     }
   }
 

@@ -17,19 +17,11 @@ export class UserService {
         return this.http.get<User[]>(this.baseUrl + 'user/all');
     }
 
-    updateUser(model: any, id: number): Observable<any> {
-        return this.http.put(this.baseUrl + 'user/' + id, model).pipe(
-            map((response: any) => {
-                return response;
-            })
-        );
+    updateUser(model: any, id: number) {
+        return this.http.put(this.baseUrl + 'user/' + id, model);
     }
 
     deleteUser(id: number): Observable<any> {
-        return this.http.delete(this.baseUrl + 'user/' + id).pipe(
-            map((response: any) => {
-                return response;
-            })
-        );
+        return this.http.delete(this.baseUrl + 'user/' + id);
     }
 }

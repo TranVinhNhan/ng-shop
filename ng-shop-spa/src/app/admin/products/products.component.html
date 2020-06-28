@@ -240,7 +240,8 @@
                             <td *ngIf="isImageNull(product)">Chưa có hình ảnh</td>
                             <td class="album" *ngIf="!isImageNull(product)">
                                 <div class="row row-cols-2 m-1">
-                                    <img *ngFor="let image of product.images" (click)="openModalWithImageDeleteModalComponent(product, image)"
+                                    <img *ngFor="let image of product.images"
+                                        (click)="openModalWithImageDeleteModalComponent(product, image)"
                                         [src]="image.url" alt="image" class="img-thumbnail col">
                                 </div>
                             </td>

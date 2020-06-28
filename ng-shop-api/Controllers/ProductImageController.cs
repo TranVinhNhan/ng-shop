@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using ng_shop_api.Dtos;
@@ -12,16 +13,17 @@ using ng_shop_api.Repositories.Interfaces;
 
 namespace ng_shop_api.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [ApiController]
     [Route("api/product/{productId}/images")]
-    public class ImageController : ControllerBase
+    public class ProductImageController : ControllerBase
     {
         private readonly ILaptopRepository _repo;
         private readonly IMapper _mapper;
         private readonly IOptions<CloudinarySettings> _cloudinaryConfig;
         private Cloudinary _cloudinary;
 
-        public ImageController(ILaptopRepository repo, IMapper mapper, IOptions<CloudinarySettings> cloudinaryConfig)
+        public ProductImageController(ILaptopRepository repo, IMapper mapper, IOptions<CloudinarySettings> cloudinaryConfig)
         {
             _repo = repo;
             _mapper = mapper;
@@ -35,10 +37,14 @@ namespace ng_shop_api.Controllers
 
             _cloudinary = new Cloudinary(acc);
         }
-        [HttpGet("{id}", Name = "GetImageById")]
-        public async Task<IActionResult> GetImageById(int id)
+        [HttpGet("{id}", Name = nameof(GetPrductImageById))]
+        public async Task<IActionResult> GetPrductImageById(int id)
         {
-            var image = await _repo.GetProductById(id);
+            var image = await _repo.GetImageById(id);
+
+            if (image == null)
+                return NotFound();
+
             return Ok(image);
         }
 
@@ -78,8 +84,8 @@ namespace ng_shop_api.Controllers
 
             if (await _repo.SaveAll())
             {
-                // return CreatedAtRoute("GetImageById", new { id = image.Id }, image);
-                return Ok(image);
+                var routeValues = new { productId, image.Id };
+                return CreatedAtRoute(nameof(GetPrductImageById), routeValues, image);
             }
 
             return BadRequest("Could not add the image");

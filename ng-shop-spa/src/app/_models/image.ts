@@ -1,4 +1,5 @@
 import { Product } from './product';
+import { Brand } from './brand';
 
 export interface Image {
     id: number;
@@ -6,6 +7,8 @@ export interface Image {
     isThumbnail: boolean;
     publicId: string;
     productId: number;
+    brandID: number;
 
     product: Product;
+    brand: Brand;
 }

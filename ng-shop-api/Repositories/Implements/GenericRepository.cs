@@ -27,7 +27,5 @@ namespace ng_shop_api.Repositories.Implements
         {
             return await _context.SaveChangesAsync() > 0;
         }
-
-
     }
 }

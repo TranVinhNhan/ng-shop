@@ -52,7 +52,7 @@ namespace ng_shop_api.Controllers
             {
                 return CreatedAtRoute("GetProductById", new { Controller = "Product", id = product.Id }, product);
             }
-            throw new Exception($"Adding Car Part {productForCreateDto.ProductName} failed on save");
+            return BadRequest("Could not add new product");
         }
 
         [HttpPut("{id}")]

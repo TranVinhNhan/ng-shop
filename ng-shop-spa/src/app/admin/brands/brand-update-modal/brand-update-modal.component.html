@@ -1,0 +1,22 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">{{title}}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <form id="updateForm" [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Tên thương hiệu: </label>
+            <div class="col-sm-8"><input formControlName="brandName" type="text" class="form-control" id="brandName"></div>
+            <div *ngIf="updateForm.get('brandName').touched && !updateForm.get('brandName').valid" class="invalid-feedback text-right mr-5">
+                Tên thương hiệu không được để trống
+            </div>
+        </div>
+        <hr class="mb-4">
+    </form>
+</div>
+<div class="modal-footer">
+    <button [disabled]='!this.updateForm.valid' form="updateForm" type="submit" class="btn btn-success">Cập nhật</button>
+    <button type="button" class="btn btn-primary" (click)="bsModalRef.hide()">Đóng</button>
+</div>

@@ -21,35 +21,19 @@ export class ProductService {
         return this.http.get<Product>(this.baseUrl + 'product/' + id);
     }
 
-    createProduct(product: any): Observable<any> {
-        return this.http.post<Product>(this.baseUrl + 'product', product).pipe(
-            map((response: any) => {
-                return response;
-            })
-        );
+    createProduct(product: any) {
+        return this.http.post<Product>(this.baseUrl + 'product', product);
     }
 
-    updateProduct(id: number, product: any): Observable<any> {
-        return this.http.put(this.baseUrl + 'product/' + id, product).pipe(
-            map((response: any) => {
-                return response;
-            })
-        );
+    updateProduct(id: number, product: any) {
+        return this.http.put(this.baseUrl + 'product/' + id, product);
     }
 
-    deleteProduct(id: number): Observable<any> {
-        return this.http.delete(this.baseUrl + 'product/' + id).pipe(
-            map((response: any) => {
-                return response;
-            })
-        );
+    deleteProduct(id: number) {
+        return this.http.delete(this.baseUrl + 'product/' + id);
     }
 
     deleteImage(prodId: number, imgId: number) {
-        return this.http.delete(this.baseUrl + 'product/' + prodId + '/images/' + imgId).pipe(
-            map((response: any) => {
-                return response;
-            })
-        );
+        return this.http.delete(this.baseUrl + 'product/' + prodId + '/images/' + imgId);
     }
 }
