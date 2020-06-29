@@ -17,5 +17,6 @@ namespace ng_shop_api.Dtos
         public string OperatingSystem { get; set; }
         public decimal Price { get; set; }
         public int BrandId { get; set; }
+        public bool IsAvailable { get; set; }
     }
 }

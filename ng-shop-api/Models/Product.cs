@@ -22,12 +22,15 @@ namespace ng_shop_api.Models
         public string OperatingSystem { get; set; }
         [Column(TypeName = "decimal(18,4)")]
         public decimal Price { get; set; }
+        public bool IsAvailable { get; set; }
 
         public int BrandId { get; set; }
         public Brand Brand { get; set; }
         public ICollection<Image> Images { get; set; }
+        public ICollection<OrderDetail> OrderDetails { get; set; }
         public Product()
         {
+            IsAvailable = true;
             Images = new Collection<Image>();
         }
     }

@@ -57,10 +57,14 @@ export class ProductsComponent implements OnInit {
   }
 
   isImageNull(product: Product): boolean {
-    if (product.images.length > 0) {
-      return false;
+    if (product.images) {
+      if (product.images.length > 0) {
+        return false;
+      } else {
+        return true;
+      }
     } else {
-      return true;
+      return false;
     }
   }
 

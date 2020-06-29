@@ -30,7 +30,7 @@
                         <li>Hỗ trợ sao lưu dữ liệu miễn phí, nhanh chóng</li>
                     </ul>
                 </div>
-                <div class="btn-group">
+                <div *ngIf="product.isAvailable" class="btn-group">
                     <div class="btn btn-muangay col" routerLink="/order">Mua ngay
                         <div class="btn-desc">Hỗ trợ COD T.Quốc</div>
                     </div>
@@ -38,9 +38,15 @@
                         <div class="btn-desc">Thủ tục nhanh</div>
                     </div>
                 </div>
+                <div *ngIf="!product.isAvailable" class="btn-group">
+                    <div class="btn btn-tragop">
+                        Hết hàng, quý khách vui lòng chọn sản phẩm khác hoặc liên hệ trực tiếp cửa hàng.
+                    </div>
+                </div>
             </div>
             <div class="col-lg-3">
-                <div class="product-status">Tình trạng: còn hàng</div>
+                <div *ngIf="product.isAvailable" class="product-available">Tình trạng: còn hàng</div>
+                <div *ngIf="!product.isAvailable" class="product-not-available">Tình trạng: hết hàng</div>
                 <div class="warranty">
                     <p>Khi mua có: Dây nguồn, sách hướng dẫn, thùng máy, adapter</p>
                     <p>Bảo hành 12 tháng tại HUFLIT&nbsp;<a href="#">Xem

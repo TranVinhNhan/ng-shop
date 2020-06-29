@@ -220,7 +220,12 @@
                     <tbody>
                         <tr *ngFor="let product of products">
                             <td>{{ product.id }}</td>
-                            <td>{{ product.productName }}</td>
+                            <td>
+                                {{ product.productName }}
+                                <br>
+                                <div *ngIf="product.isAvailable" class="text-success">Tình trạng: còn hàng</div>
+                                <div *ngIf="!product.isAvailable" class="text-danger">Tình trạng: hết hàng</div>
+                            </td>
                             <td>{{ product.productShortName }}</td>
                             <td class="force-text">{{ product.description }}</td>
                             <td>{{ product.shortDescription }}</td>
@@ -245,7 +250,9 @@
                                         [src]="image.url" alt="image" class="img-thumbnail col">
                                 </div>
                             </td>
-                            <td style="width: 130px" class="text-center">{{ product.price | number}} vnđ</td>
+                            <td style="width: 130px" class="text-center">
+                                {{ product.price | number}} vnđ
+                            </td>
                             <td class="text-center">{{ product.brand.brandName }}</td>
                             <td>
                                 <button (click)="openModalWithImageModalComponent(product)"

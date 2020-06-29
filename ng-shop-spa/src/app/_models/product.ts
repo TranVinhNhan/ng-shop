@@ -17,6 +17,7 @@ export interface  Product {
     weight: string;
     operatingSystem: string;
     price: number;
+    isAvailable: boolean;
 
     brand: Brand;
     images: Image[];

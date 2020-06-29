@@ -97,9 +97,14 @@ ol.breadcrumb {
     padding: 10px;
 }
 
-.product-status {
+.product-available {
     margin-bottom: 10px;
     color: #30a43b;
+    font-weight: bold;
+}
+.product-not-available {
+    margin-bottom: 10px;
+    color: #d9534f;
     font-weight: bold;
 }
 
