@@ -31,7 +31,7 @@
                     </ul>
                 </div>
                 <div *ngIf="product.isAvailable" class="btn-group">
-                    <div class="btn btn-muangay col" routerLink="/order">Mua ngay
+                    <div (click)="addToCart()" class="btn btn-muangay col" routerLink="/order">Mua ngay
                         <div class="btn-desc">Hỗ trợ COD T.Quốc</div>
                     </div>
                     <div class="btn btn-tragop col">Trả góp

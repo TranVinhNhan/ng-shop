@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ng_shop_api.Data;
 
 namespace ng_shop_api.Migrations
 {
     [DbContext(typeof(LaptopDbContext))]
-    partial class LaptopDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200630053127_Modified@Order")]
+    partial class ModifiedOrder
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -79,9 +81,6 @@ namespace ng_shop_api.Migrations
 
                     b.Property<string>("FullName")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsMale")
-                        .HasColumnType("bit");
 
                     b.Property<bool>("IsReceivedAtStore")
                         .HasColumnType("bit");

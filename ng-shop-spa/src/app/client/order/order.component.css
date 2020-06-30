@@ -125,6 +125,7 @@ fieldset {
 
 .num-product {
     width: 40px;
+    vertical-align: middle;
 }
 
 .btn-muangay {
@@ -155,8 +156,15 @@ fieldset {
     font-weight: 500;
 }
 
+.btn-qty {
+    padding: .1rem .5rem;
+    border-radius: 0px;
+    vertical-align: middle;
+}
+
 .delete_product {
     cursor: pointer;
+    width: fit-content;
 }
 
 .delete_product:hover {

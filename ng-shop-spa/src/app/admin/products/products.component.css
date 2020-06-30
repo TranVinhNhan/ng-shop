@@ -22,22 +22,6 @@ th {
     background: white;
 }
 
-.invalid-feedback {
-    display: unset;
-    width: 100%;
-    margin-top: .25rem;
-    font-size: 80%;
-    color: #dc3545;
-}
-
-input.ng-touched.ng-invalid, select.ng-touched.ng-invalid, textarea.ng-touched.ng-invalid {
-    border: 1px solid red;
-}
-
-input.ng-touched.ng-valid, select.ng-touched.ng-valid, textarea.ng-touched.ng-valid {
-    border: 1px solid green;
-}
-
 .img-thumbnail {
     cursor: pointer;
 }
