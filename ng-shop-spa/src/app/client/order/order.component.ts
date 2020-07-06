@@ -5,6 +5,7 @@ import { NumberOnlyService } from 'src/app/_services/number-only.service';
 import { AuthService } from 'src/app/_services/auth.service';
 import { UserService } from 'src/app/_services/user.service';
 import { User } from 'src/app/_models/user';
+import { Order } from 'src/app/_models/order';
 
 @Component({
   selector: 'app-cart',
@@ -14,6 +15,7 @@ import { User } from 'src/app/_models/user';
 export class OrderComponent implements OnInit {
 
   cart: CartItem[];
+  id: number;
   orderSuccessful = false;
   orderForm: FormGroup;
   constructor(
@@ -134,8 +136,8 @@ export class OrderComponent implements OnInit {
       });
       order.listOfOrderDetailDto = cartItems;
 
-      this.cartService.placeOrder(this.authService.decodedToken?.nameid, order).subscribe((response) => {
-        console.log(response);
+      this.cartService.placeOrder(this.authService.decodedToken?.nameid, order).subscribe((response: Order) => {
+        this.id = response.id;
         this.orderSuccessful = true;
         localStorage.removeItem('cart');
         this.loadCart();
