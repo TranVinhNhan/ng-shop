@@ -2,214 +2,46 @@
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
         <div class="row py-3">
             <h2 class="m-b-25">Đơn hàng</h2>
+            <hr>
+            <div class="btn-toolbar mb-2 mb-md-0">
+                <h6 class="">Hôm nay: {{date | date: 'EEEE dd/MM/yyyy'}}</h6>
+            </div>
             <div class="table-responsive m-b-40">
-                <table class="table table-borderless table-striped">
+                <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th>Ngày đặt hàng</th>
-                            <th>Mã đơn hàng</th>
-                            <th>Họ tên người đặt</th>
-                            <th>Số điện thoại</th>
-                            <th>Địa chỉ</th>
-                            <th>Giỏ hàng</th>
-                            <th class="text-right">Giá tiền</th>
-                            <th class="text-right">Số lượng</th>
-                            <th class="text-right">Tổng cộng</th>
+                            <th class="inline-text">Ngày đặt hàng</th>
+                            <th class="inline-text">Mã đơn hàng</th>
+                            <th class="inline-text">Họ tên người đặt</th>
+                            <th class="inline-text">Số điện thoại</th>
+                            <th class="inline-text">Email</th>
+                            <th class="inline-text">Địa chỉ</th>
+                            <th class="inline-text">Giỏ hàng</th>
+                            <th class="inline-text text-right">Giá tiền</th>
+                            <th class="inline-text text-right">Số lượng</th>
+                            <th class="inline-text text-right">Tổng cộng</th>
                             <th>Tình trạng</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>2018-09-29 05:57</td>
-                            <td>100398</td>
-                            <td>Tran Van A</td>
-                            <td>0123456789</td>
-                            <td>155 Sư Vạn Hạnh, Phường 12, Quận 10, Hồ Chí Minh</td>
-                            <td>Lenovo ThinkPad X395</td>
+                        <tr *ngFor="let order of orders">
+                            <td class="inline-text">{{order.placedTime | date:'E dd/MM/yyyy h:mm:ss a'}}</td>
+                            <td class="text-center">{{order.id}}</td>
+                            <td *ngIf="order.isMale">Anh: {{order.fullName}}</td>
+                            <td *ngIf="!order.isMale">Chị: {{order.fullName}}</td>
+                            <td>{{ order.phoneNumber }}</td>
+                            <td>{{ order.email }}</td>
+                            <td *ngIf="!order.isReceivedAtStore">{{ order.shippingAddress + ' ' + order.shippingDistrict + ' ' + order.shippingCity}}</td>
+                            <td *ngIf="order.isReceivedAtStore">{{ order.shippingAddress }}</td>
+                            <td>
+                                <div class="inline-text" *ngFor="let item of order.orderDetails">
+                                    <b>{{item.productName}}</b> | Số lượng: {{ item.quantity }}
+                                </div>
+                            </td>
                             <td class="text-right">$999.00</td>
                             <td class="text-right">1</td>
                             <td class="text-right">$999.00</td>
-                            <td class="text-success">Thành công</td>
-                        </tr>
-                        <tr>
-                            <td>2018-09-28 01:22</td>
-                            <td>100397</td>
-                            <td>Tran Van A</td>
-                            <td>0123456789</td>
-                            <td>155 Sư Vạn Hạnh, Phường 12, Quận 10, Hồ Chí Minh</td>
-                            <td>HP Zbook 15 G1</td>
-                            <td class="text-right">$756.00</td>
-                            <td class="text-right">1</td>
-                            <td class="text-right">$756.00</td>
-                            <td class="text-success">Thành công</td>
-                        </tr>
-                        <tr>
-                            <td>2018-09-27 02:12</td>
-                            <td>100396</td>
-                            <td>Tran Van A</td>
-                            <td>0123456789</td>
-                            <td>155 Sư Vạn Hạnh, Phường 12, Quận 10, Hồ Chí Minh</td>
-                            <td>Dell Inspiron 7590</td>
-                            <td class="text-right">$22.00</td>
-                            <td class="text-right">2</td>
-                            <td class="text-right">$44.00</td>
-                            <td class="text-success">Thành công</td>
-                        </tr>
-                        <tr>
-                            <td>2018-09-26 23:06</td>
-                            <td>100395</td>
-                            <td>Tran Van A</td>
-                            <td>0123456789</td>
-                            <td>155 Sư Vạn Hạnh, Phường 12, Quận 10, Hồ Chí Minh</td>
-                            <td>Razer Blade 15</td>
-                            <td class="text-right">$1199.00</td>
-                            <td class="text-right">1</td>
-                            <td class="text-right">$1199.00</td>
-                            <td class="text-success">Thành công</td>
-                        </tr>
-                        <tr>
-                            <td>2018-09-25 19:03</td>
-                            <td>100393</td>
-                            <td>Tran Van A</td>
-                            <td>0123456789</td>
-                            <td>155 Sư Vạn Hạnh, Phường 12, Quận 10, Hồ Chí Minh</td>
-                            <td>LG GRAM</td>
-                            <td class="text-right">$10.00</td>
-                            <td class="text-right">3</td>
-                            <td class="text-right">$30.00</td>
-                            <td class="text-success">Thành công</td>
-                        </tr>
-                        <tr>
-                            <td>2018-09-29 05:57</td>
-                            <td>100392</td>
-                            <td>Tran Van A</td>
-                            <td>0123456789</td>
-                            <td>155 Sư Vạn Hạnh, Phường 12, Quận 10, Hồ Chí Minh</td>
-                            <td>Lenovo Legion Y545</td>
-                            <td class="text-right">$199.00</td>
-                            <td class="text-right">6</td>
-                            <td class="text-right">$1494.00</td>
-                            <td class="text-success">Thành công</td>
-                        </tr>
-                        <tr>
-                            <td>2018-09-24 19:10</td>
-                            <td>100391</td>
-                            <td>Tran Van A</td>
-                            <td>0123456789</td>
-                            <td>155 Sư Vạn Hạnh, Phường 12, Quận 10, Hồ Chí Minh</td>
-                            <td>Asus ZenBook Pro UX580GD</td>
-                            <td class="text-right">$699.00</td>
-                            <td class="text-right">1</td>
-                            <td class="text-right">$699.00</td>
-                            <td class="text-success">Thành công</td>
-                        </tr>
-                        <tr>
-                            <td>2018-09-22 00:43</td>
-                            <td>100393</td>
-                            <td>Tran Van A</td>
-                            <td>0123456789</td>
-                            <td>155 Sư Vạn Hạnh, Phường 12, Quận 10, Hồ Chí Minh</td>
-                            <td>Dell Alienware Area-51M</td>
-                            <td class="text-right">$10.00</td>
-                            <td class="text-right">3</td>
-                            <td class="text-right">$30.00</td>
-                            <td class="text-success">Thành công</td>
-                        </tr>
-                        <tr>
-                            <td>2018-09-29 05:57</td>
-                            <td>100398</td>
-                            <td>Tran Van A</td>
-                            <td>0123456789</td>
-                            <td>155 Sư Vạn Hạnh, Phường 12, Quận 10, Hồ Chí Minh</td>
-                            <td>Lenovo ThinkPad X395</td>
-                            <td class="text-right">$999.00</td>
-                            <td class="text-right">1</td>
-                            <td class="text-right">$999.00</td>
-                            <td class="text-success">Thành công</td>
-                        </tr>
-                        <tr>
-                            <td>2018-09-28 01:22</td>
-                            <td>100397</td>
-                            <td>Tran Van A</td>
-                            <td>0123456789</td>
-                            <td>155 Sư Vạn Hạnh, Phường 12, Quận 10, Hồ Chí Minh</td>
-                            <td>HP Zbook 15 G1</td>
-                            <td class="text-right">$756.00</td>
-                            <td class="text-right">1</td>
-                            <td class="text-right">$756.00</td>
-                            <td class="text-success">Thành công</td>
-                        </tr>
-                        <tr>
-                            <td>2018-09-27 02:12</td>
-                            <td>100396</td>
-                            <td>Tran Van A</td>
-                            <td>0123456789</td>
-                            <td>155 Sư Vạn Hạnh, Phường 12, Quận 10, Hồ Chí Minh</td>
-                            <td>Dell Inspiron 7590</td>
-                            <td class="text-right">$22.00</td>
-                            <td class="text-right">2</td>
-                            <td class="text-right">$44.00</td>
-                            <td class="text-success">Thành công</td>
-                        </tr>
-                        <tr>
-                            <td>2018-09-26 23:06</td>
-                            <td>100395</td>
-                            <td>Tran Van A</td>
-                            <td>0123456789</td>
-                            <td>155 Sư Vạn Hạnh, Phường 12, Quận 10, Hồ Chí Minh</td>
-                            <td>Razer Blade 15</td>
-                            <td class="text-right">$1199.00</td>
-                            <td class="text-right">1</td>
-                            <td class="text-right">$1199.00</td>
-                            <td class="text-success">Thành công</td>
-                        </tr>
-                        <tr>
-                            <td>2018-09-25 19:03</td>
-                            <td>100393</td>
-                            <td>Tran Van A</td>
-                            <td>0123456789</td>
-                            <td>155 Sư Vạn Hạnh, Phường 12, Quận 10, Hồ Chí Minh</td>
-                            <td>LG GRAM</td>
-                            <td class="text-right">$10.00</td>
-                            <td class="text-right">3</td>
-                            <td class="text-right">$30.00</td>
-                            <td class="text-success">Thành công</td>
-                        </tr>
-                        <tr>
-                            <td>2018-09-29 05:57</td>
-                            <td>100392</td>
-                            <td>Tran Van A</td>
-                            <td>0123456789</td>
-                            <td>155 Sư Vạn Hạnh, Phường 12, Quận 10, Hồ Chí Minh</td>
-                            <td>Lenovo Legion Y545</td>
-                            <td class="text-right">$199.00</td>
-                            <td class="text-right">6</td>
-                            <td class="text-right">$1494.00</td>
-                            <td class="text-success">Thành công</td>
-                        </tr>
-                        <tr>
-                            <td>2018-09-24 19:10</td>
-                            <td>100391</td>
-                            <td>Tran Van A</td>
-                            <td>0123456789</td>
-                            <td>155 Sư Vạn Hạnh, Phường 12, Quận 10, Hồ Chí Minh</td>
-                            <td>Asus ZenBook Pro UX580GD</td>
-                            <td class="text-right">$699.00</td>
-                            <td class="text-right">1</td>
-                            <td class="text-right">$699.00</td>
-                            <td class="text-success">Thành công</td>
-                        </tr>
-                        <tr>
-                            <td>2018-09-22 00:43</td>
-                            <td>100393</td>
-                            <td>Tran Van A</td>
-                            <td>0123456789</td>
-                            <td>155 Sư Vạn Hạnh, Phường 12, Quận 10, Hồ Chí Minh</td>
-                            <td>Dell Alienware Area-51M</td>
-                            <td class="text-right">$10.00</td>
-                            <td class="text-right">3</td>
-                            <td class="text-right">$30.00</td>
-                            <td class="text-success">Thành công</td>
+                            <td style="white-space: nowrap;" class="text-success">{{ order.orderStatus }}</td>
                         </tr>
                     </tbody>
                 </table>

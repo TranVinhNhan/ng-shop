@@ -5,6 +5,7 @@ namespace ng_shop_api.Models
     public class OrderDetail
     {
         public int Id { get; set; }
+        public string ProductShortName { get; set; }
         public int Quantity { get; set; }
         
         [Column(TypeName = "decimal(18,4)")]

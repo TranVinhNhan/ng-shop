@@ -3,15 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/_models/product';
 import { Image } from 'src/app/_models/image';
 import { CartService } from 'src/app/_services/cart.service';
-
-
-export interface CartItem {
-  productId: number;
-  productName: string;
-  thumbnailUrl: string;
-  quantity: number;
-  pricePerUnit: number;
-}
+import { CartItem } from 'src/app/_models/cart-item';
 
 @Component({
   selector: 'app-detail',
@@ -46,7 +38,8 @@ export class DetailComponent implements OnInit {
           productName: this.product.productName,
           thumbnailUrl: this.product.images.find(i => i.isThumbnail).url,
           quantity: 1,
-          pricePerUnit: this.product.price
+          pricePerUnit: this.product.price,
+          productShortName: this.product.productShortName
         };
         cart.push(cartItem); // thêm mới
         localStorage.setItem('cart', JSON.stringify(cart));
@@ -60,7 +53,8 @@ export class DetailComponent implements OnInit {
         productName: this.product.productName,
         thumbnailUrl: this.product.images.find(i => i.isThumbnail).url,
         quantity: 1,
-        pricePerUnit: this.product.price
+        pricePerUnit: this.product.price,
+        productShortName: this.product.productShortName
       };
       cart.push(cartItem);
       localStorage.setItem('cart', JSON.stringify(cart));

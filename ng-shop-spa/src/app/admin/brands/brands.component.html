@@ -36,13 +36,16 @@
                             <form [formGroup]="brandForm" (ngSubmit)="onSubmit()">
                                 <div class="form-group row">
                                     <label class="col-sm-4 col-form-label">Tên thương hiệu: </label>
-                                    <div class="col-sm-8"><input formControlName="brandName" type="text" class="form-control" id="brandName"></div>
-                                    <div *ngIf="brandForm.get('brandName').touched && !brandForm.get('brandName').valid" class="invalid-feedback">
+                                    <div class="col-sm-8"><input formControlName="brandName" type="text"
+                                            class="form-control" id="brandName"></div>
+                                    <div *ngIf="brandForm.get('brandName').touched && !brandForm.get('brandName').valid"
+                                        class="invalid-feedback">
                                         Tên thương hiệu không được để trống
                                     </div>
                                 </div>
                                 <hr class="mb-4">
-                                <button class="btn btn-success btn-lg btn-block" type="submit">Xác nhận tạo thương hiệu mới</button>
+                                <button class="btn btn-success btn-lg btn-block" type="submit">Xác nhận tạo thương hiệu
+                                    mới</button>
                             </form>
                         </div>
                     </div>
@@ -68,15 +71,18 @@
                                 <td *ngIf="brand.image"><img [src]="brand.image.url" alt="brand image"></td>
                                 <td class="text-center">{{ brand.products.length }}</td>
                                 <td class="text-right">
-                                    <button *ngIf="!brand.image" (click)="openModalWithBrandImageModalComponent(brand, false)"
+                                    <button *ngIf="!brand.image"
+                                        (click)="openModalWithBrandImageModalComponent(brand, false)"
                                         class="btn btn-sm btn-outline-secondary mb-1">
                                         <i class="fa fa-file-image-o fa-lg"></i> Add Images
                                     </button>
-                                    <button *ngIf="brand.image" (click)="openModalWithBrandImageModalComponent(brand, true)"
+                                    <button *ngIf="brand.image"
+                                        (click)="openModalWithBrandImageModalComponent(brand, true)"
                                         class="btn btn-sm btn-outline-secondary mb-1">
                                         <i class="fa fa-file-image-o fa-lg"></i> Update Images
                                     </button>
-                                    <button (click)="openModalWithBrandUpdateModalComponent(brand)" class="btn btn-sm btn-outline-secondary mb-1">
+                                    <button (click)="openModalWithBrandUpdateModalComponent(brand)"
+                                        class="btn btn-sm btn-outline-secondary mb-1">
                                         <i class="fa fa-wrench fa-lg"></i> Update
                                     </button>
                                     <button (click)="onDelete(brand.id)" class="btn btn-sm btn-outline-secondary mb-1">
@@ -87,7 +93,8 @@
                         </tbody>
                     </table>
                 </div>
-                <div *ngIf="isFetchingBrands">Loading...</div>
+                <div *ngIf="isFetchingBrands && !errorMessage">Loading...</div>
+                <div *ngIf="errorMessage">{{ errorMessage }}</div>
             </div>
             <div class="col-lg-4">
                 <div class="card">

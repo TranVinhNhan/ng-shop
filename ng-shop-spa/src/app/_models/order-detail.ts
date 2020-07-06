@@ -3,6 +3,7 @@ import { Product } from './product';
 
 export interface OrderDetail {
     id: number;
+    productShortName: string;
     quantity: number;
     price: number;
 

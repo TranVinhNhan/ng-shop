@@ -1,4 +1,4 @@
-import { Component, OnInit, DoCheck } from '@angular/core';
+import { Component, OnInit, DoCheck, OnDestroy } from '@angular/core';
 import { ChartOptions, ChartType } from 'chart.js';
 import { Label, SingleDataSet } from 'ng2-charts';
 
@@ -8,19 +8,23 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { BrandImageModalComponent } from './brand-image-modal/brand-image-modal.component';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { BrandUpdateModalComponent } from './brand-update-modal/brand-update-modal.component';
+import { ErrorTextService } from 'src/app/_services/error-text.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-brands',
   templateUrl: './brands.component.html',
   styleUrls: ['./brands.component.css']
 })
-export class BrandsComponent implements OnInit {
+export class BrandsComponent implements OnInit, OnDestroy {
 
   brands: Brand[] = [];
   bsModalRef: BsModalRef;
   isCollapsed = true;
   brandForm: FormGroup;
   isFetchingBrands = false;
+  errorMessage: string;
+  errorMessageSubscription: Subscription;
   // Pie
   public pieChartOptions: ChartOptions = {
     responsive: true,
@@ -30,11 +34,17 @@ export class BrandsComponent implements OnInit {
   public pieChartType: ChartType = 'pie';
   public pieChartLegend = true;
   public pieChartPlugins = [];
-  constructor(private brandService: BrandService, private modalService: BsModalService) { }
+
+  constructor(private brandService: BrandService, private modalService: BsModalService, private errorTextService: ErrorTextService) { }
 
   ngOnInit(): void {
     this.loadBrands();
     this.initBrandForm();
+    this.loadErrorMessage();
+  }
+
+  ngOnDestroy(): void {
+    this.errorMessageSubscription.unsubscribe();
   }
 
   initBrandForm() {
@@ -52,12 +62,19 @@ export class BrandsComponent implements OnInit {
       console.log(error);
     }, () => {
       this.loadChart();
+      console.log('complete');
     });
   }
 
   loadChart() {
     this.pieChartLabels = this.brands.map(b => b.brandName);
     this.pieChartData = this.brands.map(b => b.products.length);
+  }
+
+  loadErrorMessage() {
+    this.errorMessageSubscription = this.errorTextService.errorMessage.subscribe((errorMessage: string) => {
+      this.errorMessage = errorMessage;
+    });
   }
 
   openModalWithBrandImageModalComponent(brand: Brand, isUpdate: boolean) {

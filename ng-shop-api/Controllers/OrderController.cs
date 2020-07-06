@@ -42,6 +42,7 @@ namespace ng_shop_api.Controllers
                 orderDetail.PricePerUnit = item.PricePerUnit;
                 orderDetail.Quantity = item.Quantity;
                 orderDetail.Product = product;
+                orderDetail.ProductShortName = item.ProductShortName;
                 order.OrderDetails.Add(orderDetail);
             }
 

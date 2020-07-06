@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { Order } from '../_models/order';
 
 @Injectable({
     providedIn: 'root'
@@ -9,11 +10,9 @@ import { environment } from 'src/environments/environment';
 export class CartService {
 
     baseUrl = environment.apiUrl;
-    cartCount = new Subject<number>();
+    cartCount = new BehaviorSubject<number>(0);
 
-    constructor(private http: HttpClient) {
-        this.cartCount.next(0);
-    }
+    constructor(private http: HttpClient) { }
 
     updateCartCount(count?: number) {
         this.cartCount.next(count ? count : 0);
@@ -26,5 +25,9 @@ export class CartService {
         } else {
             return this.http.post(this.baseUrl + 'order', model);
         }
+    }
+
+    getAllOrder(): Observable<Order[]> {
+        return this.http.get<Order[]>(this.baseUrl + 'order/all');
     }
 }

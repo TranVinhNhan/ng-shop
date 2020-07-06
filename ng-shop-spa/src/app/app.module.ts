@@ -10,6 +10,7 @@ import { AuthService } from './_services/auth.service';
 import { AuthGuard } from './_guards/auth.guard';
 import { CanDeactivateGuard } from './_guards/can-deactivate.guard';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { httpInterceptorProviders } from './_services/error-handling-interceptor.service';
 
 
 export function tokenGetter() {
@@ -35,7 +36,7 @@ export function tokenGetter() {
       }
     })
   ],
-  providers: [AuthService, AuthGuard, CanDeactivateGuard],
+  providers: [AuthService, AuthGuard, CanDeactivateGuard, httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

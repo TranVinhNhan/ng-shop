@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ng_shop_api.Data;
 
 namespace ng_shop_api.Migrations
 {
     [DbContext(typeof(LaptopDbContext))]
-    partial class LaptopDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200706124409_Update@OrderDetails")]
+    partial class UpdateOrderDetails
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -136,7 +138,7 @@ namespace ng_shop_api.Migrations
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
-                    b.Property<string>("ProductShortName")
+                    b.Property<string>("ProductName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Quantity")

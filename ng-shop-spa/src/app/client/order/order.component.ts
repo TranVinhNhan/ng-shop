@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+
 import { CartService } from 'src/app/_services/cart.service';
 import { NumberOnlyService } from 'src/app/_services/number-only.service';
 import { AuthService } from 'src/app/_services/auth.service';
 import { UserService } from 'src/app/_services/user.service';
 import { User } from 'src/app/_models/user';
 import { Order } from 'src/app/_models/order';
+import { CartItem } from 'src/app/_models/cart-item';
 
 @Component({
   selector: 'app-cart',
@@ -127,18 +129,20 @@ export class OrderComponent implements OnInit {
       const currentCart = JSON.parse(localStorage.getItem('cart'));
       const cartItems = [];
       currentCart.forEach(item => {
-        const newItem: any = {};
-        newItem.productId = item.productId;
-        newItem.quantity = item.quantity;
-        newItem.pricePerUnit = item.pricePerUnit;
-
-        cartItems.push(newItem);
+        cartItems.push(
+          {
+            productId: item.productId,
+            quantity: item.quantity,
+            pricePerUnit: item.pricePerUnit,
+            productShortName: item.productShortName
+          }
+        );
       });
       order.listOfOrderDetailDto = cartItems;
 
       this.cartService.placeOrder(this.authService.decodedToken?.nameid, order).subscribe((response: Order) => {
-        this.id = response.id;
         this.orderSuccessful = true;
+        this.id = response.id;
         localStorage.removeItem('cart');
         this.loadCart();
       }, error => {
@@ -146,12 +150,4 @@ export class OrderComponent implements OnInit {
       });
     }
   }
-}
-
-export interface CartItem {
-  productId: number;
-  quantity: number;
-  pricePerUnit: number;
-  productName: string;
-  thumbnailUrl: string;
 }
