@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/_models/product';
 import { Image } from 'src/app/_models/image';
+import { CartService } from 'src/app/_services/cart.service';
 
 
 export interface CartItem {
@@ -21,11 +22,10 @@ export interface CartItem {
 export class DetailComponent implements OnInit {
 
   product: Product;
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private cartService: CartService) { }
 
   ngOnInit(): void {
     this.route.data.subscribe(data => this.product = data.product);
-    console.log(this.route.snapshot.params.id);
   }
 
   loadAlbum(images: Image[]): Image[] {
@@ -50,6 +50,8 @@ export class DetailComponent implements OnInit {
         };
         cart.push(cartItem); // thêm mới
         localStorage.setItem('cart', JSON.stringify(cart));
+
+        this.cartService.cartCount.next(cart.length);
       }
     } else { // nếu chưa có giỏ hàng
       const cart = [];
@@ -62,6 +64,8 @@ export class DetailComponent implements OnInit {
       };
       cart.push(cartItem);
       localStorage.setItem('cart', JSON.stringify(cart));
+
+      this.cartService.cartCount.next(cart.length);
     }
   }
 }

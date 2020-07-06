@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../_models/user';
 import { environment } from 'src/environments/environment';
@@ -23,5 +23,17 @@ export class UserService {
 
     deleteUser(id: number): Observable<any> {
         return this.http.delete(this.baseUrl + 'user/' + id);
+    }
+
+    // headers nhận tên biến để set key:value pair, ví dụ:
+    getPersonalInfo(id: string): Observable<User> {
+        const headers = new HttpHeaders({ id }); // id: 1
+        return this.http.get<User>(this.baseUrl + 'user', { headers });
+    }
+
+    // nếu không dùng cách trên, có thể đặt tên key và gán value như bth, ví dụ: {'UID': id}
+    updatePersonalInfo(id: string, model: any) {
+        const headers = new HttpHeaders({ id });
+        return this.http.put(this.baseUrl + 'user', model, { headers });
     }
 }

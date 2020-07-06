@@ -20,5 +20,9 @@ namespace ng_shop_api.Repositories.Interfaces
 
          // Image
          Task<Image> GetImageById(int id);
+
+         // Order
+         Task<IEnumerable<Order>> GetAllOrders();
+         Task<Order> GetOrderById(int id);
     }
 }

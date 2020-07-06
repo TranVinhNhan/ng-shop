@@ -1,10 +1,11 @@
 import { Order } from './order';
+import { Product } from './product';
 
 export interface OrderDetail {
     id: number;
-    productName: string;
     quantity: number;
     price: number;
 
-    order: Order;
+    orderId: number;
+    productId: number;
 }

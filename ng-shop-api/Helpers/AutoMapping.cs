@@ -11,9 +11,13 @@ namespace ng_shop_api.Helpers
             CreateMap<UserForRegisterDto, User>();
             CreateMap<User, UserForReturnDto>();
             CreateMap<UserForUpdateDto, User>();
+            CreateMap<User, PersonalInfoForReturnDto>();
+            CreateMap<PersonalInfoForUpdateDto, User>();
             CreateMap<ProductForCreateDto, Product>();
             CreateMap<ProductForUpdateDto, Product>();
             CreateMap<ImageForCreateDto, Image>();
+            CreateMap<OrderForCreateDto, Order>();
+            CreateMap<Order, OrderForReturnDto>();
         }
     }
 }

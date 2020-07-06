@@ -1,8 +1,8 @@
-  * {
+* {
     box-sizing: border-box;
   }
 
-  .register-form {
+  .user-account-form {
     margin-bottom: 34px;
     margin-top: 34px;
   }
@@ -35,7 +35,7 @@
   }
   
   /* Set a style for the submit button */
-  .registerbtn {
+  .user-account-btn {
     background-color: #4CAF50;
     color: white;
     padding: 16px 20px;
@@ -47,8 +47,12 @@
     text-transform: uppercase;
   }
   
-  .registerbtn:hover {
+  .user-account-btn:hover {
     opacity: 1;
+  }
+
+  .user-account-btn:disabled, input:disabled {
+    opacity: 0.5;
   }
   
   /* Add a blue text color to links */
@@ -61,25 +65,23 @@
     text-align: center;
   }
 
+  .required {
+    color: red;
+  }
+
   .form-row {
     margin-bottom: 10px;
   }
 
-  .invalid-feedback {
-    display: block;
-    width: 100%;
-    margin-top: .25rem;
-    font-size: 80%;
-    color: #dc3545;
+  .text-decoration-none {
+      color: #212529;
   }
 
-  input {
-    border-radius: 10px;
+  .text-decoration-none:hover {
+      color: #27bece;
   }
-  input.ng-touched.ng-invalid, select.ng-touched.ng-invalid, textarea.ng-touched.ng-invalid {
-    border: 1px solid red;
- }
 
- /* input.ng-touched.ng-valid, select.ng-touched.ng-valid, textarea.ng-touched.ng-valid {
-    border: 1px solid green;
- } */
+  .tab-item {
+    border: 1px solid #dee2e6;
+    border-top: 1px solid transparent;
+  }

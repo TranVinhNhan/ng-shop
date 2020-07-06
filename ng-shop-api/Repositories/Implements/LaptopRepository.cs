@@ -68,5 +68,18 @@ namespace ng_shop_api.Repositories.Implements
             var image = await _context.Images.FirstOrDefaultAsync(i => i.Id == id);
             return image;
         }
+
+        // Order
+        public async Task<IEnumerable<Order>> GetAllOrders()
+        {
+            var orders = await _context.Orders.Include(o => o.OrderDetails).ToListAsync();
+            return orders;
+        }
+
+        public async Task<Order> GetOrderById(int id)
+        {
+            var order = await _context.Orders.Include(o => o.OrderDetails).FirstOrDefaultAsync(o => o.Id == id);
+            return order;
+        }
     }
 }

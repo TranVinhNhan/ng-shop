@@ -6,6 +6,7 @@ import { Product } from 'src/app/_models/product';
 import { Image } from 'src/app/_models/image';
 import { BrandService } from 'src/app/_services/brand.service';
 import { Brand } from 'src/app/_models/brand';
+import { timeout } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -17,6 +18,7 @@ export class HomeComponent implements OnInit {
   productsArray: Product[] = [];
   onePageArray: Product[] = [];
   showBrands: Brand[] = [];
+  isFetching = false;
 
   constructor(private productService: ProductService, private brandService: BrandService) { }
 
@@ -32,11 +34,13 @@ export class HomeComponent implements OnInit {
   }
 
   loadProducts() {
+    this.isFetching = true;
     this.productService
       .getAllProducts()
       .subscribe((products: Product[]) => {
         this.productsArray = products;
         this.onePageArray = this.productsArray.slice(0, 10);
+        this.isFetching = false;
       }, error => {
         console.log(error);
       });

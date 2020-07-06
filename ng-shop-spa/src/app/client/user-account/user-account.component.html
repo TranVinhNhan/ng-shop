@@ -1,0 +1,89 @@
+<div class="mt-3 mb-5">
+    <tabset>
+        <tab class="tab-item">
+            <ng-template tabHeading>
+                <span class="font-weight-bold text-decoration-none">Thông tin tài khoản</span>
+            </ng-template>
+            <form class="user-account-form" [formGroup]="userAccountForm" (ngSubmit)="onSubmit()">
+                <div class="container">
+                    <h1>Thông tin tài khoản</h1>
+                    <p>Quý khách có thể kiểm tra cũng như cập nhật thông tin tài khoản để cửa hàng phục vụ tốt hơn.</p>
+                    <hr>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="fullname"><b>Họ và tên</b></label><span class="required"> (*)</span>
+                            <input formControlName="fullname" type="text">
+                            <span *ngIf="userAccountForm.get('fullname').touched && !userAccountForm.get('fullname').valid" class="invalid-feedback">
+                                Họ tên không được để trống
+                            </span>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="phoneNumber"><b>Số điện thoại</b></label><span class="required"> (*)</span>
+                            <input formControlName="phoneNumber" (keypress)="onValidate($event)" type="text"
+                                placeholder="Điền số điện thoại tại đây..." name="phoneNumber" id="phoneNumber">
+                            <span *ngIf="userAccountForm.get('phoneNumber').touched && !userAccountForm.get('phoneNumber').valid" class="invalid-feedback">
+                                Số điện thoại không được để trống
+                            </span>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="pb-2"><b>Giới tính</b></label><span class="required"> (*)</span>
+
+                            <div class="form-check">
+                                <div class="form-check form-check-inline">
+                                    <input formControlName="isMale" class="form-check-input" name="isMale" type="radio"
+                                        [value]="true" id="nam">
+                                    <label class="form-check-label" for="nam">Nam</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input formControlName="isMale" class="form-check-input" name="isMale" type="radio"
+                                        [value]="false" id="nu">
+                                    <label class="form-check-label" for="nu">Nữ</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="email"><b>Email</b></label>
+                            <input formControlName="email" type="text" placeholder="Điền email tại đây..." name="email"
+                                id="email">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="addressNumber"><b>Địa chỉ</b></label><span class="required"> (*)</span>
+                            <input formControlName="addressNumber" type="text" placeholder="Điền địa chỉ tại đây..."
+                                name="addressNumber" id="addressNumber">
+
+                            <span *ngIf="userAccountForm.get('addressNumber').touched && !userAccountForm.get('addressNumber').valid" class="invalid-feedback">
+                                Địa chỉ không được để trống
+                            </span>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="district"><b>Quận/Huyện</b></label><span class="required"> (*)</span>
+                            <input formControlName="district" type="text" placeholder="Quận/Huyện" name="district"
+                                id="district">
+                            <span *ngIf="userAccountForm.get('district').touched && !userAccountForm.get('district').valid" class="invalid-feedback">
+                                Quận huyện không được để trống
+                            </span>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="city"><b>Thành phố</b></label><span class="required"> (*)</span>
+                            <input formControlName="city" type="text" placeholder="Thành phố" name="city" id="city">
+                            <span *ngIf="userAccountForm.get('city').touched && !userAccountForm.get('city').valid" class="invalid-feedback">
+                                Thành phố không được để trống
+                            </span>
+                        </div>
+                    </div>
+                    <button [disabled]="!userAccountForm.valid || !userAccountForm.touched || !userAccountForm.dirty" type="submit" class="user-account-btn">Cập nhật thông tin tài khoản</button>
+                </div>
+            </form>
+        </tab>
+        <tab class="tab-item">
+            <ng-template tabHeading>
+                <span class="font-weight-bold text-decoration-none">Lịch sử đặt hàng</span>
+            </ng-template>
+            Basic content 1
+        </tab>
+    </tabset>
+</div>

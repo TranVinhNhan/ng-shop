@@ -10,6 +10,7 @@ import { BrandService } from 'src/app/_services/brand.service';
 import { ProductModalComponent } from './product-modal/product-modal.component';
 import { ImageModalComponent } from './image-modal/image-modal.component';
 import { ImageDeleteModalComponent } from './image-delete-modal/image-delete-modal.component';
+import { NumberOnlyService } from 'src/app/_services/number-only.service';
 
 @Component({
   selector: 'app-products',
@@ -24,10 +25,14 @@ export class ProductsComponent implements OnInit {
   productForm: FormGroup;
   bsModalRef: BsModalRef;
 
+  isFetchingBrands = false;
+  isFetchingProducts = false;
+
   constructor(
     private productService: ProductService,
     private brandService: BrandService,
-    private modalService: BsModalService
+    private modalService: BsModalService,
+    private numberOnlyService: NumberOnlyService
   ) { }
 
   ngOnInit(): void {
@@ -69,16 +74,20 @@ export class ProductsComponent implements OnInit {
   }
 
   loadProducts() {
+    this.isFetchingProducts = true;
     this.productService.getAllProducts().subscribe((products: Product[]) => {
       this.products = products;
+      this.isFetchingProducts = false;
     }, error => {
       console.log(error);
     });
   }
 
   loadBrands() {
+    this.isFetchingBrands = true;
     this.brandService.getAllBrands().subscribe((brands: Brand[]) => {
       this.brands = brands;
+      this.isFetchingBrands = false;
     }, error => {
       console.log(error);
     });
@@ -138,5 +147,9 @@ export class ProductsComponent implements OnInit {
     };
     this.bsModalRef = this.modalService.show(ImageDeleteModalComponent, { initialState });
     this.bsModalRef.setClass('modal-lg');
+  }
+
+  onValidate($event) {
+    return this.numberOnlyService.onValidate($event);
   }
 }

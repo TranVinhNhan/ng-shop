@@ -4,6 +4,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 
 import { ClientRoutingModule } from './client-routing.module';
 import { ClientComponent } from './client.component';
@@ -15,6 +16,7 @@ import { OrderComponent } from './order/order.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { ProductDetailResolver } from '../_resolvers/product-detail.resolver';
+import { UserAccountComponent } from './user-account/user-account.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { ProductDetailResolver } from '../_resolvers/product-detail.resolver';
     FooterComponent,
     OrderComponent,
     RegisterComponent,
-    LoginComponent],
+    LoginComponent,
+    UserAccountComponent],
   imports: [
     CommonModule,
     ClientRoutingModule,
@@ -33,7 +36,8 @@ import { ProductDetailResolver } from '../_resolvers/product-detail.resolver';
     ReactiveFormsModule,
     FormsModule,
     PaginationModule.forRoot(),
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    TabsModule.forRoot()
   ],
   providers: [ProductDetailResolver]
 })

@@ -172,7 +172,7 @@
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label for="price">Giá bán</label>
-                                    <input formControlName="price" type="number" class="form-control" id="price"
+                                    <input (keypress)="onValidate($event)" formControlName="price" type="number" class="form-control" id="price"
                                         placeholder="">
                                     <div *ngIf="productForm.get('price').touched && !productForm.get('price').valid"
                                         class="invalid-feedback">
@@ -181,11 +181,14 @@
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="brandName">Thương hiệu</label>
-                                    <select formControlName="brandId" class="custom-select d-block w-100" id="brandId"
+                                    <select *ngIf="!isFetchingBrands" formControlName="brandId" class="custom-select d-block w-100" id="brandId"
                                         required="">
                                         <option *ngFor="let brand of brands" [value]=+brand.id>{{ brand.brandName }}
                                         </option>
                                     </select>
+                                    <div *ngIf="isFetchingBrands">
+                                        Loading...
+                                    </div>
                                     <div *ngIf="productForm.get('brandId').touched && !productForm.get('brandId').valid"
                                         class="invalid-feedback">
                                         Vui lòng chọn 1 thương hiệu.
@@ -193,7 +196,7 @@
                                 </div>
                             </div>
                             <hr class="mb-4">
-                            <button [disabled]="!productForm.valid" class="btn btn-success btn-lg btn-block"
+                            <button [disabled]="!productForm.valid || isFetchingBrands" class="btn btn-success btn-lg btn-block"
                                 type="submit">Xác nhận thêm sản phẩm</button>
                         </form>
                     </div>
@@ -201,7 +204,7 @@
             </div>
 
             <!-- Table sản phẩm -->
-            <div class="table-responsive table-scroll-fixed-head">
+            <div *ngIf="!isFetchingProducts" class="table-responsive table-scroll-fixed-head">
                 <table class="table table-sm table-hover">
                     <thead>
                         <tr>
@@ -272,6 +275,9 @@
                         </tr>
                     </tbody>
                 </table>
+            </div>
+            <div *ngIf="isFetchingProducts">
+                Loading...
             </div>
         </main>
     </div>

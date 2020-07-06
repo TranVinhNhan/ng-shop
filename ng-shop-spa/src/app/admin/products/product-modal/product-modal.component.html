@@ -153,10 +153,11 @@
             </div>
             <div class="col-md-4 mb-3">
                 <label for="brandName">Thương hiệu</label>
-                <select formControlName="brandId" class="custom-select d-block w-100" id="brandId" required="">
+                <select *ngIf="!isFetchingBrands" formControlName="brandId" class="custom-select d-block w-100" id="brandId" required="">
                     <option *ngFor="let brand of brands" [ngValue]="brand.id">{{ brand.brandName }}
                     </option>
                 </select>
+                <div *ngIf="isFetchingBrands">Loading...</div>
                 <div *ngIf="productModalForm.get('brandId').touched && !productModalForm.get('brandId').valid"
                     class="invalid-feedback">
                     Vui lòng chọn 1 thương hiệu.

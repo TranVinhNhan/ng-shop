@@ -49,7 +49,7 @@
                 </div>
 
                 <!-- Table -->
-                <div class="table-responsive m-b-40">
+                <div *ngIf="!isFetchingBrands" class="table-responsive m-b-40">
                     <table class="table table-borderless table-striped">
                         <thead>
                             <tr>
@@ -87,6 +87,7 @@
                         </tbody>
                     </table>
                 </div>
+                <div *ngIf="isFetchingBrands">Loading...</div>
             </div>
             <div class="col-lg-4">
                 <div class="card">

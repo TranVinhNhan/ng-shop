@@ -20,14 +20,19 @@ namespace ng_shop_api.Models
         public bool IsReceivedAtStore { get; set; }
         public string StoreAddress { get; set; }
 
-        public int UserId { get; set; }
+        public int? UserId { get; set; }
         public User User { get; set; }
         public ICollection<OrderDetail> OrderDetails { get; set; }
         public Order()
         {
             PlacedTime = DateTime.Now;
             OrderDetails = new Collection<OrderDetail>();
-            OrderStatus = "Pending";
+            OrderStatus = "Đã tiếp nhận";
         }
     }
+
+    // public enum Status
+    // {
+    //     Received, Processing, AwaitingPickup, BeingDelivered, Completed, Cancelled
+    // }
 }

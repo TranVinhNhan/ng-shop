@@ -7,39 +7,88 @@
 <div class="modal-body">
     <form id="userModalForm" [formGroup]="userModalForm" (ngSubmit)="onSubmit(user.id)">
         <div class="form-group">
-            <label for="email">Email</label>
+            <label class="font-weight-bold" for="email">Email</label><span class="required"> (*)</span>
             <input formControlName="email" type="email" class="form-control" id="exampleFormControlInput1"
                 placeholder="">
         </div>
         <div class="form-group">
-            <label for="fullName">Họ và tên</label>
+            <label class="font-weight-bold" for="fullName">Họ và tên</label><span class="required"> (*)</span>
             <input formControlName="fullName" type="text" class="form-control" id="fullName" placeholder="">
+            <div *ngIf="userModalForm.get('fullName').touched && !userModalForm.get('fullName').valid"
+                class="invalid-feedback">
+                Họ tên không được để trống
+            </div>
         </div>
         <div class="form-group">
-            <label for="phoneNumber">Số điện thoại</label>
-            <input formControlName="phoneNumber" type="email" class="form-control" id="phoneNumber" placeholder="">
+            <label class="font-weight-bold" for="phoneNumber">Số điện thoại</label><span class="required"> (*)</span>
+            <input formControlName="phoneNumber" (keypress)="onValidate($event)" type="email" class="form-control"
+                id="phoneNumber" placeholder="">
+            <div *ngIf="userModalForm.get('phoneNumber').touched && !userModalForm.get('phoneNumber').valid"
+                class="invalid-feedback">
+                Số điện thoại không được để trống
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="font-weight-bold" for="addressNumber">Địa chỉ</label><span class="required"> (*)</span>
+            <input formControlName="addressNumber" class="form-control" type="text"
+                placeholder="Điền địa chỉ tại đây..." name="addressNumber" id="addressNumber" required>
+            <div *ngIf="userModalForm.get('addressNumber').touched && !userModalForm.get('addressNumber').valid"
+                class="invalid-feedback">
+                Địa chỉ không được để trống
+            </div>
         </div>
         <div class="form-group">
             <div class="row">
                 <div class="col-md-6">
-                    <label for="role">Vai trò</label>
+                    <label class="font-weight-bold" for="district">Quận/Huyện</label><span class="required"> (*)</span>
+                    <input formControlName="district" class="form-control" type="text" placeholder="Quận/Huyện"
+                        name="phonenumber" id="phonenumber" required>
+                    <div *ngIf="userModalForm.get('district').touched && !userModalForm.get('district').valid"
+                        class="invalid-feedback">
+                        Quận huyện không được để trống
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label class="font-weight-bold" for="city">Thành phố</label><span class="required"> (*)</span>
+                    <input formControlName="city" class="form-control" type="text" placeholder="Thành phố" name="city"
+                        id="city" required>
+                    <div *ngIf="userModalForm.get('city').touched && !userModalForm.get('city').valid"
+                        class="invalid-feedback">
+                        Thành phố không được để trống
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="font-weight-bold" for="role">Vai trò</label><span class="required"> (*)</span>
                     <select formControlName="role" class="form-control" id="role">
                         <option value="Admin">Admin</option>
                         <option value="User">User</option>
                     </select>
+                    <div *ngIf="userModalForm.get('role').touched && !userModalForm.get('role').valid"
+                        class="invalid-feedback">
+                        Chọn 1 vai trò
+                    </div>
                 </div>
                 <div class="col-md-6">
-                    <label for="gender">Giới tính</label>
+                    <label class="font-weight-bold" for="gender">Giới tính</label><span class="required"> (*)</span>
                     <select formControlName="isMale" class="form-control" id="isMale">
-                        <option value="true">Nam</option>
-                        <option value="false">Nữ</option>
+                        <option [ngValue]="true">Nam</option>
+                        <option [ngValue]="false">Nữ</option>
                     </select>
+                    <div *ngIf="userModalForm.get('isMale').touched && !userModalForm.get('isMale').valid"
+                        class="invalid-feedback">
+                        Chọn 1 giới tính
+                    </div>
                 </div>
             </div>
         </div>
     </form>
 </div>
 <div class="modal-footer">
-    <button [disabled]="!userModalForm.valid" form="userModalForm" type="submit" class="btn btn-success">Xác nhận cập nhật người dùng</button>
+    <button [disabled]="!userModalForm.valid" form="userModalForm" type="submit" class="btn btn-success">Xác nhận cập
+        nhật người dùng</button>
     <button type="button" class="btn btn-primary" (click)="bsModalRef.hide()">Đóng</button>
 </div>

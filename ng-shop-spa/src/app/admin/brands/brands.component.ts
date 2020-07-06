@@ -20,6 +20,7 @@ export class BrandsComponent implements OnInit {
   bsModalRef: BsModalRef;
   isCollapsed = true;
   brandForm: FormGroup;
+  isFetchingBrands = false;
   // Pie
   public pieChartOptions: ChartOptions = {
     responsive: true,
@@ -43,8 +44,10 @@ export class BrandsComponent implements OnInit {
   }
 
   loadBrands() {
+    this.isFetchingBrands = true;
     this.brandService.getAllBrands().subscribe((brands: Brand[]) => {
       this.brands = brands;
+      this.isFetchingBrands = false;
     }, error => {
       console.log(error);
     }, () => {

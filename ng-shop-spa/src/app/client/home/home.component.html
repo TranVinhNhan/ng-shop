@@ -38,7 +38,7 @@
         </ul>
     </div>
 
-    <div class="product has-top-border">
+    <div *ngIf="!isFetching" class="product has-top-border">
         <h6 class="product-type">Laptop</h6>
         <div class="block-content row row-cols-lg-5 row-cols-md-3 row-cols-sm-2 row-cols-xs-2 row-cols-2">
             <div class="product-item my-2" *ngFor="let item of onePageArray">
@@ -56,6 +56,10 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div *ngIf="isFetching">
+        <h1>Loading...</h1>
     </div>
 
     <pagination [totalItems]="productsArray.length" (pageChanged)="pageChanged($event)" [boundaryLinks]=true>

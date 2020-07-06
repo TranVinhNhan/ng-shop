@@ -7,6 +7,9 @@ export interface User {
     fullName: string;
     isMale: boolean;
     phoneNumber: string;
+    city: string;
+    district: string;
+    addressNumber: string;
 
     orders: Order[];
 }

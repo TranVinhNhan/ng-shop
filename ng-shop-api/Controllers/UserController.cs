@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
@@ -34,9 +36,49 @@ namespace ng_shop_api.Controllers
             return Ok(result);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetPersonalInfo()
+        {
+            if (!Request.Headers.ContainsKey("id"))
+                return Unauthorized();
+
+            int id = int.Parse(Request.Headers["id"][0]);
+            if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value))
+                return Unauthorized();
+
+            var user = await _repo.GetUserById(id);
+            if (user == null)
+                return NotFound();
+
+            var userForReturn = _mapper.Map<PersonalInfoForReturnDto>(user);
+            return Ok(userForReturn);
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdatePersonalInfo([FromBody]PersonalInfoForUpdateDto personalInfoForUpdateDto)
+        {
+            if (!Request.Headers.ContainsKey("id"))
+                return Unauthorized();
+
+            int id = int.Parse(Request.Headers["id"].First());
+            if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value))
+                return Unauthorized();
+
+            var user = await _repo.GetUserById(id);
+            if (user == null)
+                return NotFound();
+
+            var updatedUser = _mapper.Map(personalInfoForUpdateDto, user);
+
+            if (await _repo.SaveAll())
+                return NoContent();
+
+            throw new Exception($"Updating user {id} failed on save");
+        }
+
         [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateUser(int id, [FromBody]UserForUpdateDto userForUpdateDto)
+        public async Task<IActionResult> UpdateUser(int id, [FromBody] UserForUpdateDto userForUpdateDto)
         {
             var user = await _repo.GetUserById(id);
             if (user == null)

@@ -13,187 +13,205 @@
             <a class="back-page" routerLink='/'><i class="fa fa-angle-left" aria-hidden="true"></i><span>Trở về mua
                     thêm</span></a>
         </div>
-        <div *ngIf="cart" class="row">
-            <div class="col-lg-7">
-                <form id="order-form" [formGroup]="orderForm" (ngSubmit)="onSubmit()">
-                    <div class="info-customer">
-                        <fieldset class="form-group">
-                            <div class="form-check form-check-inline">
-                                <input formControlName="isMale" class="form-check-input" name="isMale" type="radio"
-                                    [value]="true" id="nam">
-                                <label class="form-check-label" for="nam">Anh</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input formControlName="isMale" class="form-check-input" name="isMale" type="radio"
-                                    [value]="false" id="nu">
-                                <label class="form-check-label" for="nu">Chị</label>
-                            </div>
-                        </fieldset>
-                        <div class="form-row mt-2">
-                            <div class="form-group col-md-6">
-                                <input formControlName="fullname" type="text" class="form-control" name="fullname"
-                                    id="fullname" placeholder="Họ và tên">
-                                <div *ngIf="orderForm.get('fullname').touched && !orderForm.get('fullname').valid" class="invalid-feedback">
-                                    Họ và tên không hợp lệ
+        <div *ngIf="!orderSuccessful">
+            <div *ngIf="cart" class="row">
+                <div class="col-lg-7">
+                    <form id="order-form" [formGroup]="orderForm" (ngSubmit)="onSubmit()">
+                        <div class="info-customer">
+                            <fieldset class="form-group">
+                                <div class="form-check form-check-inline">
+                                    <input formControlName="isMale" class="form-check-input" name="isMale" type="radio"
+                                        [value]="true" id="nam">
+                                    <label class="form-check-label" for="nam">Anh</label>
                                 </div>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <input formControlName="phoneNumber" type="tel" class="form-control" name="phoneNumber"
-                                    id="phoneNumber" placeholder="Số điện thoại">
-                                <div *ngIf="orderForm.get('phoneNumber').touched && !orderForm.get('phoneNumber').valid" class="invalid-feedback">
-                                    Số điện thoại không hợp lệ
+                                <div class="form-check form-check-inline">
+                                    <input formControlName="isMale" class="form-check-input" name="isMale" type="radio"
+                                        [value]="false" id="nu">
+                                    <label class="form-check-label" for="nu">Chị</label>
                                 </div>
-                            </div>
-                            <div class="form-group col-md-12">
-                                <input formControlName="email" type="email" class="form-control" name="email" id="email"
-                                    placeholder="Email">
-                                <div *ngIf="orderForm.get('email').touched && !orderForm.get('email').valid" class="invalid-feedback">
-                                    Email không hợp lệ
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
-                                <input formControlName="option" type="text" class="form-control" name="option"
-                                    id="yeucaukhac" placeholder="Yêu cầu khác (Không bắt buộc)">
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="info-ship">
-                        <div><strong>Để được phục vụ nhanh hơn,</strong> hãy chọn thêm:</div>
-                        <div class="form-check form-check-inline">
-                            <input formControlName="isReceivedAtStore" class="form-check-input" name="isReceivedAtStore"
-                                type="radio" [value]="false" id="diachigiaohang" (change)="onShipping()"
-                                checked=true>
-                            <label class="form-check-label" for="diachigiaohang">Địa chỉ giao hàng</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input formControlName="isReceivedAtStore" class="form-check-input" name="isReceivedAtStore"
-                                type="radio" [value]="true" id="taicuahang" (change)="onReceivedAtStore()">
-                            <label class="form-check-label" for="taicuahang">Nhận tại cửa hàng</label>
-                        </div>
-                        <div *ngIf="!this.orderForm.get('isReceivedAtStore').value" class="diachigiaohang"
-                            style="display: block;">
-                            <div class="form-row">
+                            </fieldset>
+                            <div class="form-row mt-2">
                                 <div class="form-group col-md-6">
-                                    <input formControlName="shippingCity" type="text" class="form-control"
-                                        name="shippingCity" id="shippingCity" placeholder="Tỉnh/Thành phố">
-                                    <div *ngIf="orderForm.get('shippingCity').touched && !orderForm.get('shippingCity').valid" class="invalid-feedback">
-                                        Thành phố không hợp lệ
+                                    <input formControlName="fullName" type="text" class="form-control" name="fullName"
+                                        id="fullName" placeholder="Họ và tên">
+                                    <div *ngIf="orderForm.get('fullName').touched && !orderForm.get('fullName').valid"
+                                        class="invalid-feedback">
+                                        Họ và tên không hợp lệ
                                     </div>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <input formControlName="shippingDistrict" type="text" class="form-control"
-                                        name="shippingDistrict" id="shippingDistrict" placeholder="Quận/Huyện">
-                                    <div *ngIf="orderForm.get('shippingDistrict').touched && !orderForm.get('shippingDistrict').valid" class="invalid-feedback">
-                                        Quận không hợp lệ
+                                    <input (keypress)="onValidate($event)" formControlName="phoneNumber" type="tel"
+                                        class="form-control" name="phoneNumber" id="phoneNumber"
+                                        placeholder="Số điện thoại">
+                                    <div *ngIf="orderForm.get('phoneNumber').touched && !orderForm.get('phoneNumber').valid"
+                                        class="invalid-feedback">
+                                        Số điện thoại không hợp lệ
                                     </div>
                                 </div>
-                            </div>
-                            <div class="form-row mb-100">
                                 <div class="form-group col-md-12">
-                                    <input formControlName="shippingAddress" class="form-control"
-                                        placeholder="Số nhà, tên đường, phường/xã" id="shippingAddress" type="text"
-                                        name="shippingAddress">
-                                    <div *ngIf="orderForm.get('shippingAddress').touched && !orderForm.get('shippingAddress').valid" class="invalid-feedback">
-                                        Địa chỉ không hợp lệ
+                                    <input formControlName="email" type="email" class="form-control" name="email"
+                                        id="email" placeholder="Email">
+                                    <div *ngIf="orderForm.get('email').touched && !orderForm.get('email').valid"
+                                        class="invalid-feedback">
+                                        Email không hợp lệ
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="option[]"
-                                    value="Yêu cầu nhân viên hỗ trợ kỹ thuật đi giao hàng">
-                                <label class="form-check-label">Yêu cầu nhân viên hỗ trợ kỹ thuật đi giao hàng</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="option[]"
-                                    value="Cà thẻ khi nhận hàng">
-                                <label class="form-check-label">Cà thẻ khi nhận hàng</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="option[]"
-                                    value="Xuất hóa đơn công ty">
-                                <label class="form-check-label">Xuất hóa đơn công ty</label>
-                            </div>
-                        </div>
-                        <div *ngIf="this.orderForm.get('isReceivedAtStore').value" class="diachicuahang">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="address"
-                                    value="Số 105 ngõ 562 đường Láng, P. Láng Hạ, Q. Đống Đa, Hà Nội">
-                                <label class="form-check-label">Số 105 ngõ 562 đường Láng, P. Láng Hạ, Q. Đống Đa, Hà
-                                    Nội</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="address"
-                                    value="69 Phố Vọng, Phường Đồng Tâm, Quận Hai Bà Trưng, TP.Hà Nội">
-                                <label class="form-check-label">69 Phố Vọng, Phường Đồng Tâm, Quận Hai Bà Trưng, TP.Hà
-                                    Nội</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="address"
-                                    value="Số 62 Duy Tân, Phường 15, Q. Phú Nhuận, TP HCM">
-                                <label class="form-check-label">Số 62 Duy Tân, Phường 15, Q. Phú Nhuận, TP HCM</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="option[]"
-                                    value="Xuất hóa đơn công ty">
-                                <label class="form-check-label">Xuất hóa đơn công ty</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="group-action d-flex align-items-center justify-content-between">
-                        <button [disabled]="!this.orderForm.valid" class="btn btn-default btn-muangay mr-2 w-50" type="submit" name="order_send">
-                            Thanh toán khi nhận hàng</button>
-                        <button class="btn btn-primary btn-tragop ml-2 w-50" name="order_send">Chuyển khoản
-                            online</button>
-                    </div>
-                </form>
-            </div>
-            <div class="col-lg-5 cart-gray">
-                <div class="cart-title">Giỏ hàng của bạn</div>
-                <ul class="list-order list-unstyled">
-                    <li class="order-item" *ngFor="let cartItem of cart">
-                        <div class="d-flex">
-                            <div class="col-image">
-                                <img class="img-fluid" [src]="cartItem.thumbnailUrl" [alt]="cartItem.productName">
-                                <div (click)="onDeleteCartItem(cartItem)" class="delete_product"><i
-                                        class="fa fa-trash mr-1" aria-hidden="true"></i>Xóa</div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <input formControlName="option" type="text" class="form-control" name="option"
+                                        id="yeucaukhac" placeholder="Yêu cầu khác (Không bắt buộc)">
+                                </div>
                             </div>
 
-                            <div class="col-info">
-                                <div class="product-name"><a [routerLink]="['/detail/', cartItem.productId]"
-                                        target="_blank">{{cartItem.productName}}</a></div>
+                        </div>
+
+                        <div class="info-ship">
+                            <div><strong>Để được phục vụ nhanh hơn,</strong> hãy chọn thêm:</div>
+                            <div class="form-check form-check-inline">
+                                <input formControlName="isReceivedAtStore" class="form-check-input"
+                                    name="isReceivedAtStore" type="radio" [value]="false" id="diachigiaohang"
+                                    (change)="onShipping()" checked=true>
+                                <label class="form-check-label" for="diachigiaohang">Địa chỉ giao hàng</label>
                             </div>
-                            <div class="col-price">
-                                <div class="price">{{cartItem.pricePerUnit | number}} đ</div>
-                                <div class="choosequantity">
-                                    <button class="btn btn-danger btn-qty" [disabled]="cartItem.quantity<1"
-                                        (click)="onChangeQuantity(cartItem, -1)">
-                                        <i class="fa fa-minus" aria-hidden="true"></i>
-                                    </button>
-                                    <input disabled class="text-center num-product" type="number" name="num-product"
-                                        value={{cartItem.quantity}}>
-                                    <button class="btn btn-success btn-qty" (click)="onChangeQuantity(cartItem, 1)">
-                                        <i class="fa fa-plus" aria-hidden="true"></i>
-                                    </button>
+                            <div class="form-check form-check-inline">
+                                <input formControlName="isReceivedAtStore" class="form-check-input"
+                                    name="isReceivedAtStore" type="radio" [value]="true" id="taicuahang"
+                                    (change)="onReceivedAtStore()">
+                                <label class="form-check-label" for="taicuahang">Nhận tại cửa hàng</label>
+                            </div>
+                            <div *ngIf="!this.orderForm.get('isReceivedAtStore').value" class="diachigiaohang"
+                                style="display: block;">
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <input formControlName="shippingCity" type="text" class="form-control"
+                                            name="shippingCity" id="shippingCity" placeholder="Tỉnh/Thành phố">
+                                        <div *ngIf="orderForm.get('shippingCity').touched && !orderForm.get('shippingCity').valid"
+                                            class="invalid-feedback">
+                                            Thành phố không hợp lệ
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <input formControlName="shippingDistrict" type="text" class="form-control"
+                                            name="shippingDistrict" id="shippingDistrict" placeholder="Quận/Huyện">
+                                        <div *ngIf="orderForm.get('shippingDistrict').touched && !orderForm.get('shippingDistrict').valid"
+                                            class="invalid-feedback">
+                                            Quận không hợp lệ
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row mb-100">
+                                    <div class="form-group col-md-12">
+                                        <input formControlName="shippingAddress" class="form-control"
+                                            placeholder="Số nhà, tên đường, phường/xã" id="shippingAddress" type="text"
+                                            name="shippingAddress">
+                                        <div *ngIf="orderForm.get('shippingAddress').touched && !orderForm.get('shippingAddress').valid"
+                                            class="invalid-feedback">
+                                            Địa chỉ không hợp lệ
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="option[]"
+                                        value="Yêu cầu nhân viên hỗ trợ kỹ thuật đi giao hàng">
+                                    <label class="form-check-label">Yêu cầu nhân viên hỗ trợ kỹ thuật đi giao
+                                        hàng</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="option[]"
+                                        value="Cà thẻ khi nhận hàng">
+                                    <label class="form-check-label">Cà thẻ khi nhận hàng</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="option[]"
+                                        value="Xuất hóa đơn công ty">
+                                    <label class="form-check-label">Xuất hóa đơn công ty</label>
+                                </div>
+                            </div>
+                            <div *ngIf="this.orderForm.get('isReceivedAtStore').value" class="diachicuahang">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="address"
+                                        value="Số 105 ngõ 562 đường Láng, P. Láng Hạ, Q. Đống Đa, Hà Nội">
+                                    <label class="form-check-label">Số 105 ngõ 562 đường Láng, P. Láng Hạ, Q. Đống Đa,
+                                        Hà
+                                        Nội</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="address"
+                                        value="69 Phố Vọng, Phường Đồng Tâm, Quận Hai Bà Trưng, TP.Hà Nội">
+                                    <label class="form-check-label">69 Phố Vọng, Phường Đồng Tâm, Quận Hai Bà Trưng,
+                                        TP.Hà
+                                        Nội</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="address"
+                                        value="Số 62 Duy Tân, Phường 15, Q. Phú Nhuận, TP HCM">
+                                    <label class="form-check-label">Số 62 Duy Tân, Phường 15, Q. Phú Nhuận, TP
+                                        HCM</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="option[]"
+                                        value="Xuất hóa đơn công ty">
+                                    <label class="form-check-label">Xuất hóa đơn công ty</label>
                                 </div>
                             </div>
                         </div>
-                    </li>
 
-                </ul>
-                <hr>
-                <div class="total-price">
-                    <label>Tổng tiền:</label>
-                    <div class="total-price-value">{{ onTotal() | number}} đ</div>
+                        <div class="group-action d-flex align-items-center justify-content-between">
+                            <button [disabled]="!this.orderForm.valid" class="btn btn-default btn-muangay mr-2 w-50"
+                                type="submit" name="order_send">
+                                Thanh toán khi nhận hàng</button>
+                            <button class="btn btn-primary btn-tragop ml-2 w-50" name="order_send">Chuyển khoản
+                                online</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-5 cart-gray">
+                    <div class="cart-title">Giỏ hàng của bạn</div>
+                    <ul class="list-order list-unstyled">
+                        <li class="order-item" *ngFor="let cartItem of cart">
+                            <div class="d-flex">
+                                <div class="col-image">
+                                    <img class="img-fluid" [src]="cartItem.thumbnailUrl" [alt]="cartItem.productName">
+                                    <div (click)="onDeleteCartItem(cartItem)" class="delete_product"><i
+                                            class="fa fa-trash mr-1" aria-hidden="true"></i>Xóa</div>
+                                </div>
+
+                                <div class="col-info">
+                                    <div class="product-name"><a [routerLink]="['/detail/', cartItem.productId]"
+                                            target="_blank">{{cartItem.productName}}</a></div>
+                                </div>
+                                <div class="col-price">
+                                    <div class="price">{{cartItem.pricePerUnit | number}} đ</div>
+                                    <div class="choosequantity">
+                                        <button class="btn btn-danger btn-qty" [disabled]="cartItem.quantity<1"
+                                            (click)="onChangeQuantity(cartItem, -1)">
+                                            <i class="fa fa-minus" aria-hidden="true"></i>
+                                        </button>
+                                        <input disabled class="text-center num-product" type="number" name="num-product"
+                                            value={{cartItem.quantity}}>
+                                        <button class="btn btn-success btn-qty" (click)="onChangeQuantity(cartItem, 1)">
+                                            <i class="fa fa-plus" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+                    <hr>
+                    <div class="total-price">
+                        <label>Tổng tiền:</label>
+                        <div class="total-price-value">{{ onTotal() | number}} đ</div>
+                    </div>
                 </div>
             </div>
+            <div *ngIf="!cart">
+                <h3>Chưa có sản phẩm nào trong giỏ hàng</h3>
+            </div>
         </div>
-        <div *ngIf="!cart">
-            <h3>Chưa có sản phẩm nào trong giỏ hàng</h3>
+        <div *ngIf="orderSuccessful">
+            <h3>Đơn hàng của bạn đã được tiếp nhận.</h3>
         </div>
     </div>
 </div>

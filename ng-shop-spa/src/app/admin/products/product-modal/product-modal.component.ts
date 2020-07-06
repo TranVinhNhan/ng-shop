@@ -17,6 +17,7 @@ export class ProductModalComponent implements OnInit {
   product: Product;
   products: Product[];
   brands: Brand[];
+  isFetchingBrands = false;
   title: string;
   productModalForm: FormGroup;
   constructor(public bsModalRef: BsModalRef, private productService: ProductService, private brandService: BrandService) { }
@@ -27,8 +28,10 @@ export class ProductModalComponent implements OnInit {
   }
 
   loadBrands() {
+    this.isFetchingBrands = true;
     this.brandService.getAllBrands().subscribe((response: Brand[]) => {
       this.brands = response;
+      this.isFetchingBrands = false;
     }, error => {
       console.log(error);
     });

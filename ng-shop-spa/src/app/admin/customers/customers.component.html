@@ -31,12 +31,12 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th class="text-center">Email tài khoản</th>
-                            <th class="text-center">Họ tên chủ tài khoản</th>
-                            <th class="text-center">Giới tính</th>
-                            <th class="text-center">Số điện thoại</th>
+                            <th class="text-left">Email tài khoản</th>
+                            <th class="text-left">Họ tên chủ tài khoản</th>
+                            <th class="text-left">Giới tính</th>
+                            <th class="text-left">Số điện thoại</th>
                             <th class="text-center">Vai trò</th>
-                            <th class="text-center"></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -46,8 +46,8 @@
                             <td>{{ user.fullName }}</td>
                             <td>{{ user.isMale ? "Nam" : "Nữ" }}</td>
                             <td>{{ user.phoneNumber }}</td>
-                            <td>{{ user.role }}</td>
-                            <td>
+                            <td class="text-center">{{ user.role }}</td>
+                            <td class="text-right">
                                 <button (click)="openModalWithCustomerModalComponent(user)"
                                     class="btn btn-sm btn-outline-secondary mb-1">
                                     <i class="fa fa-wrench fa-lg"></i> Update
