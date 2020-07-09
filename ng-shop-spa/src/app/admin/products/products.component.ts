@@ -10,7 +10,7 @@ import { BrandService } from 'src/app/_services/brand.service';
 import { ProductModalComponent } from './product-modal/product-modal.component';
 import { ImageModalComponent } from './image-modal/image-modal.component';
 import { ImageDeleteModalComponent } from './image-delete-modal/image-delete-modal.component';
-import { NumberOnlyService } from 'src/app/_services/number-only.service';
+import { ExtensionService } from 'src/app/_services/extension.service';
 
 @Component({
   selector: 'app-products',
@@ -32,7 +32,7 @@ export class ProductsComponent implements OnInit {
     private productService: ProductService,
     private brandService: BrandService,
     private modalService: BsModalService,
-    private numberOnlyService: NumberOnlyService
+    private extensionService: ExtensionService
   ) { }
 
   ngOnInit(): void {
@@ -150,6 +150,6 @@ export class ProductsComponent implements OnInit {
   }
 
   onValidate($event) {
-    return this.numberOnlyService.onValidate($event);
+    return this.extensionService.onValidate($event);
   }
 }

@@ -25,3 +25,64 @@ input.ng-touched.ng-valid, select.ng-touched.ng-valid, textarea.ng-touched.ng-va
 .required {
     color: red;
 }
+
+.thead-custom {
+    color: #fff;
+    background-color: #27bece;
+    border-color: #27bece;
+  }
+
+.inline-text {
+    white-space: nowrap;
+}
+
+.border-info {
+    border-color: #27bece !important;
+}
+
+.bg-info {
+    background-color: #27bece !important;
+}
+
+.btn-group {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: end;
+    -webkit-justify-content: flex-end;
+    -moz-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+  }
+
+  .btn-item {
+    display: block;
+    height: 30px;
+    width: 30px;
+    position: relative;
+    background: #e5e5e5;
+    margin-right: 5px;
+  }
+
+  .btn-item:hover {
+    background-color: #27bece;
+  }
+
+  .btn-item:hover i {
+    color: white;
+  }
+  
+  .btn-item i {
+    font-size: 20px;
+    color: #808080;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }

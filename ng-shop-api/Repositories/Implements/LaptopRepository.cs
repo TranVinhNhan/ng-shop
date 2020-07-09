@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using ng_shop_api.Data;
@@ -80,6 +81,15 @@ namespace ng_shop_api.Repositories.Implements
         {
             var order = await _context.Orders.Include(o => o.OrderDetails).FirstOrDefaultAsync(o => o.Id == id);
             return order;
+        }
+
+        public async Task<IEnumerable<Order>> GetOrdersOfUser(int id)
+        {
+            var orders = await _context.Orders
+            .Where(o => o.UserId == id)
+            .Include(o => o.OrderDetails)
+            .ToListAsync();
+            return orders;
         }
     }
 }

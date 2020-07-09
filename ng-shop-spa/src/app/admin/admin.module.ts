@@ -21,6 +21,7 @@ import { ImageDeleteModalComponent } from './products/image-delete-modal/image-d
 import { BrandsComponent } from './brands/brands.component';
 import { BrandImageModalComponent } from './brands/brand-image-modal/brand-image-modal.component';
 import { BrandUpdateModalComponent } from './brands/brand-update-modal/brand-update-modal.component';
+import { ProductOrderModalComponent } from './orders/product-order-modal/product-order-modal.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { BrandUpdateModalComponent } from './brands/brand-update-modal/brand-upd
     ImageDeleteModalComponent,
     BrandsComponent,
     BrandImageModalComponent,
-    BrandUpdateModalComponent
+    BrandUpdateModalComponent,
+    ProductOrderModalComponent
   ],
   imports: [
     CommonModule,

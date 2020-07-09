@@ -30,4 +30,12 @@ export class CartService {
     getAllOrder(): Observable<Order[]> {
         return this.http.get<Order[]>(this.baseUrl + 'order/all');
     }
+
+    getAllOrdersByUser(id: number): Observable<Order[]> {
+        return this.http.get<Order[]>(this.baseUrl + 'order/user/' + id);
+    }
+
+    deleteOrder(id: number) {
+        return this.http.delete(this.baseUrl + 'order/' + id);
+    }
 }

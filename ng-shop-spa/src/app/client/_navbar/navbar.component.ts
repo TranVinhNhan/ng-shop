@@ -3,6 +3,7 @@ import { AuthService } from 'src/app/_services/auth.service';
 import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 import { CartService } from 'src/app/_services/cart.service';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-client-navbar',
@@ -14,7 +15,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   cartCount: number;
   cartCountSubscription: Subscription;
 
-  constructor(private authService: AuthService, private cartService: CartService) { }
+  constructor(private authService: AuthService, private cartService: CartService, private router: Router) { }
 
   ngOnInit(): void {
     this.loadCartCount();
@@ -49,5 +50,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   logout() {
     this.authService.logout();
+    this.router.navigate(['/']);
   }
 }

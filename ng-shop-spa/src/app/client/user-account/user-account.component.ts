@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
-import { NumberOnlyService } from 'src/app/_services/number-only.service';
+import { ExtensionService } from 'src/app/_services/extension.service';
 import { UserService } from 'src/app/_services/user.service';
 import { AuthService } from 'src/app/_services/auth.service';
 import { User } from 'src/app/_models/user';
+import { CartService } from 'src/app/_services/cart.service';
+import { Order } from 'src/app/_models/order';
+import { OrderDetail } from 'src/app/_models/order-detail';
 
 @Component({
   selector: 'app-user-account',
@@ -14,21 +17,24 @@ import { User } from 'src/app/_models/user';
 export class UserAccountComponent implements OnInit {
 
   user: User;
+  orders: Order[] = [];
   userAccountForm: FormGroup;
 
   constructor(
-    private numberOnlyService: NumberOnlyService,
+    private extensionService: ExtensionService,
     private userService: UserService,
-    private authService: AuthService
+    private authService: AuthService,
+    private cartService: CartService
   ) { }
 
   ngOnInit(): void {
     this.loadPersonalInfo();
+    this.loadPersonalOrders();
     this.initUserAccountForm();
   }
 
   onValidate($event) {
-    return this.numberOnlyService.onValidate($event);
+    return this.extensionService.onValidate($event);
   }
 
   initUserAccountForm() {
@@ -57,6 +63,24 @@ export class UserAccountComponent implements OnInit {
     } else {
       console.log('error, please login');
     }
+  }
+
+  loadPersonalOrders() {
+    if (this.authService.decodedToken) {
+      this.cartService.getAllOrdersByUser(this.authService.decodedToken.nameid).subscribe((response: Order[]) => {
+        this.orders = response;
+      }, error => {
+        console.log(error);
+      });
+    }
+  }
+
+  onTotal(orderDetails: OrderDetail[]) {
+    let sum = 0;
+    orderDetails.forEach(item => {
+      sum += (item.pricePerUnit * item.quantity);
+    });
+    return sum;
   }
 
   onSubmit() {

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { CartService } from 'src/app/_services/cart.service';
-import { NumberOnlyService } from 'src/app/_services/number-only.service';
+import { ExtensionService } from 'src/app/_services/extension.service';
 import { AuthService } from 'src/app/_services/auth.service';
 import { UserService } from 'src/app/_services/user.service';
 import { User } from 'src/app/_models/user';
@@ -22,7 +22,7 @@ export class OrderComponent implements OnInit {
   orderForm: FormGroup;
   constructor(
     private cartService: CartService,
-    private numberOnlyService: NumberOnlyService,
+    private extensionService: ExtensionService,
     private authService: AuthService,
     private userService: UserService
   ) { }
@@ -73,7 +73,7 @@ export class OrderComponent implements OnInit {
 
   // https://stackoverflow.com/questions/45418242/how-to-allow-only-numbers-in-html-input-type-text-using-typescript
   onValidate($event) {
-    return this.numberOnlyService.onValidate($event);
+    return this.extensionService.onValidate($event);
   }
 
 
@@ -145,6 +145,7 @@ export class OrderComponent implements OnInit {
         this.id = response.id;
         localStorage.removeItem('cart');
         this.loadCart();
+        console.log(response);
       }, error => {
         console.log(error);
       });

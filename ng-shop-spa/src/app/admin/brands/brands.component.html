@@ -54,7 +54,7 @@
                 <!-- Table -->
                 <div *ngIf="!isFetchingBrands" class="table-responsive m-b-40">
                     <table class="table table-borderless table-striped">
-                        <thead>
+                        <thead class="thead-custom">
                             <tr>
                                 <th>#</th>
                                 <th>Tên thương hiệu</th>
@@ -70,23 +70,23 @@
                                 <td *ngIf="!brand.image">Chưa có hình ảnh</td>
                                 <td *ngIf="brand.image"><img [src]="brand.image.url" alt="brand image"></td>
                                 <td class="text-center">{{ brand.products.length }}</td>
-                                <td class="text-right">
+                                <td class="text-right btn-group">
                                     <button *ngIf="!brand.image"
                                         (click)="openModalWithBrandImageModalComponent(brand, false)"
-                                        class="btn btn-sm btn-outline-secondary mb-1">
-                                        <i class="fa fa-file-image-o fa-lg"></i> Add Images
+                                        class="btn btn-item">
+                                        <i class="fa fa-file-image-o fa-lg"></i>
                                     </button>
                                     <button *ngIf="brand.image"
                                         (click)="openModalWithBrandImageModalComponent(brand, true)"
-                                        class="btn btn-sm btn-outline-secondary mb-1">
-                                        <i class="fa fa-file-image-o fa-lg"></i> Update Images
+                                        class="btn btn-item">
+                                        <i class="fa fa-file-image-o fa-lg"></i>
                                     </button>
                                     <button (click)="openModalWithBrandUpdateModalComponent(brand)"
-                                        class="btn btn-sm btn-outline-secondary mb-1">
-                                        <i class="fa fa-wrench fa-lg"></i> Update
+                                        class="btn btn-item">
+                                        <i class="fa fa-wrench fa-lg"></i>
                                     </button>
-                                    <button (click)="onDelete(brand.id)" class="btn btn-sm btn-outline-secondary mb-1">
-                                        <i class="fa fa-trash-o fa-lg"></i> Delete
+                                    <button (click)="onDelete(brand.id)" class="btn btn-item">
+                                        <i class="fa fa-trash-o fa-lg"></i>
                                     </button>
                                 </td>
                             </tr>

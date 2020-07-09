@@ -7,6 +7,7 @@ using ng_shop_api.Models;
 using System.Linq;
 using System;
 using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace ng_shop_api.Controllers
 {
@@ -71,6 +72,36 @@ namespace ng_shop_api.Controllers
                 return NotFound();
 
             return Ok(order);
+        }
+
+        [AllowAnonymous]
+        [HttpGet("user/{userId}")]
+        public async Task<IActionResult> GetAllOrdersByUser(int userId)
+        {
+            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value))
+                return Unauthorized();
+
+            var orders = await _repo.GetOrdersOfUser(userId);
+            return Ok(orders);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteOrder(int id)
+        {
+            var order = await _repo.GetOrderById(id);
+            if (order == null)
+            {
+                return NotFound();
+            }
+
+            _repo.Delete(order);
+
+            if (await _repo.SaveAll())
+            {
+                return Ok();
+            }
+
+            throw new Exception($"Deleting order {id} failed on save");
         }
     }
 }

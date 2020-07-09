@@ -24,5 +24,6 @@ namespace ng_shop_api.Repositories.Interfaces
          // Order
          Task<IEnumerable<Order>> GetAllOrders();
          Task<Order> GetOrderById(int id);
+         Task<IEnumerable<Order>> GetOrdersOfUser(int id);
     }
 }

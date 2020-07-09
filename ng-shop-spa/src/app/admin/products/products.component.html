@@ -206,7 +206,7 @@
             <!-- Table sản phẩm -->
             <div *ngIf="!isFetchingProducts" class="table-responsive table-scroll-fixed-head">
                 <table class="table table-sm table-hover">
-                    <thead>
+                    <thead class="thead-custom">
                         <tr>
                             <th>#</th>
                             <th class="text-center">Tên sản phẩm</th>
@@ -226,8 +226,8 @@
                             <td>
                                 {{ product.productName }}
                                 <br>
-                                <div *ngIf="product.isAvailable" class="text-success">Tình trạng: còn hàng</div>
-                                <div *ngIf="!product.isAvailable" class="text-danger">Tình trạng: hết hàng</div>
+                                <div *ngIf="product.isAvailable" class="text-center bg-success text-white border border-success rounded">Tình trạng: còn hàng</div>
+                                <div *ngIf="!product.isAvailable" class="text-center bg-danger text-white border border-danger rounded">Tình trạng: hết hàng</div>
                             </td>
                             <td>{{ product.productShortName }}</td>
                             <td class="force-text">{{ product.description }}</td>
@@ -257,19 +257,19 @@
                                 {{ product.price | number}} vnđ
                             </td>
                             <td class="text-center">{{ product.brand.brandName }}</td>
-                            <td>
+                            <td class="btn-group">
                                 <button (click)="openModalWithImageModalComponent(product)"
-                                    class="btn btn-sm btn-outline-secondary mb-1">
-                                    <i class="fa fa-file-image-o fa-lg"></i> Add Images
+                                    class="btn btn-item">
+                                    <i class="fa fa-file-image-o fa-lg"></i>
                                 </button>
 
                                 <button (click)="openModalWithProductModalComponent(product)"
-                                    class="btn btn-sm btn-outline-secondary mb-1">
-                                    <i class="fa fa-wrench fa-lg"></i> Update
+                                    class="btn btn-item">
+                                    <i class="fa fa-wrench fa-lg"></i>
                                 </button>
 
-                                <button (click)="onDelete(product.id)" class="btn btn-sm btn-outline-secondary mb-1">
-                                    <i class="fa fa-trash-o fa-lg"></i> Delete
+                                <button (click)="onDelete(product.id)" class="btn btn-item">
+                                    <i class="fa fa-trash-o fa-lg"></i>
                                 </button>
                             </td>
                         </tr>

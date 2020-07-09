@@ -47,7 +47,7 @@ namespace ng_shop_api.Repositories.Implements
             return await _context.Users.AnyAsync(x => x.Email == email) ? true : false;
         }
 
-        // Nguồn: https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/consumer-apis/password-hashing?view=aspnetcore-3.1
+        // https://docs.microsoft.com/en-us/aspnet/core/security/data-protection/consumer-apis/password-hashing?view=aspnetcore-3.1
         private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
         {
             passwordSalt = new byte[128 / 8];

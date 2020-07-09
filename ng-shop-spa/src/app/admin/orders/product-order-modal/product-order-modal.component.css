@@ -1,0 +1,11 @@
+.img-thumbnail {
+    max-width: 100px;
+}
+
+.price {
+    width: fit-content;
+}
+
+.btn-add {
+    border-radius: 100%;
+}

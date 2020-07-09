@@ -1,3 +1,152 @@
 .inline-text {
     white-space: nowrap;
 }
+
+.table-scroll-fixed-head {
+    overflow-y: auto; 
+    height: 800px;
+}
+
+.table-scroll-fixed-head thead th {
+    position: sticky;
+    top: 0;
+    background: #27bece;
+}
+
+  #order-form {
+    border: 1px solid #27bece;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+    border-radius: 2px;
+    margin-bottom: 60px;
+    font-size: 14px;
+}
+
+.info-customer, .info-ship, .group-action {
+    padding: 10px 25px;
+}
+
+fieldset {
+    min-width: 0;
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+.diachigiaohang, .diachicuahang {
+    margin-top: 10px;
+    background: #f0f0f0;
+    position: relative;
+}
+
+.diachigiaohang {
+    padding: 25px 15px 10px;
+}
+
+.diachicuahang {
+    padding: 10px 15px 10px;
+}
+
+.list-order {
+    padding: 20px;
+    background: white;
+}
+
+.list-unstyled{
+    list-style: none;
+}
+
+.col-image {
+    width: 15%;
+    margin-right: 15px;
+    position: relative;
+}
+
+.col-info {
+    width: 55%;
+}
+
+.col-price {
+    position: relative;
+    width: 30%;
+}
+
+.img-fluid {
+    max-width: 50px;
+    height: auto;
+}
+
+.cart-gray {
+    background: #f0f0f0;
+    padding: 10px;
+    height: fit-content;
+    border: 1px solid #27bece;
+}
+
+.cart-title {
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    padding-left: 10px;
+    color: #27bece;
+    border-left: 6px solid #27bece;
+    font-family: "Roboto", Arial;
+    margin-bottom: 10px;
+}
+
+.num-product {
+    width: 40px;
+    vertical-align: middle;
+}
+
+.btn-muangay {
+    background: #fa7814;
+}
+
+.btn-muangay:hover {
+    background: #b95000;
+}
+
+.btn-tragop {
+    background: #288ad6;
+}
+
+.btn-tragop:hover {
+    background: #0066b4;;
+}
+
+.btn.btn-muangay, .btn.btn-tragop {
+    color: #fff;
+    text-transform: uppercase;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 3px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.btn-qty {
+    padding: .1rem .5rem;
+    border-radius: 0px;
+    vertical-align: middle;
+}
+
+.delete_product {
+    cursor: pointer;
+    width: fit-content;
+}
+
+.delete_product:hover {
+    color: #288ad6;
+}
+
+.total-price-value {
+    float: right;
+    color: #c10015;
+    font-size: 22px;
+    font-weight: bold;
+}

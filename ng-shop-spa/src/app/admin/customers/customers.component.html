@@ -28,7 +28,7 @@
             <h6>Tổng số tài khoản: {{users.length}}</h6>
             <div class="table-responsive table-scroll-fixed-head">
                 <table class="table table-sm table-hover">
-                    <thead>
+                    <thead class="thead-custom">
                         <tr>
                             <th>ID</th>
                             <th class="text-left">Email tài khoản</th>
@@ -47,14 +47,14 @@
                             <td>{{ user.isMale ? "Nam" : "Nữ" }}</td>
                             <td>{{ user.phoneNumber }}</td>
                             <td class="text-center">{{ user.role }}</td>
-                            <td class="text-right">
+                            <td class="text-right btn-group">
                                 <button (click)="openModalWithCustomerModalComponent(user)"
-                                    class="btn btn-sm btn-outline-secondary mb-1">
-                                    <i class="fa fa-wrench fa-lg"></i> Update
+                                    class="btn btn-item">
+                                    <i class="fa fa-wrench fa-lg"></i>
                                 </button>
 
-                                <button (click)="onDelete(user.id)" class="btn btn-sm btn-outline-secondary mb-1">
-                                    <i class="fa fa-trash-o fa-lg"></i> Delete
+                                <button (click)="onDelete(user.id)" class="btn btn-item">
+                                    <i class="fa fa-trash-o fa-lg"></i>
                                 </button>
                             </td>
                         </tr>

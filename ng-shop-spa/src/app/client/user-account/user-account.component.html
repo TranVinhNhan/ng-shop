@@ -13,7 +13,9 @@
                         <div class="form-group col-md-4">
                             <label for="fullname"><b>Họ và tên</b></label><span class="required"> (*)</span>
                             <input formControlName="fullname" type="text">
-                            <span *ngIf="userAccountForm.get('fullname').touched && !userAccountForm.get('fullname').valid" class="invalid-feedback">
+                            <span
+                                *ngIf="userAccountForm.get('fullname').touched && !userAccountForm.get('fullname').valid"
+                                class="invalid-feedback">
                                 Họ tên không được để trống
                             </span>
                         </div>
@@ -21,7 +23,9 @@
                             <label for="phoneNumber"><b>Số điện thoại</b></label><span class="required"> (*)</span>
                             <input formControlName="phoneNumber" (keypress)="onValidate($event)" type="text"
                                 placeholder="Điền số điện thoại tại đây..." name="phoneNumber" id="phoneNumber">
-                            <span *ngIf="userAccountForm.get('phoneNumber').touched && !userAccountForm.get('phoneNumber').valid" class="invalid-feedback">
+                            <span
+                                *ngIf="userAccountForm.get('phoneNumber').touched && !userAccountForm.get('phoneNumber').valid"
+                                class="invalid-feedback">
                                 Số điện thoại không được để trống
                             </span>
                         </div>
@@ -55,7 +59,9 @@
                             <input formControlName="addressNumber" type="text" placeholder="Điền địa chỉ tại đây..."
                                 name="addressNumber" id="addressNumber">
 
-                            <span *ngIf="userAccountForm.get('addressNumber').touched && !userAccountForm.get('addressNumber').valid" class="invalid-feedback">
+                            <span
+                                *ngIf="userAccountForm.get('addressNumber').touched && !userAccountForm.get('addressNumber').valid"
+                                class="invalid-feedback">
                                 Địa chỉ không được để trống
                             </span>
                         </div>
@@ -63,27 +69,74 @@
                             <label for="district"><b>Quận/Huyện</b></label><span class="required"> (*)</span>
                             <input formControlName="district" type="text" placeholder="Quận/Huyện" name="district"
                                 id="district">
-                            <span *ngIf="userAccountForm.get('district').touched && !userAccountForm.get('district').valid" class="invalid-feedback">
+                            <span
+                                *ngIf="userAccountForm.get('district').touched && !userAccountForm.get('district').valid"
+                                class="invalid-feedback">
                                 Quận huyện không được để trống
                             </span>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="city"><b>Thành phố</b></label><span class="required"> (*)</span>
                             <input formControlName="city" type="text" placeholder="Thành phố" name="city" id="city">
-                            <span *ngIf="userAccountForm.get('city').touched && !userAccountForm.get('city').valid" class="invalid-feedback">
+                            <span *ngIf="userAccountForm.get('city').touched && !userAccountForm.get('city').valid"
+                                class="invalid-feedback">
                                 Thành phố không được để trống
                             </span>
                         </div>
                     </div>
-                    <button [disabled]="!userAccountForm.valid || !userAccountForm.touched || !userAccountForm.dirty" type="submit" class="user-account-btn">Cập nhật thông tin tài khoản</button>
+                    <button [disabled]="!userAccountForm.valid || !userAccountForm.touched || !userAccountForm.dirty"
+                        type="submit" class="user-account-btn">Cập nhật thông tin tài khoản</button>
                 </div>
             </form>
         </tab>
         <tab class="tab-item">
             <ng-template tabHeading>
-                <span class="font-weight-bold text-decoration-none">Lịch sử đặt hàng</span>
+                <span class="font-weight-bold text-decoration-none">Lịch sử mua hàng</span>
             </ng-template>
-            Basic content 1
+            <div class="container">
+                <h1>Lịch sử mua hàng</h1>
+                    <p>Quý khách có thể kiểm tra, cập nhật cũng như hủy đơn hàng của mình tại đây.</p>
+                    <hr>
+                <table *ngIf="orders.length" class="table table-hover">
+                    <thead class="thead-custom">
+                        <th class="inline-text">Mã đơn hàng</th>
+                        <th class="inline-text">Ngày đặt hàng</th>
+                        <th class="inline-text">Địa chỉ người nhận</th>
+                        <th class="inline-text">Giỏ hàng</th>
+                        <th class="inline-text">Tình trạng đơn hàng</th>
+                        <th></th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let order of orders">
+                            <td>#{{ order.id }}</td>
+                            <td>{{ order.placedTime | date:'E dd/MM/yyyy h:mm:ss a' }}</td>
+                            <td *ngIf="!order.isReceivedAtStore">
+                                     {{ order.fullName }}
+                                <br> {{ order.phoneNumber }}
+                                <br> {{ order.shippingAddress + ' ' + order.shippingDistrict + ' ' + order.shippingCity }}
+                            </td>
+                            <td *ngIf="order.isReceivedAtStore">
+                                Nhận sản phẩm tại cửa hàng
+                            </td>
+                            <td>
+                                <div class="inline-text" *ngFor="let item of order.orderDetails">
+                                    <b>{{item.productShortName}}</b> | Số lượng: {{ item.quantity }} x {{ item.pricePerUnit | number}} đ
+                                </div>
+                                <hr>
+                                <b class="inline-text">Thành tiền: </b> <b class="text-danger">{{onTotal(order.orderDetails) | number }} đ</b>
+                            </td>
+                            <td class="text-success">{{ order.orderStatus }}</td>
+                            <td class="btn-group">
+                                <button
+                                    class="btn btn-item">
+                                    <i class="fa fa-times fa-lg"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h3 *ngIf="!orders.length">Lịch sử đặt hàng trống</h3>
+            </div>
         </tab>
     </tabset>
 </div>

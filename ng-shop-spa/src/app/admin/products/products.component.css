@@ -19,7 +19,7 @@ th {
 .table-scroll-fixed-head thead th {
     position: sticky;
     top: 0;
-    background: white;
+    background: #27bece;
 }
 
 .img-thumbnail {

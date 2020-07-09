@@ -5,7 +5,7 @@ export interface OrderDetail {
     id: number;
     productShortName: string;
     quantity: number;
-    price: number;
+    pricePerUnit: number;
 
     orderId: number;
     productId: number;

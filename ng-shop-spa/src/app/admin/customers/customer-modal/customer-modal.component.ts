@@ -3,7 +3,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
 import { User } from 'src/app/_models/user';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserService } from 'src/app/_services/user.service';
-import { NumberOnlyService } from 'src/app/_services/number-only.service';
+import { ExtensionService } from 'src/app/_services/extension.service';
 
 @Component({
   selector: 'app-customer-modal',
@@ -15,7 +15,7 @@ export class CustomerModalComponent implements OnInit {
   title: string;
   user: User;
   userModalForm: FormGroup;
-  constructor(public bsModalRef: BsModalRef, private userService: UserService, private numberOnlyService: NumberOnlyService) { }
+  constructor(public bsModalRef: BsModalRef, private userService: UserService, private extensionService: ExtensionService) { }
 
   ngOnInit(): void {
     this.initUserModalForm();
@@ -46,6 +46,6 @@ export class CustomerModalComponent implements OnInit {
   }
 
   onValidate($event) {
-    return this.numberOnlyService.onValidate($event);
+    return this.extensionService.onValidate($event);
   }
 }
