@@ -1,0 +1,83 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">{{title}}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <div class="order-md-1">
+        <form id="orderDetailForm" [formGroup]="orderDetailForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col-md-5 mb-3">
+                    <label class="font-weight-bold" for="fullName">Họ tên người nhận hàng</label>
+                    <input formControlName="fullName" type="text" class="form-control" id="firstName" placeholder="">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label class="font-weight-bold" for="lastName">Số điện thoại liên lạc</label>
+                    <input formControlName="phoneNumber" type="text" class="form-control" id="lastName" placeholder="">
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label class="font-weight-bold" for="isMale">Giới tính</label>
+                    <select formControlName="isMale" class="form-control" id="isMale">
+                        <option [ngValue]="true">Nam</option>
+                        <option [ngValue]="false">Nữ</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="font-weight-bold" for="placedTime">Ngày đặt hàng</label>
+                <input disabled [value]="order.placedTime | date:'E dd/MM/yyyy h:mm:ss a'" type="datetime"
+                    class="form-control" id="placedTime" placeholder="dd//mm/yyyy">
+            </div>
+
+            <div class="mb-3">
+                <label class="font-weight-bold" for="email">Email</label>
+                <input formControlName="email" type="email" class="form-control" id="email"
+                    placeholder="you@example.com">
+            </div>
+
+            <div class="mb-3">
+                <label class="font-weight-bold" for="address">Địa chỉ giao hàng</label>
+                <input formControlName="shipping" type="text" class="form-control" id="address"
+                    placeholder="1234 Main St">
+            </div>
+
+            <div class="mb-3">
+                <label class="font-weight-bold">Đơn hàng gồm:</label>
+                <div class="text-right">
+                    <div class="inline-text" *ngFor="let item of order.orderDetails">
+                        <b class="text-info">{{item.productShortName}}</b><b> x {{ item.quantity }} máy </b> <b>|</b>
+                        <b>
+                            Giá bán lẻ:</b><b class="p-1 text-info"> {{ item.pricePerUnit | number}}đ/máy</b> =
+                        {{ item.pricePerUnit * item.quantity | number }} đ
+                    </div>
+                    <hr>
+                    <b class="inline-text">Thành tiền: </b><b
+                        class="inline-text text-danger">{{onTotal(order.orderDetails) | number }} đ</b>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="font-weight-bold" for="option">Yêu cầu khác</label>
+                <input formControlName="option" type="text" class="form-control" id="option" placeholder="">
+            </div>
+
+            <div class="mb-3" style="width: 300px;">
+                <label class="font-weight-bold" for="orderStatus">Tình trạng đơn hàng</label>
+                <select formControlName="orderStatus" class="form-control" id="orderStatus">
+                    <option [value]="'Đã tiếp nhận'">Đã tiếp nhận</option>
+                    <option [value]="'Đang lấy hàng'">Đang lấy hàng</option>
+                    <option [value]="'Đợi nhận hàng'">Đợi nhận hàng</option>
+                    <option [value]="'Đang vận chuyển'">Đang vận chuyển</option>
+                    <option [value]="'Đơn hàng thành công'">Đơn hàng thành công</option>
+                    <option [value]="'Đã hủy đơn'">Đã hủy đơn</option>
+                </select>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="modal-footer">
+    <button form="orderDetailForm" type="submit" class="btn btn-success">Lưu</button>
+    <button type="button" class="btn btn-primary" (click)="bsModalRef.hide()">Đóng</button>
+</div>

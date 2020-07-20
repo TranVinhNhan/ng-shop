@@ -3,6 +3,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Order } from '../_models/order';
+import { id } from 'chartjs-plugin-annotation';
 
 @Injectable({
     providedIn: 'root'
@@ -37,5 +38,9 @@ export class CartService {
 
     deleteOrder(id: number) {
         return this.http.delete(this.baseUrl + 'order/' + id);
+    }
+
+    updateOrderStatus(id: number, order: {orderStatus: string}) {
+        return this.http.put(this.baseUrl + 'order/' + id, order);
     }
 }

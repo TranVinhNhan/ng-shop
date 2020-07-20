@@ -22,6 +22,7 @@ import { BrandsComponent } from './brands/brands.component';
 import { BrandImageModalComponent } from './brands/brand-image-modal/brand-image-modal.component';
 import { BrandUpdateModalComponent } from './brands/brand-update-modal/brand-update-modal.component';
 import { ProductOrderModalComponent } from './orders/product-order-modal/product-order-modal.component';
+import { OrderDetailModalComponent } from './orders/order-detail-modal/order-detail-modal.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { ProductOrderModalComponent } from './orders/product-order-modal/product
     ImageModalComponent,
     CustomerModalComponent,
     OrdersComponent,
+    OrderDetailModalComponent,
     ImageDeleteModalComponent,
     BrandsComponent,
     BrandImageModalComponent,

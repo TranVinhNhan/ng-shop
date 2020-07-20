@@ -4,6 +4,7 @@ import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 import { CartService } from 'src/app/_services/cart.service';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
+import { AlertifyService } from 'src/app/_services/alertifyjs.service';
 
 @Component({
   selector: 'app-client-navbar',
@@ -15,7 +16,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
   cartCount: number;
   cartCountSubscription: Subscription;
 
-  constructor(private authService: AuthService, private cartService: CartService, private router: Router) { }
+  constructor(
+    private authService: AuthService,
+    private cartService: CartService,
+    private router: Router,
+    private alertifyService: AlertifyService
+    ) { }
 
   ngOnInit(): void {
     this.loadCartCount();
@@ -51,5 +57,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
   logout() {
     this.authService.logout();
     this.router.navigate(['/']);
+    this.alertifyService.success('Đã đăng xuất');
   }
 }

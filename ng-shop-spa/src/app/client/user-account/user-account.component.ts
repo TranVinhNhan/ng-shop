@@ -8,6 +8,7 @@ import { User } from 'src/app/_models/user';
 import { CartService } from 'src/app/_services/cart.service';
 import { Order } from 'src/app/_models/order';
 import { OrderDetail } from 'src/app/_models/order-detail';
+import { AlertifyService } from 'src/app/_services/alertifyjs.service';
 
 @Component({
   selector: 'app-user-account',
@@ -24,7 +25,8 @@ export class UserAccountComponent implements OnInit {
     private extensionService: ExtensionService,
     private userService: UserService,
     private authService: AuthService,
-    private cartService: CartService
+    private cartService: CartService,
+    private alertifyService: AlertifyService
   ) { }
 
   ngOnInit(): void {
@@ -91,5 +93,23 @@ export class UserAccountComponent implements OnInit {
           console.log(error);
         }, () => { alert('Cập nhật thông tin thành công!'); });
     }
+  }
+
+  renderClass(orderStatus: string) {
+    return this.extensionService.renderClass(orderStatus);
+  }
+
+  onCancelOrder(orderId: number) {
+    this.alertifyService.confirm('Bạn có chắc muốn hủy đơn hàng này không? Sau khi hủy sẽ không thể hoàn tác.', () => {
+      const orderDto: { orderStatus: string } = {
+        orderStatus: 'Đã hủy đơn'
+      };
+      this.userService.cancelOrder(this.authService.decodedToken.nameid, orderId, orderDto).subscribe(() => {
+        const order = this.orders.find(o => o.id === orderId);
+        order.orderStatus = 'Đã hủy đơn';
+      }, error => {
+        console.log(error);
+      });
+    });
   }
 }

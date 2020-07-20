@@ -232,9 +232,10 @@
                         <tr>
                             <th class="inline-text">Ngày đặt hàng</th>
                             <th class="inline-text">Mã đơn hàng</th>
+                            <th class="inline-text">Mã tài khoản đặt hàng</th>
                             <th class="inline-text">Họ tên người đặt</th>
                             <th class="inline-text">Số điện thoại</th>
-                            <th class="inline-text">Email</th>
+                            <th class="inline-text">Email liên hệ</th>
                             <th class="inline-text">Địa chỉ</th>
                             <th class="inline-text">Giỏ hàng</th>
                             <th class="inline-text text-right">Tổng cộng</th>
@@ -245,7 +246,8 @@
                     <tbody>
                         <tr *ngFor="let order of orders">
                             <td class="inline-text">{{order.placedTime | date:'E dd/MM/yyyy h:mm:ss a'}}</td>
-                            <td class="text-center">{{order.id}}</td>
+                            <td class="text-center"><p class="order-link rounded" (click)="openModalWithOrderDetailComponent(order)">{{order.id}}</p></td>
+                            <td class="text-center">{{ order.userId ? order.userId : 'Khách hàng không đăng nhập' }}</td>
                             <td class="inline-text" *ngIf="order.isMale">Anh: <b>{{order.fullName}}</b></td>
                             <td class="inline-text" *ngIf="!order.isMale">Chị: <b>{{order.fullName}}</b></td>
                             <td>{{ order.phoneNumber }}</td>
@@ -266,20 +268,12 @@
                                 <hr>
                                 <b class="inline-text">Thành tiền: </b><b class="inline-text text-danger">{{onTotal(order.orderDetails) | number }} đ</b>
                             </td>
-                            <td>
-                                <!-- <div class="px-2 inline-text bg-success text-white border border-success rounded">{{ order.orderStatus }}</div> -->
-                                <select class="p-2 inline-text bg-success text-white border border-success rounded" name="cars" id="cars">
-                                    <option value="volvo">Đang lấy hàng</option>
-                                    <option value="saab">Đóng gói xong</option>
-                                    <option value="audi">Đang đợi nhận hàng</option>
-                                    <option value="mercedes">Đang vận chuyển</option>
-                                    <option value="audi">Đơn hàng thành công</option>
-                                    <option value="audi">Đã hủy đơn hàng</option>
-                                  </select>
+                            <td class="inline-text">
+                                <div [ngClass]="renderClass(order.orderStatus)">{{ order.orderStatus }}</div>
                             </td>
                             <td class="btn-group">
-                                <button class="btn btn-item">
-                                    <i class="fa fa-save fa-lg"></i>
+                                <button (click)="openModalWithOrderDetailComponent(order)" class="btn btn-item">
+                                    <i class="fa fa-eye fa-lg"></i>
                                 </button>
 
                                 <button class="btn btn-item">
@@ -287,7 +281,7 @@
                                 </button>
 
                                 <button (click)="onDeleteOrder(order)" class="btn btn-item">
-                                    <i class="fa fa-trash-o fa-lg"></i>
+                                    <i class="fa fa-close fa-lg"></i>
                                 </button>
                             </td>
                         </tr>

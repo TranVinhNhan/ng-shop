@@ -4,6 +4,7 @@ import { Product } from 'src/app/_models/product';
 import { Image } from 'src/app/_models/image';
 import { CartService } from 'src/app/_services/cart.service';
 import { CartItem } from 'src/app/_models/cart-item';
+import { AlertifyService } from 'src/app/_services/alertifyjs.service';
 
 @Component({
   selector: 'app-detail',
@@ -14,7 +15,11 @@ import { CartItem } from 'src/app/_models/cart-item';
 export class DetailComponent implements OnInit {
 
   product: Product;
-  constructor(private route: ActivatedRoute, private cartService: CartService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private cartService: CartService,
+    private alertifyService: AlertifyService
+    ) { }
 
   ngOnInit(): void {
     this.route.data.subscribe(data => this.product = data.product);
@@ -61,5 +66,7 @@ export class DetailComponent implements OnInit {
 
       this.cartService.cartCount.next(cart.length);
     }
+
+    this.alertifyService.success('Cập nhật giỏ hàng thành công');
   }
 }

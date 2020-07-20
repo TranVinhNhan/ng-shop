@@ -5434,11 +5434,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "d:\\Coding\\Project\\ng-shop\\ng-shop-api\\ng-shop-api.csproj",
+      "projectUniqueName": "D:\\Coding\\Project\\ng-shop\\ng-shop-api\\ng-shop-api.csproj",
       "projectName": "ng-shop-api",
-      "projectPath": "d:\\Coding\\Project\\ng-shop\\ng-shop-api\\ng-shop-api.csproj",
+      "projectPath": "D:\\Coding\\Project\\ng-shop\\ng-shop-api\\ng-shop-api.csproj",
       "packagesPath": "C:\\Users\\VinhNhan\\.nuget\\packages\\",
-      "outputPath": "d:\\Coding\\Project\\ng-shop\\ng-shop-api\\obj\\",
+      "outputPath": "D:\\Coding\\Project\\ng-shop\\ng-shop-api\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -5519,7 +5519,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
       }
     }
   }

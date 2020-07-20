@@ -125,9 +125,9 @@
                                 <hr>
                                 <b class="inline-text">Thành tiền: </b> <b class="text-danger">{{onTotal(order.orderDetails) | number }} đ</b>
                             </td>
-                            <td class="text-success">{{ order.orderStatus }}</td>
+                            <td><p [ngClass]="renderClass(order.orderStatus)">{{ order.orderStatus }}</p></td>
                             <td class="btn-group">
-                                <button
+                                <button *ngIf="order.orderStatus!=='Đã hủy đơn'" (click)="onCancelOrder(order.id)"
                                     class="btn btn-item">
                                     <i class="fa fa-times fa-lg"></i>
                                 </button>

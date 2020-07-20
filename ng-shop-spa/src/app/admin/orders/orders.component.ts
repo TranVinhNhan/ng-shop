@@ -7,6 +7,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ProductOrderModalComponent } from './product-order-modal/product-order-modal.component';
 import { CartItem } from 'src/app/_models/cart-item';
+import { OrderDetailModalComponent } from './order-detail-modal/order-detail-modal.component';
 
 @Component({
   selector: 'app-orders',
@@ -140,5 +141,18 @@ export class OrdersComponent implements OnInit {
     };
     this.bsModalRef = this.modalService.show(ProductOrderModalComponent, { initialState });
     this.bsModalRef.setClass('modal-lg');
+  }
+
+  openModalWithOrderDetailComponent(order: Order) {
+    const initialState = {
+      title: 'Chi tiết đơn hàng',
+      order
+    };
+    this.bsModalRef = this.modalService.show(OrderDetailModalComponent, { initialState });
+    this.bsModalRef.setClass('modal-lg');
+  }
+
+  renderClass(orderStatus: string) {
+    return this.extensionService.renderClass(orderStatus);
   }
 }

@@ -150,3 +150,13 @@ fieldset {
     font-size: 22px;
     font-weight: bold;
 }
+
+.order-link {
+    color: #27bece;
+    cursor: pointer;
+}
+
+.order-link:hover {
+    background-color: #27bece;
+    color: white;
+}

@@ -54,6 +54,37 @@ namespace ng_shop_api.Controllers
             throw new Exception($"Error, cannot create your order");
         }
 
+        [AllowAnonymous]
+        [HttpGet("user/{userId}")]
+        public async Task<IActionResult> GetAllOrdersByUser(int userId)
+        {
+            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value))
+                return Unauthorized();
+
+            var orders = await _repo.GetOrdersOfUser(userId);
+            return Ok(orders);
+        }
+
+        [AllowAnonymous]
+        [HttpPut("cancel/{orderId}")]
+        public async Task<IActionResult> CancelUserOrder(int orderId, [FromBody]OrderForUpdateDto orderForUpdateDto)
+        {
+            if (Request.Headers.ContainsKey("id"))
+            {
+                if (int.Parse(Request.Headers["id"].First()) == int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value))
+                {
+                    var order = await _repo.GetOrderById(orderId);
+                    order.OrderStatus = orderForUpdateDto.OrderStatus;
+
+                    if (await _repo.SaveAll())
+                    {
+                        return NoContent();
+                    }
+                }
+            }
+            return Unauthorized("id not match or not found");
+        }
+
         [HttpGet("all")]
         public async Task<IActionResult> GetAllOrders()
         {
@@ -72,18 +103,7 @@ namespace ng_shop_api.Controllers
                 return NotFound();
 
             return Ok(order);
-        }
-
-        [AllowAnonymous]
-        [HttpGet("user/{userId}")]
-        public async Task<IActionResult> GetAllOrdersByUser(int userId)
-        {
-            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value))
-                return Unauthorized();
-
-            var orders = await _repo.GetOrdersOfUser(userId);
-            return Ok(orders);
-        }
+        }  
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteOrder(int id)
@@ -102,6 +122,21 @@ namespace ng_shop_api.Controllers
             }
 
             throw new Exception($"Deleting order {id} failed on save");
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateOrderStatus(int id, [FromBody]OrderForUpdateDto orderForUpdateDto)
+        {
+            var order = await _repo.GetOrderById(id);
+            if (order == null)
+                return NotFound();
+
+            order.OrderStatus = orderForUpdateDto.OrderStatus;
+
+            if (await _repo.SaveAll())
+                return NoContent();
+
+            throw new Exception($"Updating order status failed on save");
         }
     }
 }

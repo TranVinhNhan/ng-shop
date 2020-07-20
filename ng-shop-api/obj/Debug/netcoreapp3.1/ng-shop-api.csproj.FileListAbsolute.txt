@@ -65,3 +65,5 @@ D:\Coding\Project\ng-shop\ng-shop-api\bin\Debug\netcoreapp3.1\Microsoft.AspNetCo
 D:\Coding\Project\ng-shop\ng-shop-api\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
 D:\Coding\Project\ng-shop\ng-shop-api\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 D:\Coding\Project\ng-shop\ng-shop-api\bin\Debug\netcoreapp3.1\CloudinaryDotNet.dll
+D:\Coding\Project\ng-shop\ng-shop-api\obj\Debug\netcoreapp3.1\ng-shop-api.csproj.CoreCompileInputs.cache
+D:\Coding\Project\ng-shop\ng-shop-api\obj\Debug\netcoreapp3.1\ng-shop-api.genruntimeconfig.cache

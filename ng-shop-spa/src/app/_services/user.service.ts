@@ -36,4 +36,9 @@ export class UserService {
         const headers = new HttpHeaders({ id });
         return this.http.put(this.baseUrl + 'user', model, { headers });
     }
+
+    cancelOrder(userid: string, orderId: number, order: { orderStatus: string }) {
+        const headers = new HttpHeaders({ id: userid });
+        return this.http.put(this.baseUrl + 'order/cancel/' + orderId, order, { headers });
+    }
 }
