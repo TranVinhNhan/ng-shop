@@ -6,7 +6,7 @@
         </div>
         <!-- Cards -->
         <div class="card-deck py-3">
-            <div class="card" style="width: 18rem;">
+            <!-- <div class="card" style="width: 18rem;">
                 <div class="card-body">
                     <h5 class="card-title">Số người dùng truy cập</h5>
                     <div style="display: block;">
@@ -16,19 +16,9 @@
                         </canvas>
                     </div>
                 </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">Số lượng sản phẩm theo nhãn hiệu</h5>
-                    <div style="display: block;">
-                        <canvas baseChart width="400" height="400" [data]="pieChartData" [labels]="pieChartLabels"
-                            [chartType]="pieChartType" [options]="pieChartOptions" [plugins]="pieChartPlugins"
-                            [legend]="pieChartLegend">
-                        </canvas>
-                    </div>
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
+            </div> -->
+            <app-brand-chart class="col-md-6"></app-brand-chart>
+            <!-- <div class="card" style="width: 18rem;">
                 <div class="card-body">
                     <h5 class="card-title">Số lượng sản phẩm bán được trong tuần</h5>
                     <div style="display: block;">
@@ -38,22 +28,11 @@
                         </canvas>
                     </div>
                 </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">Tổng doanh thu trong tuần</h5>
-                    <h4 class="card-title">$1,060,386</h4>
-                    <div style="display: block;">
-                        <canvas baseChart height="300px" [datasets]="barChartData" [labels]="barChartLabels"
-                            [options]="barChartOptions" [plugins]="barChartPlugins" [legend]="barChartLegend"
-                            [chartType]="barChartType">
-                        </canvas>
-                    </div>
-                </div>
-            </div>
+            </div> -->
+            <app-income-chart class="col-md-6"></app-income-chart>
         </div>
         <!-- Statistic -->
-        <div class="row py-3">
+        <!-- <div class="row py-3">
             <div class="col-lg-9">
                 <h2 class="m-b-25">Lợi nhuận theo sản phẩm</h2>
                 <div class="table-responsive m-b-40">
@@ -182,6 +161,6 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </main>
 </div>

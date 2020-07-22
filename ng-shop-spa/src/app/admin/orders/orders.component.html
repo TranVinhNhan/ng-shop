@@ -222,6 +222,7 @@
                 </div>
             </div>
         </div>
+        <h6>Tổng số đơn hàng: {{ orders?.length }}</h6>
         <div *ngIf="!isFetching" class="row py-3">
             <div class="table-responsive table-scroll-fixed-head m-b-40">
                 <table class="table table-hover">
@@ -229,11 +230,11 @@
                         <tr>
                             <th class="inline-text">Ngày đặt hàng</th>
                             <th class="inline-text">Mã đơn hàng</th>
-                            <th class="inline-text">Mã tài khoản đặt hàng</th>
+                            <!-- <th class="inline-text">Mã tài khoản đặt hàng</th> -->
                             <th class="inline-text">Họ tên người đặt</th>
-                            <th class="inline-text">Số điện thoại</th>
+                            <!-- <th class="inline-text">Số điện thoại</th>
                             <th class="inline-text">Email liên hệ</th>
-                            <th class="inline-text">Địa chỉ</th>
+                            <th class="inline-text">Địa chỉ</th> -->
                             <th class="inline-text">Giỏ hàng</th>
                             <th class="inline-text text-right">Tổng cộng</th>
                             <th>Tình trạng</th>
@@ -242,21 +243,20 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let order of orders">
-                            <td class="inline-text">{{order.placedTime | date:'E dd/MM/yyyy h:mm:ss a'}}</td>
+                            <td>{{order.placedTime | date:'dd/MM/yyyy h:mm:ss a'}}</td>
                             <td class="text-center">
                                 <p class="order-link rounded" (click)="openModalWithOrderDetailComponent(order)">
                                     {{order.id}}</p>
                             </td>
-                            <td class="text-center">{{ order.userId ? order.userId : 'Khách hàng không đăng nhập' }}
-                            </td>
+                            <!-- <td class="text-center">{{ order.userId ? order.userId : 'Khách hàng không đăng nhập' }}</td> -->
                             <td class="inline-text" *ngIf="order.isMale">Anh: <b>{{order.fullName}}</b></td>
                             <td class="inline-text" *ngIf="!order.isMale">Chị: <b>{{order.fullName}}</b></td>
-                            <td>{{ order.phoneNumber }}</td>
+                            <!-- <td>{{ order.phoneNumber }}</td>
                             <td>{{ order.email }}</td>
                             <td *ngIf="!order.isReceivedAtStore">
                                 {{ order.shippingAddress + ' ' + order.shippingDistrict + ' ' + order.shippingCity}}
                             </td>
-                            <td *ngIf="order.isReceivedAtStore">{{ order.shippingAddress }}</td>
+                            <td *ngIf="order.isReceivedAtStore">{{ order.shippingAddress }}</td> -->
                             <td>
                                 <div class="inline-text" *ngFor="let item of order.orderDetails">
                                     <b class="text-info">{{item.productShortName}}</b><b> x {{ item.quantity }} máy </b>
@@ -280,7 +280,7 @@
                                     <i class="fa fa-eye fa-lg"></i>
                                 </button>
 
-                                <button class="btn btn-item">
+                                <button (click)="openModalWithExportInvoiceComponent(order)" class="btn btn-item">
                                     <i class="fa fa-print fa-lg"></i>
                                 </button>
 

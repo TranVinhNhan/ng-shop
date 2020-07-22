@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { User } from '../_models/user';
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
+import { Address } from '../_models/address';
 
 @Injectable({
     providedIn: 'root'
@@ -12,6 +13,10 @@ import { map } from 'rxjs/operators';
 export class UserService {
     baseUrl = environment.apiUrl;
     constructor(private http: HttpClient) { }
+
+    getAddressOfUser(id: number): Observable<Address> {
+        return this.http.get<Address>(this.baseUrl + 'user/address/' + id);
+    }
 
     getAllUsers(): Observable<User[]> {
         return this.http.get<User[]>(this.baseUrl + 'user/all');

@@ -26,36 +26,7 @@ export class DashboardComponent implements OnInit {
   public lineChartType = 'line';
   public lineChartPlugins = [];
 
-
-  // Pie
-  public pieChartOptions: ChartOptions = {
-    responsive: true,
-  };
-  public pieChartLabels: Label[] = ['Acer', 'Alienware', 'Apple', 'Asus', 'Dell', 'Hp', 'Lenovo', 'Microsoft', 'msi', 'Razer', 'Thinkpad'];
-  public pieChartData: SingleDataSet = [300, 500, 100, 300, 500, 100, 300, 500, 100, 300, 500];
-  public pieChartType: ChartType = 'pie';
-  public pieChartLegend = true;
-  public pieChartPlugins = [];
-
-  // Bar
-  public barChartOptions: ChartOptions = {
-    responsive: true,
-  };
-  public barChartLabels: Label[] = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
-  public barChartType: ChartType = 'bar';
-  public barChartLegend = true;
-  public barChartPlugins = [];
-
-  public barChartData: ChartDataSets[] = [
-    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
-    { data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B' }
-  ];
-
-  constructor() {
-    // Pie
-    monkeyPatchChartJsTooltip();
-    monkeyPatchChartJsLegend();
-  }
+  constructor() { }
 
   ngOnInit() {
   }

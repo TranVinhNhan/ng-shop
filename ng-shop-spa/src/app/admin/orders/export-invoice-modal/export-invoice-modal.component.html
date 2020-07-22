@@ -1,0 +1,115 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">{{title}}</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <div id="contentToConvert" class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="invoice-title">
+                    <h2>Hóa đơn</h2>
+                    <h3 class="pull-right">EPIC STORE</h3>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-6">
+                        <address>
+                            <strong>Khách hàng:</strong><br>
+                            {{ address ? address.fullname : order.fullName}}<br>
+                            {{ address?.street }}<br>
+                            {{ address?.district }}<br>
+                            {{ address?.city }}
+                        </address>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <address *ngIf="!order.isReceivedAtStore">
+                            <strong>Giao hàng tới:</strong><br>
+                            {{ order.fullName }}<br>
+                            {{ order.shippingAddress }}<br>
+                            {{ order.shippingDistrict }}<br>
+                            {{ order.shippingCity }}
+                        </address>
+                        <address *ngIf="order.isReceivedAtStore">
+                            <strong>Giao hàng tới:</strong><br>
+                            {{ order.fullName }}<br>
+                            Khách nhận sản phẩm tại cửa hàng
+                        </address>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <address>
+                            <strong>Mã hóa đơn:</strong><br>
+                            #{{ order.id }}<br>
+                        </address>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <address>
+                            <strong>Ngày đặt hàng:</strong><br>
+                            {{ order.placedTime | date: 'dd/MM/yyyy'}}<br><br>
+                            <strong>Ngày xuất hóa đơn:</strong><br>
+                            {{ now | date: 'dd/MM/yyyy hh:mm:ss a'}}<br><br>
+                        </address>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><strong>Chi tiết đơn hàng</strong></h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-condensed">
+                                <thead>
+                                    <tr>
+                                        <td><strong>Sản phẩm</strong></td>
+                                        <td class="text-center"><strong>Giá bán lẻ</strong></td>
+                                        <td class="text-center"><strong>Số lượng</strong></td>
+                                        <td class="text-right"><strong>Tổng cộng</strong></td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- foreach ($order->lineItems as $line) or some such thing here -->
+                                    <tr *ngFor="let item of order.orderDetails">
+                                        <td>{{ item.productShortName }}</td>
+                                        <td class="text-center">{{ item.pricePerUnit | number }} đ</td>
+                                        <td class="text-center">{{ item.quantity | number}}</td>
+                                        <td class="text-right">{{ item.pricePerUnit * item.quantity | number}} đ</td>
+                                    </tr>
+                                    <!-- <tr>
+                                        <td class="thick-line"></td>
+                                        <td class="thick-line"></td>
+                                        <td class="thick-line text-center"><strong>Subtotal</strong></td>
+                                        <td class="thick-line text-right">$670.99</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="no-line"></td>
+                                        <td class="no-line"></td>
+                                        <td class="no-line text-center"><strong>Shipping</strong></td>
+                                        <td class="no-line text-right">$15</td>
+                                    </tr> -->
+                                    <tr>
+                                        <td class="no-line"></td>
+                                        <td class="no-line"></td>
+                                        <td class="no-line text-center"><strong>Thành tiền</strong></td>
+                                        <td class="no-line text-right">{{ onTotal(order.orderDetails) | number}} đ</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-success" (click)="onConfirm()">Xác nhận</button>
+    <button type="button" class="btn btn-primary" (click)="bsModalRef.hide()">Đóng</button>
+</div>

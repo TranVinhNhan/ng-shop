@@ -55,7 +55,7 @@ namespace ng_shop_api.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdatePersonalInfo([FromBody]PersonalInfoForUpdateDto personalInfoForUpdateDto)
+        public async Task<IActionResult> UpdatePersonalInfo([FromBody] PersonalInfoForUpdateDto personalInfoForUpdateDto)
         {
             if (!Request.Headers.ContainsKey("id"))
                 return Unauthorized();
@@ -114,6 +114,19 @@ namespace ng_shop_api.Controllers
             }
 
             throw new Exception($"Deleting user {id} failed on save");
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpGet("address/{id}")]
+        public async Task<IActionResult> GetUserAddress(int id)
+        {
+            var user = await _repo.GetUserById(id);
+            AddressForReturnDto nullAddress = new AddressForReturnDto();
+            if (user == null)
+                return Ok(nullAddress);
+            
+            AddressForReturnDto address = new AddressForReturnDto(user.FullName, user.AddressNumber, user.District, user.City);
+            return Ok(address);
         }
     }
 }

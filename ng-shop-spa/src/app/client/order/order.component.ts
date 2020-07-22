@@ -8,6 +8,7 @@ import { UserService } from 'src/app/_services/user.service';
 import { User } from 'src/app/_models/user';
 import { Order } from 'src/app/_models/order';
 import { CartItem } from 'src/app/_models/cart-item';
+import { AlertifyService } from 'src/app/_services/alertifyjs.service';
 
 @Component({
   selector: 'app-cart',
@@ -24,7 +25,8 @@ export class OrderComponent implements OnInit {
     private cartService: CartService,
     private extensionService: ExtensionService,
     private authService: AuthService,
-    private userService: UserService
+    private userService: UserService,
+    private alertifyService: AlertifyService
   ) { }
 
   ngOnInit(): void {
@@ -150,5 +152,9 @@ export class OrderComponent implements OnInit {
         console.log(error);
       });
     }
+  }
+
+  chuyenkhoanOnline() {
+    this.alertifyService.message('Chức năng chưa được triển khai');
   }
 }

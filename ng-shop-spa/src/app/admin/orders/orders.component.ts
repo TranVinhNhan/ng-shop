@@ -10,6 +10,7 @@ import { CartItem } from 'src/app/_models/cart-item';
 import { OrderDetailModalComponent } from './order-detail-modal/order-detail-modal.component';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { ErrorTextService } from 'src/app/_services/error-text.service';
+import { ExportInvoiceModalComponent } from './export-invoice-modal/export-invoice-modal.component';
 
 @Component({
   selector: 'app-orders',
@@ -168,6 +169,15 @@ export class OrdersComponent implements OnInit, OnDestroy {
       order
     };
     this.bsModalRef = this.modalService.show(OrderDetailModalComponent, { initialState });
+    this.bsModalRef.setClass('modal-lg');
+  }
+
+  openModalWithExportInvoiceComponent(order: Order) {
+    const initialState = {
+      title: 'Xuất hóa đơn',
+      order
+    };
+    this.bsModalRef = this.modalService.show(ExportInvoiceModalComponent, { initialState });
     this.bsModalRef.setClass('modal-lg');
   }
 

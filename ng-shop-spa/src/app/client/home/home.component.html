@@ -30,7 +30,8 @@
     <div *ngIf="!isFetchingProduct" class="product has-top-border">
         <h6 class="product-type">Laptop</h6>
         <div class="filter-name my-2 mt-2">
-            <span class="fa fa-search"></span><input [(ngModel)]='searchString' type="text" placeholder="Nhập tên sản phẩm">
+            <span class="fa fa-search"></span><input [(ngModel)]='searchString' type="text"
+                placeholder="Nhập tên sản phẩm">
         </div>
         <div class="block-content row row-cols-lg-5 row-cols-md-3 row-cols-sm-2 row-cols-xs-2 row-cols-2">
             <div class="product-item my-2"
@@ -50,7 +51,8 @@
                 </div>
             </div>
         </div>
-        <div *ngIf="(onePageArray | productFilter: filterString:brandNameArray | searchFilter: searchString).length === 0">
+        <div
+            *ngIf="(onePageArray | productFilter: filterString:brandNameArray | searchFilter: searchString).length === 0">
             Không có sản phẩm phù hợp với kết quả tìm kiếm. <br>
             <button class="btn btn-info mt-2" (click)="setFilter('')">Trở lại danh sách đầy đủ</button>
         </div>
@@ -60,6 +62,8 @@
         <h1>Loading...</h1>
     </div>
 
-    <pagination [totalItems]="productsArray.length" (pageChanged)="pageChanged($event)" [boundaryLinks]=true>
-    </pagination>
+    <div>
+        <pagination class="justify-content-center" [totalItems]="productsArray.length" (pageChanged)="pageChanged($event)" [boundaryLinks]=true>
+        </pagination>
+    </div>
 </div>

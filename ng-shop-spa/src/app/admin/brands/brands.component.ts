@@ -66,7 +66,6 @@ export class BrandsComponent implements OnInit, OnDestroy {
       console.log(error);
     }, () => {
       this.loadChart();
-      console.log('complete');
     });
   }
 

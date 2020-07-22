@@ -1,0 +1,12 @@
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Tổng doanh thu trong 4 tuần gần nhất</h5>
+        <h4 class="card-title text-danger">{{income}} triệu đồng</h4>
+        <div style="display: block;">
+            <canvas baseChart height="300px" [datasets]="barChartData" [labels]="barChartLabels"
+                [options]="barChartOptions" [plugins]="barChartPlugins" [legend]="barChartLegend"
+                [chartType]="barChartType">
+            </canvas>
+        </div>
+    </div>
+</div>

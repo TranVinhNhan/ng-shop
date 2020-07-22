@@ -39,6 +39,7 @@
                     </div>
                 </div>
 
+                <h6>Tổng số nhãn hiệu: {{brands.length}}</h6>
                 <!-- Table -->
                 <div *ngIf="!isFetchingBrands" class="table-responsive m-b-40">
                     <table class="table table-borderless table-striped">
@@ -85,17 +86,7 @@
                 <div *ngIf="errorMessage">{{ errorMessage }}</div>
             </div>
             <div class="col-lg-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Số lượng sản phẩm theo nhãn hiệu</h5>
-                        <div style="display: block;">
-                            <canvas baseChart width="400" height="400" [data]="pieChartData" [labels]="pieChartLabels"
-                                [chartType]="pieChartType" [options]="pieChartOptions" [plugins]="pieChartPlugins"
-                                [legend]="pieChartLegend">
-                            </canvas>
-                        </div>
-                    </div>
-                </div>
+                <app-brand-chart></app-brand-chart>
             </div>
         </div>
     </main>

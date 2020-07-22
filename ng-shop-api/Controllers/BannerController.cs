@@ -71,14 +71,15 @@ namespace ng_shop_api.Controllers
             return BadRequest("Could not add the image");
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetAllBanner()
         {
             var images = await _repo.GetBannerImages();
 
-            if (images==null)
+            if (images == null)
                 return NotFound();
-            
+
             return Ok(images);
         }
 
@@ -87,7 +88,7 @@ namespace ng_shop_api.Controllers
         {
             var banner = await _repo.GetImageById(id);
 
-            if (banner==null)
+            if (banner == null)
                 return NotFound();
 
             var deleteParams = new DeletionParams(banner.PublicId);
@@ -99,7 +100,7 @@ namespace ng_shop_api.Controllers
 
             if (await _repo.SaveAll())
                 return Ok();
-                
+
             return BadRequest("Failed to delete banner");
         }
     }

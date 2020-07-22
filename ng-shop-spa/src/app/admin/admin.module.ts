@@ -24,6 +24,9 @@ import { BrandUpdateModalComponent } from './brands/brand-update-modal/brand-upd
 import { ProductOrderModalComponent } from './orders/product-order-modal/product-order-modal.component';
 import { OrderDetailModalComponent } from './orders/order-detail-modal/order-detail-modal.component';
 import { BannersComponent } from './banners/banners.component';
+import { BrandChartComponent } from './_charts/brand-chart/brand-chart.component';
+import { IncomeChartComponent } from './_charts/income-chart/income-chart.component';
+import { ExportInvoiceModalComponent } from './orders/export-invoice-modal/export-invoice-modal.component';
 
 
 @NgModule({
@@ -44,7 +47,10 @@ import { BannersComponent } from './banners/banners.component';
     BrandImageModalComponent,
     BrandUpdateModalComponent,
     ProductOrderModalComponent,
-    BannersComponent
+    BannersComponent,
+    BrandChartComponent,
+    IncomeChartComponent,
+    ExportInvoiceModalComponent
   ],
   imports: [
     CommonModule,

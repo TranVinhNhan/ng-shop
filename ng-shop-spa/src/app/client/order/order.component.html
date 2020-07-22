@@ -159,9 +159,9 @@
 
                         <div class="group-action d-flex align-items-center justify-content-between">
                             <button [disabled]="!this.orderForm.valid" class="btn btn-default btn-muangay mr-2 w-50"
-                                type="submit" name="order_send">
+                                type="submit">
                                 Thanh toán khi nhận hàng</button>
-                            <button class="btn btn-primary btn-tragop ml-2 w-50" name="order_send">Chuyển khoản
+                            <button (click)="chuyenkhoanOnline()" class="btn btn-primary btn-tragop ml-2 w-50">Chuyển khoản
                                 online</button>
                         </div>
                     </form>

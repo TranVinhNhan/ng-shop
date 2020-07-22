@@ -160,8 +160,8 @@
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label for="price">Giá bán</label>
-                                    <input (keypress)="onValidate($event)" formControlName="price" type="number" class="form-control" id="price"
-                                        placeholder="">
+                                    <input (keypress)="onValidate($event)" formControlName="price" type="number"
+                                        class="form-control" id="price" placeholder="">
                                     <div *ngIf="productForm.get('price').touched && !productForm.get('price').valid"
                                         class="invalid-feedback">
                                         Giá bán không hợp lệ!
@@ -169,8 +169,8 @@
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="brandName">Thương hiệu</label>
-                                    <select *ngIf="!isFetchingBrands" formControlName="brandId" class="custom-select d-block w-100" id="brandId"
-                                        required="">
+                                    <select *ngIf="!isFetchingBrands" formControlName="brandId"
+                                        class="custom-select d-block w-100" id="brandId" required="">
                                         <option *ngFor="let brand of brands" [value]=+brand.id>{{ brand.brandName }}
                                         </option>
                                     </select>
@@ -184,12 +184,13 @@
                                 </div>
                             </div>
                             <hr class="mb-4">
-                            <button [disabled]="!productForm.valid || isFetchingBrands" class="btn btn-success btn-lg btn-block"
-                                type="submit">Xác nhận thêm sản phẩm</button>
+                            <button [disabled]="!productForm.valid || isFetchingBrands"
+                                class="btn btn-success btn-lg btn-block" type="submit">Xác nhận thêm sản phẩm</button>
                         </form>
                     </div>
                 </div>
             </div>
+            <h6>Tổng số sản phẩm: {{products.length}}</h6>
 
             <!-- Table sản phẩm -->
             <div *ngIf="!isFetchingProducts && !isFetchingBrands" class="table-responsive table-scroll-fixed-head">
@@ -214,10 +215,18 @@
                             <td>
                                 {{ product.productName }}
                                 <br>
-                                <div *ngIf="product.isAvailable" class="mt-2 text-center bg-success text-white border border-success rounded">Tình trạng: còn hàng</div>
-                                <div *ngIf="!product.isAvailable" class="mt-2 text-center bg-danger text-white border border-danger rounded">Tình trạng: hết hàng</div>
-                                <div *ngIf="product.isDisplayed" class="mt-2 text-center bg-success text-white border border-success rounded">Đang hiển thị</div>
-                                <div *ngIf="!product.isDisplayed" class="mt-2 text-center bg-danger text-white border border-danger rounded">Đã khóa</div>
+                                <div *ngIf="product.isAvailable"
+                                    class="mt-2 text-center bg-success text-white border border-success rounded">Tình
+                                    trạng: còn hàng</div>
+                                <div *ngIf="!product.isAvailable"
+                                    class="mt-2 text-center bg-danger text-white border border-danger rounded">Tình
+                                    trạng: hết hàng</div>
+                                <div *ngIf="product.isDisplayed"
+                                    class="mt-2 text-center bg-success text-white border border-success rounded">Đang
+                                    hiển thị</div>
+                                <div *ngIf="!product.isDisplayed"
+                                    class="mt-2 text-center bg-danger text-white border border-danger rounded">Đã khóa
+                                </div>
                             </td>
                             <td>{{ product.productShortName }}</td>
                             <td class="force-text">{{ product.description }}</td>
@@ -248,13 +257,11 @@
                             </td>
                             <td class="text-center">{{ product.brand.brandName }}</td>
                             <td class="btn-group">
-                                <button (click)="openModalWithImageModalComponent(product)"
-                                    class="btn btn-item">
+                                <button (click)="openModalWithImageModalComponent(product)" class="btn btn-item">
                                     <i class="fa fa-file-image-o fa-lg"></i>
                                 </button>
 
-                                <button (click)="openModalWithProductModalComponent(product)"
-                                    class="btn btn-item">
+                                <button (click)="openModalWithProductModalComponent(product)" class="btn btn-item">
                                     <i class="fa fa-wrench fa-lg"></i>
                                 </button>
 

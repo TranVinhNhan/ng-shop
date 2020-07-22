@@ -88,3 +88,7 @@ input.ng-touched.ng-valid, select.ng-touched.ng-valid, textarea.ng-touched.ng-va
     -o-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
   }
+
+  .card {
+    border-radius: 10px;
+  }

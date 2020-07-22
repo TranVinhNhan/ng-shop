@@ -69,4 +69,8 @@ export class DetailComponent implements OnInit {
 
     this.alertifyService.success('Cập nhật giỏ hàng thành công');
   }
+
+  tragop() {
+    this.alertifyService.message('Chức năng chưa được triển khai');
+  }
 }
