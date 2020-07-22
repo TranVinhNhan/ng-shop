@@ -20,21 +20,13 @@ export class ProductModalComponent implements OnInit {
   isFetchingBrands = false;
   title: string;
   productModalForm: FormGroup;
-  constructor(public bsModalRef: BsModalRef, private productService: ProductService, private brandService: BrandService) { }
+  constructor(
+    public bsModalRef: BsModalRef,
+    private productService: ProductService
+    ) { }
 
   ngOnInit(): void {
-    this.loadBrands();
     this.initProductModalForm();
-  }
-
-  loadBrands() {
-    this.isFetchingBrands = true;
-    this.brandService.getAllBrands().subscribe((response: Brand[]) => {
-      this.brands = response;
-      this.isFetchingBrands = false;
-    }, error => {
-      console.log(error);
-    });
   }
 
   initProductModalForm() {
@@ -54,7 +46,8 @@ export class ProductModalComponent implements OnInit {
       operatingSystem: new FormControl(this.product.operatingSystem, Validators.required),
       price: new FormControl(this.product.price, Validators.required),
       brandId: new FormControl(+this.product.brand.id, Validators.required),
-      isAvailable: new FormControl(this.product.isAvailable)
+      isAvailable: new FormControl(this.product.isAvailable),
+      isDisplayed: new FormControl(this.product.isDisplayed)
     });
   }
 

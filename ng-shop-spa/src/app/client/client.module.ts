@@ -6,7 +6,10 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 
+// Routing
 import { ClientRoutingModule } from './client-routing.module';
+
+// Components
 import { ClientComponent } from './client.component';
 import { NavbarComponent } from './_navbar/navbar.component';
 import { FooterComponent } from './_footer/footer.component';
@@ -18,6 +21,9 @@ import { LoginComponent } from './login/login.component';
 import { ProductDetailResolver } from '../_resolvers/product-detail.resolver';
 import { UserAccountComponent } from './user-account/user-account.component';
 
+// Pipes
+import { ClientHomePipe, SearchFilterPipe } from '../_pipes/client-home.pipe';
+
 @NgModule({
   declarations: [
     ClientComponent,
@@ -28,7 +34,11 @@ import { UserAccountComponent } from './user-account/user-account.component';
     OrderComponent,
     RegisterComponent,
     LoginComponent,
-    UserAccountComponent],
+    UserAccountComponent,
+
+    ClientHomePipe,
+    SearchFilterPipe
+  ],
   imports: [
     CommonModule,
     ClientRoutingModule,

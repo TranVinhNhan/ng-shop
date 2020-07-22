@@ -1,0 +1,143 @@
+<div class="container-fluid">
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+        <div>
+            <!-- Button -->
+            <div
+                class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">Danh sách hình ảnh banner</h1>
+                <div class="btn-toolbar mb-2 mb-md-0">
+                    <div class="btn-group mr-2">
+                        <button (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed"
+                            aria-controls="collapseBasic" type="button" class="btn btn-sm btn-outline-secondary">Thêm
+                            banner</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Thêm banner -->
+            <div id="collapseBasic" [collapse]="isCollapsed" [isAnimated]="true">
+                <div class="well well-lg card card-block card-header">
+                    <div class="order-md-1">
+                        <h4 class="mb-3">Thêm banner mới</h4>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h3>Select files</h3>
+                                    Multiple
+                                    <input type="file" ng2FileSelect [uploader]="uploader" multiple /><br />
+                                    Single
+                                    <input type="file" ng2FileSelect [uploader]="uploader" />
+                                </div>
+
+                                <div class="col-md-9" style="margin-bottom: 40px">
+
+                                    <h3>Upload queue</h3>
+                                    <p>Queue length: {{ uploader?.queue?.length }}</p>
+
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th width="50%">Name</th>
+                                                <th>Size</th>
+                                                <th>Progress</th>
+                                                <th>Status</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let item of uploader.queue">
+                                                <td><strong>{{ item?.file?.name }}</strong></td>
+                                                <td *ngIf="uploader.options.isHTML5" nowrap>
+                                                    {{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
+                                                <td *ngIf="uploader.options.isHTML5">
+                                                    <div class="progress" style="margin-bottom: 0;">
+                                                        <div class="progress-bar" role="progressbar"
+                                                            [ngStyle]="{ 'width': item.progress + '%' }"></div>
+                                                    </div>
+                                                </td>
+                                                <td class="text-center">
+                                                    <span *ngIf="item.isSuccess"><i
+                                                            class="glyphicon glyphicon-ok"></i></span>
+                                                    <span *ngIf="item.isCancel"><i
+                                                            class="glyphicon glyphicon-ban-circle"></i></span>
+                                                    <span *ngIf="item.isError"><i
+                                                            class="glyphicon glyphicon-remove"></i></span>
+                                                </td>
+                                                <td nowrap>
+                                                    <button type="button" class="btn btn-success btn-xs"
+                                                        (click)="item.upload()"
+                                                        [disabled]="item.isReady || item.isUploading || item.isSuccess">
+                                                        <span class="glyphicon glyphicon-upload"></span> Upload
+                                                    </button>
+                                                    <button type="button" class="btn btn-warning btn-xs"
+                                                        (click)="item.cancel()" [disabled]="!item.isUploading">
+                                                        <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+                                                    </button>
+                                                    <button type="button" class="btn btn-danger btn-xs"
+                                                        (click)="item.remove()">
+                                                        <span class="glyphicon glyphicon-trash"></span> Remove
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <div>
+                                        <div>
+                                            Queue progress:
+                                            <div class="progress">
+                                                <div class="progress-bar" role="progressbar"
+                                                    [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn-success btn-s"
+                                            (click)="uploader.uploadAll()"
+                                            [disabled]="!uploader.getNotUploadedItems().length">
+                                            <span class="glyphicon glyphicon-upload"></span> Upload all
+                                        </button>
+                                        <button type="button" class="btn btn-warning btn-s"
+                                            (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">
+                                            <span class="glyphicon glyphicon-ban-circle"></span> Cancel all
+                                        </button>
+                                        <button type="button" class="btn btn-danger btn-s"
+                                            (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
+                                            <span class="glyphicon glyphicon-trash"></span> Remove all
+                                        </button>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Table -->
+            <div class="table-responsive m-b-40">
+                <table class="table table-borderless table-striped">
+                    <thead class="thead-custom">
+                        <tr>
+                            <th>Mã hình ảnh</th>
+                            <th>Hình ảnh</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let banner of banners">
+                            <td>{{ banner.id }}</td>
+                            <td>
+                                <img [src]="banner.url" alt="banner" class="img-thumbnail">
+                            </td>
+                            <td class="text-right btn-group" style="width: 100px;">
+                                <button class="btn btn-item">
+                                    <i (click)="onDeleteBanner(banner.id)" class="fa fa-trash-o fa-lg"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</div>

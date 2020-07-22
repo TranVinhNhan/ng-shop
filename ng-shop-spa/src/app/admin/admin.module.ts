@@ -23,6 +23,7 @@ import { BrandImageModalComponent } from './brands/brand-image-modal/brand-image
 import { BrandUpdateModalComponent } from './brands/brand-update-modal/brand-update-modal.component';
 import { ProductOrderModalComponent } from './orders/product-order-modal/product-order-modal.component';
 import { OrderDetailModalComponent } from './orders/order-detail-modal/order-detail-modal.component';
+import { BannersComponent } from './banners/banners.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { OrderDetailModalComponent } from './orders/order-detail-modal/order-det
     BrandsComponent,
     BrandImageModalComponent,
     BrandUpdateModalComponent,
-    ProductOrderModalComponent
+    ProductOrderModalComponent,
+    BannersComponent
   ],
   imports: [
     CommonModule,

@@ -23,6 +23,7 @@ namespace ng_shop_api.Models
         [Column(TypeName = "decimal(18,4)")]
         public decimal Price { get; set; }
         public bool IsAvailable { get; set; }
+        public bool IsDisplayed { get; set; }
 
         public int BrandId { get; set; }
         public Brand Brand { get; set; }
@@ -30,7 +31,7 @@ namespace ng_shop_api.Models
         public ICollection<OrderDetail> OrderDetails { get; set; }
         public Product()
         {
-            IsAvailable = true;
+            IsAvailable = IsDisplayed = true;
             Images = new Collection<Image>();
         }
     }

@@ -1,4 +1,4 @@
-import { Component, OnInit, DoCheck, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ChartOptions, ChartType } from 'chart.js';
 import { Label, SingleDataSet } from 'ng2-charts';
 
@@ -35,7 +35,11 @@ export class BrandsComponent implements OnInit, OnDestroy {
   public pieChartLegend = true;
   public pieChartPlugins = [];
 
-  constructor(private brandService: BrandService, private modalService: BsModalService, private errorTextService: ErrorTextService) { }
+  constructor(
+    private brandService: BrandService,
+    private modalService: BsModalService,
+    private errorTextService: ErrorTextService
+    ) { }
 
   ngOnInit(): void {
     this.loadBrands();

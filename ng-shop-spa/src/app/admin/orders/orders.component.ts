@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { CartService } from 'src/app/_services/cart.service';
 import { Order } from 'src/app/_models/order';
@@ -8,37 +8,56 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ProductOrderModalComponent } from './product-order-modal/product-order-modal.component';
 import { CartItem } from 'src/app/_models/cart-item';
 import { OrderDetailModalComponent } from './order-detail-modal/order-detail-modal.component';
+import { Subscription } from 'rxjs/internal/Subscription';
+import { ErrorTextService } from 'src/app/_services/error-text.service';
 
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',
   styleUrls: ['./orders.component.css']
 })
-export class OrdersComponent implements OnInit {
+export class OrdersComponent implements OnInit, OnDestroy {
 
   orders: Order[];
   date = new Date();
   cartItems: CartItem[] = [];
   orderForm: FormGroup;
   isCollapsed = true;
+  isFetching = false;
+  errorMessage: string;
+  errorMessageSubscription: Subscription;
   bsModalRef: BsModalRef;
 
   constructor(
     private cartService: CartService,
     private extensionService: ExtensionService,
-    private modalService: BsModalService
+    private modalService: BsModalService,
+    private errorTextService: ErrorTextService
   ) { }
 
   ngOnInit(): void {
     this.loadOrders();
+    this.loadErrorMessage();
     this.initOrderForm();
   }
 
+  ngOnDestroy(): void {
+    this.errorMessageSubscription.unsubscribe();
+  }
+
   loadOrders() {
+    this.isFetching = true;
     this.cartService.getAllOrder().subscribe((response: Order[]) => {
       this.orders = response;
+      this.isFetching = false;
     }, error => {
       console.log(error);
+    });
+  }
+
+  loadErrorMessage() {
+    this.errorMessageSubscription = this.errorTextService.errorMessage.subscribe((errorMessage: string) => {
+      this.errorMessage = errorMessage;
     });
   }
 

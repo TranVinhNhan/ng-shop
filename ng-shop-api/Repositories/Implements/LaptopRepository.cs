@@ -70,6 +70,12 @@ namespace ng_shop_api.Repositories.Implements
             return image;
         }
 
+        public async Task<IEnumerable<Image>> GetBannerImages()
+        {
+            var images = await _context.Images.Where(image => image.IsBanner).ToListAsync();
+            return images;
+        }
+
         // Order
         public async Task<IEnumerable<Order>> GetAllOrders()
         {

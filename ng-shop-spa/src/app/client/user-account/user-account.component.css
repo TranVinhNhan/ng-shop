@@ -90,4 +90,16 @@
     white-space: nowrap;
   }
 
+.tableFixHead {
+    overflow-y: auto;
+    height: 700px;
+  }
+
+.tableFixHead thead th {
+  position: sticky;
+  top: 0;
+  background-color: #27bece;
+  z-index: 1;
+}
+
   

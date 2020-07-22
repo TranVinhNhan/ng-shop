@@ -10,19 +10,7 @@
                         <button (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed"
                             aria-controls="collapseBasic" type="button" class="btn btn-sm btn-outline-secondary">Thêm
                             sản phẩm</button>
-                        <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
                     </div>
-                    <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="feather feather-calendar">
-                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                            <line x1="16" y1="2" x2="16" y2="6"></line>
-                            <line x1="8" y1="2" x2="8" y2="6"></line>
-                            <line x1="3" y1="10" x2="21" y2="10"></line>
-                        </svg>
-                        This week
-                    </button>
                 </div>
             </div>
 
@@ -204,7 +192,7 @@
             </div>
 
             <!-- Table sản phẩm -->
-            <div *ngIf="!isFetchingProducts" class="table-responsive table-scroll-fixed-head">
+            <div *ngIf="!isFetchingProducts && !isFetchingBrands" class="table-responsive table-scroll-fixed-head">
                 <table class="table table-sm table-hover">
                     <thead class="thead-custom">
                         <tr>
@@ -226,8 +214,10 @@
                             <td>
                                 {{ product.productName }}
                                 <br>
-                                <div *ngIf="product.isAvailable" class="text-center bg-success text-white border border-success rounded">Tình trạng: còn hàng</div>
-                                <div *ngIf="!product.isAvailable" class="text-center bg-danger text-white border border-danger rounded">Tình trạng: hết hàng</div>
+                                <div *ngIf="product.isAvailable" class="mt-2 text-center bg-success text-white border border-success rounded">Tình trạng: còn hàng</div>
+                                <div *ngIf="!product.isAvailable" class="mt-2 text-center bg-danger text-white border border-danger rounded">Tình trạng: hết hàng</div>
+                                <div *ngIf="product.isDisplayed" class="mt-2 text-center bg-success text-white border border-success rounded">Đang hiển thị</div>
+                                <div *ngIf="!product.isDisplayed" class="mt-2 text-center bg-danger text-white border border-danger rounded">Đã khóa</div>
                             </td>
                             <td>{{ product.productShortName }}</td>
                             <td class="force-text">{{ product.description }}</td>
@@ -276,9 +266,10 @@
                     </tbody>
                 </table>
             </div>
-            <div *ngIf="isFetchingProducts">
+            <div *ngIf="isFetchingProducts || isFetchingBrands">
                 Loading...
             </div>
+            <div *ngIf="errorMessage">{{ errorMessage }}</div>
         </main>
     </div>
 </div>

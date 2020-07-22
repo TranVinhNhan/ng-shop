@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
@@ -11,19 +11,23 @@ import { ProductModalComponent } from './product-modal/product-modal.component';
 import { ImageModalComponent } from './image-modal/image-modal.component';
 import { ImageDeleteModalComponent } from './image-delete-modal/image-delete-modal.component';
 import { ExtensionService } from 'src/app/_services/extension.service';
+import { ErrorTextService } from 'src/app/_services/error-text.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent implements OnInit, OnDestroy {
 
   isCollapsed = true;
   products: Product[] = [];
   brands: Brand[] = [];
   productForm: FormGroup;
   bsModalRef: BsModalRef;
+  errorMessage: string;
+  errorMessageSubscription: Subscription;
 
   isFetchingBrands = false;
   isFetchingProducts = false;
@@ -32,13 +36,25 @@ export class ProductsComponent implements OnInit {
     private productService: ProductService,
     private brandService: BrandService,
     private modalService: BsModalService,
-    private extensionService: ExtensionService
+    private extensionService: ExtensionService,
+    private errorTextService: ErrorTextService
   ) { }
 
   ngOnInit(): void {
     this.loadProducts();
     this.loadBrands();
     this.initProductForm();
+    this.loadErrorMessage();
+  }
+
+  ngOnDestroy(): void {
+    this.errorMessageSubscription.unsubscribe();
+  }
+
+  loadErrorMessage() {
+    this.errorMessageSubscription = this.errorTextService.errorMessage.subscribe((errorMessage: string) => {
+      this.errorMessage = errorMessage;
+    });
   }
 
   initProductForm() {

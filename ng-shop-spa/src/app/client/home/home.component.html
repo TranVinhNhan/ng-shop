@@ -1,54 +1,48 @@
 <div class="container">
     <carousel>
-        <slide>
-            <img src="assets/images/banner-1.jpg" alt="first slide" style="display: block; width: 100%;">
-        </slide>
-        <slide>
-            <img src="assets/images/banner-2.jpg" alt="second slide" style="display: block; width: 100%;">
-        </slide>
-        <slide>
-            <img src="assets/images/banner-3.jpg" alt="third slide" style="display: block; width: 100%;">
+        <slide *ngFor="let banner of banners">
+            <img [src]="banner.url" alt="slide" style="display: block; width: 100%;">
         </slide>
     </carousel>
 
     <div class="suggestions">
         <p>Một số gợi ý dưới đây có thể giúp bạn tìm sản phẩm nhanh hơn...</p>
+        <div *ngIf="isFetchingLogo">Loading...</div>
         <ul class="suggestions-list-inline">
-            <li *ngFor="let brand of showBrands" class="suggestions-list-item"><a href="#"><img [src]="brand.image.url" [alt]="brand.brandName"></a></li>
-            <!-- <li class="suggestions-list-item"><a href="#"><img src="assets/images/logo-alienware.png" alt=""></a></li>
-            <li class="suggestions-list-item"><a href="#"><img src="assets/images/logo-apple.png" alt=""></a></li>
-            <li class="suggestions-list-item"><a href="#"><img src="assets/images/logo-asus.png" alt=""></a></li>
-            <li class="suggestions-list-item"><a href="#"><img src="assets/images/logo-dell.png" alt=""></a></li>
-            <li class="suggestions-list-item"><a href="#"><img src="assets/images/logo-hp.png" alt=""></a></li>
-            <li class="suggestions-list-item"><a href="#"><img src="assets/images/logo-lenovo.png" alt=""></a></li>
-            <li class="suggestions-list-item"><a href="#"><img src="assets/images/logo-microsoft.png" alt=""></a></li>
-            <li class="suggestions-list-item"><a href="#"><img src="assets/images/logo-msi.png" alt=""></a></li>
-            <li class="suggestions-list-item"><a href="#"><img src="assets/images/logo-razer.png" alt=""></a></li>
-            <li class="suggestions-list-item"><a href="#"><img src="assets/images/logo-thinkpad.png" alt=""></a></li> -->
+            <li style="cursor: pointer;" (click)="setFilter(brand.brandName)" *ngFor="let brand of showBrands"
+                class="suggestions-list-item"><img [src]="brand.image.url" [alt]="brand.brandName"></li>
         </ul>
     </div>
 
     <div class="filter-price">
         <label class="filter-price-title">Chọn mức giá:</label>
         <ul class="filter-price-list-inline">
-            <li class="filter-price-item"><a href="#">Dưới 10 triệu</a></li>
-            <li class="filter-price-item"><a href="#">10 - 15 triệu</a></li>
-            <li class="filter-price-item"><a href="#">15 - 25 triệu</a></li>
-            <li class="filter-price-item"><a href="#">Trên 25 triệu</a></li>
+            <li (click)="setFilter('>0tr')" class="filter-price-item"><a style="cursor: pointer;">Dưới 10 triệu</a></li>
+            <li (click)="setFilter('>10tr')" class="filter-price-item"><a style="cursor: pointer;">10 - 15 triệu</a>
+            </li>
+            <li (click)="setFilter('>15tr')" class="filter-price-item"><a style="cursor: pointer;">15 - 25 triệu</a>
+            </li>
+            <li (click)="setFilter('>25tr')" class="filter-price-item"><a style="cursor: pointer;">Trên 25 triệu</a>
+            </li>
         </ul>
     </div>
 
-    <div *ngIf="!isFetching" class="product has-top-border">
+    <div *ngIf="!isFetchingProduct" class="product has-top-border">
         <h6 class="product-type">Laptop</h6>
+        <div class="filter-name my-2 mt-2">
+            <span class="fa fa-search"></span><input [(ngModel)]='searchString' type="text" placeholder="Nhập tên sản phẩm">
+        </div>
         <div class="block-content row row-cols-lg-5 row-cols-md-3 row-cols-sm-2 row-cols-xs-2 row-cols-2">
-            <div class="product-item my-2" *ngFor="let item of onePageArray">
+            <div class="product-item my-2"
+                *ngFor="let item of onePageArray | productFilter: filterString:brandNameArray | searchFilter: searchString">
                 <div [routerLink]="['/detail', item.id]" class="mx-2 shadow">
                     <a class="product-thumbnail">
                         <img *ngIf="haveThumbnail(item.images)" [src]="loadThumbnail(item.images)" alt="product">
                         <p *ngIf="!haveThumbnail(item.images)">Chưa có hình ảnh</p>
                     </a>
                     <div class="product-info">
-                        <h6 class="product-title"><a [routerLink]="['/detail', item.id]">{{ item.productShortName }}</a></h6>
+                        <h6 class="product-title"><a [routerLink]="['/detail', item.id]">{{ item.productShortName }}</a>
+                        </h6>
                         <h5 class="price">{{ item.price | number}} đ</h5>
                         <p class="force-text">{{ item.shortDescription }}
                         </p>
@@ -56,9 +50,13 @@
                 </div>
             </div>
         </div>
+        <div *ngIf="(onePageArray | productFilter: filterString:brandNameArray | searchFilter: searchString).length === 0">
+            Không có sản phẩm phù hợp với kết quả tìm kiếm. <br>
+            <button class="btn btn-info mt-2" (click)="setFilter('')">Trở lại danh sách đầy đủ</button>
+        </div>
     </div>
 
-    <div *ngIf="isFetching">
+    <div *ngIf="isFetchingProduct">
         <h1>Loading...</h1>
     </div>
 

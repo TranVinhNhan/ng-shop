@@ -95,46 +95,53 @@
             </ng-template>
             <div class="container">
                 <h1>Lịch sử mua hàng</h1>
-                    <p>Quý khách có thể kiểm tra, cập nhật cũng như hủy đơn hàng của mình tại đây.</p>
-                    <hr>
-                <table *ngIf="orders.length" class="table table-hover">
-                    <thead class="thead-custom">
-                        <th class="inline-text">Mã đơn hàng</th>
-                        <th class="inline-text">Ngày đặt hàng</th>
-                        <th class="inline-text">Địa chỉ người nhận</th>
-                        <th class="inline-text">Giỏ hàng</th>
-                        <th class="inline-text">Tình trạng đơn hàng</th>
-                        <th></th>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let order of orders">
-                            <td>#{{ order.id }}</td>
-                            <td>{{ order.placedTime | date:'E dd/MM/yyyy h:mm:ss a' }}</td>
-                            <td *ngIf="!order.isReceivedAtStore">
-                                     {{ order.fullName }}
-                                <br> {{ order.phoneNumber }}
-                                <br> {{ order.shippingAddress + ' ' + order.shippingDistrict + ' ' + order.shippingCity }}
-                            </td>
-                            <td *ngIf="order.isReceivedAtStore">
-                                Nhận sản phẩm tại cửa hàng
-                            </td>
-                            <td>
-                                <div class="inline-text" *ngFor="let item of order.orderDetails">
-                                    <b>{{item.productShortName}}</b> | Số lượng: {{ item.quantity }} x {{ item.pricePerUnit | number}} đ
-                                </div>
-                                <hr>
-                                <b class="inline-text">Thành tiền: </b> <b class="text-danger">{{onTotal(order.orderDetails) | number }} đ</b>
-                            </td>
-                            <td><p [ngClass]="renderClass(order.orderStatus)">{{ order.orderStatus }}</p></td>
-                            <td class="btn-group">
-                                <button *ngIf="order.orderStatus!=='Đã hủy đơn'" (click)="onCancelOrder(order.id)"
-                                    class="btn btn-item">
-                                    <i class="fa fa-times fa-lg"></i>
-                                </button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <p>Quý khách có thể kiểm tra, cập nhật cũng như hủy đơn hàng của mình tại đây.</p>
+                <hr>
+                <div class="tableFixHead">
+                    <table *ngIf="orders.length" class="table table-hover">
+                        <thead class="thead-custom">
+                            <th class="inline-text">Mã đơn hàng</th>
+                            <th class="inline-text">Ngày đặt hàng</th>
+                            <th class="inline-text">Địa chỉ người nhận</th>
+                            <th class="inline-text">Giỏ hàng</th>
+                            <th class="inline-text">Tình trạng đơn hàng</th>
+                            <th></th>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let order of orders">
+                                <td>#{{ order.id }}</td>
+                                <td>{{ order.placedTime | date:'E dd/MM/yyyy h:mm:ss a' }}</td>
+                                <td *ngIf="!order.isReceivedAtStore">
+                                    {{ order.fullName }}
+                                    <br> {{ order.phoneNumber }}
+                                    <br>
+                                    {{ order.shippingAddress + ' ' + order.shippingDistrict + ' ' + order.shippingCity }}
+                                </td>
+                                <td *ngIf="order.isReceivedAtStore">
+                                    Nhận sản phẩm tại cửa hàng
+                                </td>
+                                <td>
+                                    <div class="inline-text" *ngFor="let item of order.orderDetails">
+                                        <b>{{item.productShortName}}</b> | Số lượng: {{ item.quantity }} x
+                                        {{ item.pricePerUnit | number}} đ
+                                    </div>
+                                    <hr>
+                                    <b class="inline-text">Thành tiền: </b> <b
+                                        class="text-danger">{{onTotal(order.orderDetails) | number }} đ</b>
+                                </td>
+                                <td>
+                                    <p [ngClass]="renderClass(order.orderStatus)">{{ order.orderStatus }}</p>
+                                </td>
+                                <td class="btn-group">
+                                    <button *ngIf="order.orderStatus!=='Đã hủy đơn'" (click)="onCancelOrder(order.id)"
+                                        class="btn btn-item">
+                                        <i class="fa fa-times fa-lg"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
                 <h3 *ngIf="!orders.length">Lịch sử đặt hàng trống</h3>
             </div>
         </tab>

@@ -9,19 +9,7 @@
                     <button (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed"
                         aria-controls="collapseOrder" type="button" class="btn btn-sm btn-outline-secondary">Tạo đơn
                         hàng</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
                 </div>
-                <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="feather feather-calendar">
-                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                        <line x1="16" y1="2" x2="16" y2="6"></line>
-                        <line x1="8" y1="2" x2="8" y2="6"></line>
-                        <line x1="3" y1="10" x2="21" y2="10"></line>
-                    </svg>
-                    This week
-                </button>
             </div>
         </div>
         <div id="collapseOrder" [collapse]="isCollapsed" [isAnimated]="true">
@@ -50,7 +38,8 @@
                                     <div class="form-group col-md-6">
                                         <input formControlName="fullName" type="text" class="form-control"
                                             name="fullName" id="fullName" placeholder="Họ và tên">
-                                        <div *ngIf="orderForm.get('fullName').touched && !orderForm.get('fullName').valid" class="invalid-feedback">
+                                        <div *ngIf="orderForm.get('fullName').touched && !orderForm.get('fullName').valid"
+                                            class="invalid-feedback">
                                             Họ và tên không hợp lệ
                                         </div>
                                     </div>
@@ -58,16 +47,18 @@
                                         <input (keypress)="onValidate($event)" formControlName="phoneNumber" type="tel"
                                             class="form-control" name="phoneNumber" id="phoneNumber"
                                             placeholder="Số điện thoại">
-                                        <div *ngIf="orderForm.get('phoneNumber').touched && !orderForm.get('phoneNumber').valid" class="invalid-feedback">
-                                            
+                                        <div *ngIf="orderForm.get('phoneNumber').touched && !orderForm.get('phoneNumber').valid"
+                                            class="invalid-feedback">
+
                                             Số điện thoại không hợp lệ
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <input formControlName="email" type="email" class="form-control" name="email"
                                             id="email" placeholder="Email">
-                                        <div *ngIf="orderForm.get('email').touched && !orderForm.get('email').valid" class="invalid-feedback">
-                                            
+                                        <div *ngIf="orderForm.get('email').touched && !orderForm.get('email').valid"
+                                            class="invalid-feedback">
+
                                             Email không hợp lệ
                                         </div>
                                     </div>
@@ -100,14 +91,16 @@
                                         <div class="form-group col-md-6">
                                             <input formControlName="shippingCity" type="text" class="form-control"
                                                 name="shippingCity" id="shippingCity" placeholder="Tỉnh/Thành phố">
-                                            <div *ngIf="orderForm.get('shippingCity').touched && !orderForm.get('shippingCity').valid" class="invalid-feedback">
+                                            <div *ngIf="orderForm.get('shippingCity').touched && !orderForm.get('shippingCity').valid"
+                                                class="invalid-feedback">
                                                 Thành phố không hợp lệ
                                             </div>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <input formControlName="shippingDistrict" type="text" class="form-control"
                                                 name="shippingDistrict" id="shippingDistrict" placeholder="Quận/Huyện">
-                                            <div *ngIf="orderForm.get('shippingDistrict').touched && !orderForm.get('shippingDistrict').valid" class="invalid-feedback">
+                                            <div *ngIf="orderForm.get('shippingDistrict').touched && !orderForm.get('shippingDistrict').valid"
+                                                class="invalid-feedback">
                                                 Quận không hợp lệ
                                             </div>
                                         </div>
@@ -117,7 +110,8 @@
                                             <input formControlName="shippingAddress" class="form-control"
                                                 placeholder="Số nhà, tên đường, phường/xã" id="shippingAddress"
                                                 type="text" name="shippingAddress">
-                                            <div *ngIf="orderForm.get('shippingAddress').touched && !orderForm.get('shippingAddress').valid" class="invalid-feedback">
+                                            <div *ngIf="orderForm.get('shippingAddress').touched && !orderForm.get('shippingAddress').valid"
+                                                class="invalid-feedback">
                                                 Địa chỉ không hợp lệ
                                             </div>
                                         </div>
@@ -170,8 +164,9 @@
                             </div>
 
                             <div class="group-action d-flex align-items-center justify-content-between">
-                                <button [disabled]="!this.orderForm.valid || !this.cartItems.length" class="btn btn-default btn-muangay mr-2 w-100" type="submit" name="order_send">
-                                    
+                                <button [disabled]="!this.orderForm.valid || !this.cartItems.length"
+                                    class="btn btn-default btn-muangay mr-2 w-100" type="submit" name="order_send">
+
                                     Tạo đơn hàng</button>
                             </div>
                         </form>
@@ -213,19 +208,21 @@
                         </ul>
                         <div *ngIf="!cartItems.length" class="list-order text-center">
                             <h5 class="text-danger mt-4">Giỏ hàng trống, vui lòng thêm sản phẩm để tạo đơn hàng!</h5>
-                                <button (click)="openModalWithProductOrderComponent()" class="btn btn-primary mt-4 btn-tragop w-50">Thêm sản phẩm</button>
+                            <button (click)="openModalWithProductOrderComponent()"
+                                class="btn btn-primary mt-4 btn-tragop w-50">Thêm sản phẩm</button>
                         </div>
                         <hr>
                         <div class="total-price">
                             <label>Tổng tiền:</label>
-                            <div *ngIf="cartItems.length" class="total-price-value">{{ onTotal(cartItems) | number }}đ</div>
+                            <div *ngIf="cartItems.length" class="total-price-value">{{ onTotal(cartItems) | number }}đ
+                            </div>
                             <div *ngIf="!cartItems.length" class="total-price-value">0đ</div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row py-3">
+        <div *ngIf="!isFetching" class="row py-3">
             <div class="table-responsive table-scroll-fixed-head m-b-40">
                 <table class="table table-hover">
                     <thead class="thead-custom">
@@ -246,8 +243,12 @@
                     <tbody>
                         <tr *ngFor="let order of orders">
                             <td class="inline-text">{{order.placedTime | date:'E dd/MM/yyyy h:mm:ss a'}}</td>
-                            <td class="text-center"><p class="order-link rounded" (click)="openModalWithOrderDetailComponent(order)">{{order.id}}</p></td>
-                            <td class="text-center">{{ order.userId ? order.userId : 'Khách hàng không đăng nhập' }}</td>
+                            <td class="text-center">
+                                <p class="order-link rounded" (click)="openModalWithOrderDetailComponent(order)">
+                                    {{order.id}}</p>
+                            </td>
+                            <td class="text-center">{{ order.userId ? order.userId : 'Khách hàng không đăng nhập' }}
+                            </td>
                             <td class="inline-text" *ngIf="order.isMale">Anh: <b>{{order.fullName}}</b></td>
                             <td class="inline-text" *ngIf="!order.isMale">Chị: <b>{{order.fullName}}</b></td>
                             <td>{{ order.phoneNumber }}</td>
@@ -258,7 +259,9 @@
                             <td *ngIf="order.isReceivedAtStore">{{ order.shippingAddress }}</td>
                             <td>
                                 <div class="inline-text" *ngFor="let item of order.orderDetails">
-                                    <b class="text-info">{{item.productShortName}}</b><b> x {{ item.quantity }} máy </b> <b>|</b> <b> Giá bán lẻ:</b><b class="p-1 text-info"> {{ item.pricePerUnit | number}}đ/máy</b>
+                                    <b class="text-info">{{item.productShortName}}</b><b> x {{ item.quantity }} máy </b>
+                                    <b>|</b> <b> Giá bán lẻ:</b><b class="p-1 text-info">
+                                        {{ item.pricePerUnit | number}}đ/máy</b>
                                 </div>
                             </td>
                             <td class="text-right">
@@ -266,7 +269,8 @@
                                     = {{ item.pricePerUnit * item.quantity | number }} đ
                                 </div>
                                 <hr>
-                                <b class="inline-text">Thành tiền: </b><b class="inline-text text-danger">{{onTotal(order.orderDetails) | number }} đ</b>
+                                <b class="inline-text">Thành tiền: </b><b
+                                    class="inline-text text-danger">{{onTotal(order.orderDetails) | number }} đ</b>
                             </td>
                             <td class="inline-text">
                                 <div [ngClass]="renderClass(order.orderStatus)">{{ order.orderStatus }}</div>
@@ -289,5 +293,7 @@
                 </table>
             </div>
         </div>
+        <div class="row py-3" *ngIf="isFetching">Loading...</div>
+        <div *ngIf="errorMessage">{{ errorMessage }}</div>
     </main>
 </div>

@@ -10,8 +10,6 @@ export class AlertifyService {
         alertify.confirm(message, (e) => {
             if (e) {
                 okCallback();
-                console.log(e);
-                console.log('hit callback');
             } else { }
         }).set({ title: 'Thông báo' });
     }

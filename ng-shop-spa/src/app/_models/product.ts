@@ -18,6 +18,7 @@ export interface  Product {
     operatingSystem: string;
     price: number;
     isAvailable: boolean;
+    isDisplayed: boolean;
 
     brand: Brand;
     images: Image[];

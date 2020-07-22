@@ -175,6 +175,16 @@
                 </div>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <label for="isDisplayed">Chế độ</label>
+                <select formControlName="isDisplayed" class="custom-select d-block w-100" id="isDisplayed">
+                    <option [ngValue]="true">Đang hiển thị</option>
+                    <option [ngValue]="false">Đã khóa</option>
+                </select>
+            </div>
+        </div>
     </form>
 </div>
 <div class="modal-footer">

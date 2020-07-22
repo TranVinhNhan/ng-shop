@@ -130,3 +130,18 @@ a {
 .product-title, .price {
     text-align: center;
 }
+
+.filter-name {
+    width: fit-content;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+}
+
+.filter-name span {
+    padding: 4px;
+}
+
+.filter-name input {
+    border: 1px solid transparent;
+    outline: none;
+}
