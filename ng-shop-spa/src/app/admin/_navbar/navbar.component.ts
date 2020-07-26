@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
+  isCollapsed = true;
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
@@ -17,5 +18,9 @@ export class NavbarComponent implements OnInit {
   onSignOut() {
     this.authService.logout();
     this.router.navigate(['/']);
+  }
+
+  onToggle() {
+    this.isCollapsed = !this.isCollapsed;
   }
 }

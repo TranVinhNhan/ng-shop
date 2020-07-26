@@ -19,3 +19,7 @@
 li > #navbardrop, .dropdown-menu > .dropdown-item {
     cursor: pointer;
 }
+
+#collapseBasic {
+    flex-basis: 100%;
+}

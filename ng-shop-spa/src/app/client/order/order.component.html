@@ -183,7 +183,7 @@
                                 </div>
                                 <div class="col-price">
                                     <div class="price">{{cartItem.pricePerUnit | number}} đ</div>
-                                    <div class="choosequantity">
+                                    <div class="choose-quantity">
                                         <button class="btn btn-danger btn-qty" [disabled]="cartItem.quantity<1"
                                             (click)="onChangeQuantity(cartItem, -1)">
                                             <i class="fa fa-minus" aria-hidden="true"></i>

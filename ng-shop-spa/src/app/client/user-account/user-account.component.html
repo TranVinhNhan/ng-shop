@@ -100,17 +100,17 @@
                 <div class="tableFixHead">
                     <table *ngIf="orders.length" class="table table-hover">
                         <thead class="thead-custom">
-                            <th class="inline-text">Mã đơn hàng</th>
-                            <th class="inline-text">Ngày đặt hàng</th>
+                            <th class="inline-text">Mã đơn</th>
+                            <th style="cursor: pointer;" onselectstart="return false" (click)="onToggle()" class="inline-text">Ngày đặt hàng<i class="fa fa-sort ml-2"></i></th>
                             <th class="inline-text">Địa chỉ người nhận</th>
                             <th class="inline-text">Giỏ hàng</th>
                             <th class="inline-text">Tình trạng đơn hàng</th>
                             <th></th>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let order of orders">
+                            <tr *ngFor="let order of orders | placedTime: isNewestFirst">
                                 <td>#{{ order.id }}</td>
-                                <td>{{ order.placedTime | date:'E dd/MM/yyyy h:mm:ss a' }}</td>
+                                <td>{{ order.placedTime | date:'dd/MM/yyyy h:mm:ss a' }}</td>
                                 <td *ngIf="!order.isReceivedAtStore">
                                     {{ order.fullName }}
                                     <br> {{ order.phoneNumber }}

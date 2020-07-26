@@ -92,12 +92,14 @@ fieldset {
 }
 
 .col-info {
-    width: 55%;
+    width: 50%;
 }
 
 .col-price {
+    text-align: center;
+    vertical-align: middle;
     position: relative;
-    width: 30%;
+    width: 35%;
 }
 
 .img-fluid {
@@ -124,8 +126,8 @@ fieldset {
 }
 
 .num-product {
-    width: 40px;
     vertical-align: middle;
+    width: 5vh;
 }
 
 .btn-muangay {
@@ -177,3 +179,7 @@ fieldset {
     font-size: 22px;
     font-weight: bold;
 }
+
+/* .choosequantity * {
+    display: inline-block;
+} */

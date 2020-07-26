@@ -1,6 +1,11 @@
   /*
    * Navbar
    */
+   @media (min-width: 480px) {
+    .navbar-toggler {
+      display: none;
+    }
+  }
   
    .navbar-brand {
     padding-top: .75rem;
@@ -34,4 +39,13 @@
 
   .cursor-pointer {
     cursor: pointer;
+  }
+
+  #collapseBasic {
+    flex-basis: 100%;
+  }
+
+  #collapseBasic > ul > li {
+    text-align: center;
+    vertical-align: middle;
   }

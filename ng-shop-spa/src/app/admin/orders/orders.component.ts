@@ -25,6 +25,7 @@ export class OrdersComponent implements OnInit, OnDestroy {
   orderForm: FormGroup;
   isCollapsed = true;
   isFetching = false;
+  isNewestFirst = true;
   errorMessage: string;
   errorMessageSubscription: Subscription;
   bsModalRef: BsModalRef;
@@ -127,6 +128,10 @@ export class OrdersComponent implements OnInit, OnDestroy {
         this.cartItems.splice(index, 1);
       }
     }
+  }
+
+  onOldestFirst() {
+    this.isNewestFirst = !this.isNewestFirst;
   }
 
   onSubmit() {

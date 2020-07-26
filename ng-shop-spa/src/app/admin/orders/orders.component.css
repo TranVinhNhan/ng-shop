@@ -160,3 +160,7 @@ fieldset {
     background-color: #27bece;
     color: white;
 }
+
+.sort-date {
+    cursor: pointer;
+}

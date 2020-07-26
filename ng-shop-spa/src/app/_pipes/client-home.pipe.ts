@@ -4,7 +4,7 @@ import { Product } from '../_models/product';
 @Pipe({
     name: 'productFilter'
 })
-export class ClientHomePipe implements PipeTransform {
+export class PricePipe implements PipeTransform {
     transform(value: Product[], filterString: string, brandNameArray: string[]) {
         if (value.length === 0) {
             return value;

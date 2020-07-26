@@ -28,6 +28,8 @@ import { BrandChartComponent } from './_charts/brand-chart/brand-chart.component
 import { IncomeChartComponent } from './_charts/income-chart/income-chart.component';
 import { ExportInvoiceModalComponent } from './orders/export-invoice-modal/export-invoice-modal.component';
 
+import { SharedModule } from '../shared/shared.module';
+
 
 @NgModule({
   declarations: [
@@ -60,7 +62,9 @@ import { ExportInvoiceModalComponent } from './orders/export-invoice-modal/expor
     CollapseModule.forRoot(),
     ModalModule.forRoot(),
     FileUploadModule,
-    ChartsModule
+    ChartsModule,
+
+    SharedModule
   ]
 })
 export class AdminModule { }

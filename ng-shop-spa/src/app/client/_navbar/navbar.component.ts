@@ -15,6 +15,7 @@ import { AlertifyService } from 'src/app/_services/alertifyjs.service';
 export class NavbarComponent implements OnInit, OnDestroy {
   cartCount: number;
   cartCountSubscription: Subscription;
+  isCollapsed = true;
 
   constructor(
     private authService: AuthService,
@@ -58,5 +59,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.authService.logout();
     this.router.navigate(['/']);
     this.alertifyService.success('Đã đăng xuất');
+  }
+
+  onToggle() {
+    this.isCollapsed = !this.isCollapsed;
   }
 }

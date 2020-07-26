@@ -22,7 +22,9 @@ import { ProductDetailResolver } from '../_resolvers/product-detail.resolver';
 import { UserAccountComponent } from './user-account/user-account.component';
 
 // Pipes
-import { ClientHomePipe, SearchFilterPipe } from '../_pipes/client-home.pipe';
+import { PricePipe, SearchFilterPipe } from '../_pipes/client-home.pipe';
+import { SharedModule } from '../shared/shared.module';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,7 @@ import { ClientHomePipe, SearchFilterPipe } from '../_pipes/client-home.pipe';
     LoginComponent,
     UserAccountComponent,
 
-    ClientHomePipe,
+    PricePipe,
     SearchFilterPipe
   ],
   imports: [
@@ -47,7 +49,10 @@ import { ClientHomePipe, SearchFilterPipe } from '../_pipes/client-home.pipe';
     FormsModule,
     PaginationModule.forRoot(),
     BsDropdownModule.forRoot(),
-    TabsModule.forRoot()
+    CollapseModule.forRoot(),
+    TabsModule.forRoot(),
+
+    SharedModule
   ],
   providers: [ProductDetailResolver]
 })

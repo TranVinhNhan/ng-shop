@@ -20,6 +20,7 @@ export class UserAccountComponent implements OnInit {
   user: User;
   orders: Order[] = [];
   userAccountForm: FormGroup;
+  isNewestFirst = true;
 
   constructor(
     private extensionService: ExtensionService,
@@ -111,5 +112,9 @@ export class UserAccountComponent implements OnInit {
         console.log(error);
       });
     });
+  }
+
+  onToggle() {
+    this.isNewestFirst = !this.isNewestFirst;
   }
 }
