@@ -28,7 +28,7 @@
     "font-awesome": "^4.7.0",
     "html2canvas": "^1.0.0-rc.5",
     "jspdf": "^1.5.3",
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.21",
     "moment": "^2.27.0",
     "ng2-charts": "^2.2.4",
     "ng2-file-upload": "^1.4.0",
